@@ -6,3 +6,9 @@
        --color-header-footer-dark-blue: #1A237E;
 
    }
+
+   .accent-color {
+       color: var(--color-accent-orange);
+   }
+
+
