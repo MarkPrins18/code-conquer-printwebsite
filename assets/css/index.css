@@ -3,5 +3,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+}
+.example-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
 }
