@@ -1,10 +1,45 @@
-.example-container{
+.hero {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/assets/images/Bouw3D-hero-content.jpg');
+    background-position: center 35%;
+    background-size: cover;
+
+}
+
+.hero-content {
+    color: white;
+    /* tekstkleur */
+    padding: 1.5rem 2rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* optionele overlay voor contrast */
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.example-list{
+
+
+/*
+  .hero-content{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}  
+*/
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.example-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
