@@ -5,41 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/global.css">
-    <title>Bouw3D</title>
+    <link rel="stylesheet" href="assets/css/index.css">
+    <title>Bouw3D</title> <!--add logo-->
 </head>
 
 <body>
-    <!--Header voor semantiek-->
+    <!--Header added for semantic-->
     <header>
-        <!--Placeholder voor de header-->
+        <!--Placeholder for the header-->
         <div class="header"></div>
     </header>
-    <!--main voor semantiek-->
+    <!--main added for semantic-->
     <main class="bg-dark">
-        <!--Hero sectin van onze pagina-->
-        <!--Let op! aanpassen naar global.css-->
+        <!--Hero section added for semantic and oversight-->
+        <!--Important! change to glabal.css-->
         <section class="hero">
             <div class="hero-content">
                 <h2>Welkom op onze website!</h2>
                 <p>hier een introductie met call to action</p>
-                <a href="#" class="btn">Ontdek meer</a>
+                <a href="#" class="btn">Ontdek meer</a> <!--Important! change link to correct HTML page-->
             </div>
         </section>
 
-        <section class="voorbeeld">
-            <div class="voorbeeld-container">
-                <div class="upper-content">
-                    <div class="title">Voorbeelden van klante</div>
+        <section class="example"> <!--section added for semantic-->
+            <div class="example-container p-1 m-1"> <!--Important! chagne example-container to global.css and implement border-->
+                <div class="upper-content"> <!--div to ensure the layout stays consistent-->
+                    <div class="title">Voorbeelden van klanten</div> <!--title class (maybe global.css)-->
                     <h2>Wij maken precieze onderdelen</h2>
-                    <div class="spacing"> <!--class to add spacing to the bottom of the tekst.-->
                     <p class="tekst">Hieronder zie je enkele voorbeelden</p>
+                    <div class="spacing"> <!--class to add spacing to the bottom of the tekst.-->
                     </div>
                 </div>
-                <!--hier ul-->
-                
+                <!--Here is the list and content. No section required since they fall in the example section-->
+                <!--Important! need JavaScript and more CSS-->
+                <div class="example-list"> <!--div to set list and content next to eachother-->
+                    <ul class="select-example">
+                        <li class="list-item" data-content="example-1">Voorbeeld 1</li>
+                        <li class="list-item" data-content="example-2">Voorbeeld 2</li>
+                        <li class="list-item" data-content="example-3">Voorbeeld 3</li>
+                        <li class="list-item" data-content="example-4">Voorbeeld 4</li>
+                        <li class="list-item" data-content="example-5">Voorbeeld 5</li>
+                    </ul>
+                    <div class="content">
+                        <div id="example-1" class="content-item"> Dit is de tekst voor Item 1</div>
+                        <div id="example-2" class="content-item"> Dit is de tekst voor Item 2</div>
+                        <div id="example-3" class="content-item"> Dit is de tekst voor Item 3</div>
+                        <div id="example-4" class="content-item"> Dit is de tekst voor Item 4</div>
+                        <div id="example-5" class="content-item"> Dit is de tekst voor Item 5</div>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <section class="advertisement"> <!--section added for semantic-->
+            <h2>Placeholder</h2>
+        </section>
+
+        <!--placeholder for footer-->
+        <div class="footer"></div>
 
 
     </main>
