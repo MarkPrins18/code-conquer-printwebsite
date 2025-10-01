@@ -1,7 +1,9 @@
    :root {
        --color-accent-orange: #FF6600;
 
-       --color-main-light-gray: #6E6E6E;
+       --color-main-light-gray: #d3d3d3;
+
+       --color-main-dark-gray: #6E6E6E;
 
        --color-header-footer-dark-blue: #1A237E;
 
@@ -12,7 +14,7 @@
    }
 
    .bg-dark {
-       background-color: var(--color-main-light-gray);
+       background-color: var(--color-main-dark-gray);
    }
 
    .p-1 {
