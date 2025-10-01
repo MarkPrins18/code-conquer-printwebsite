@@ -1,5 +1,17 @@
+/* Important! change font to global.css when available*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital@0;1&display=swap');
+
+/*add padding or margin for navbar*/
+
+.font-styling {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
 .hero {
-    height: 60vh;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,10 +22,8 @@
 
 .hero-content {
     color: white;
-    /* tekstkleur */
     padding: 1.5rem 2rem;
     background-color: rgba(0, 0, 0, 0.4);
-    /* optionele overlay voor contrast */
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -21,16 +31,63 @@
     align-items: center;
 }
 
+.hero-content .btn {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.hero-content .btn:hover {
+    opacity: 1;
+}
+
+/*example section*/
 .example-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
 .example-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 20px;
+    width: 100%;
+}
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent-orange);
+}
+.example h2 {
+    font-size: 4rem;
+}
+.tekst {
+    text-align: center;
+    font-size: 2rem;
+}
+ul.select-example{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 30%;
+}
+.list-item{
+    font-size: 2.5rem;
+    padding: 10px;
+}
+.content{
+    flex: 1;
+}
+.content-item{
+    display: none;
 }
