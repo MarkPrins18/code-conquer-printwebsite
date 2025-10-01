@@ -11,4 +11,8 @@
        color: var(--color-accent-orange);
    }
 
+   .bg-light{
+    background-color: var(--color-main-light-gray);
+   }
+
 
