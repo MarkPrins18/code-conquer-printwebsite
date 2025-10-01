@@ -11,8 +11,19 @@
        color: var(--color-accent-orange);
    }
 
-   .bg-light{
-    background-color: var(--color-main-light-gray);
+   .bg-light {
+       background-color: var(--color-main-light-gray);
    }
 
+   .p-1 {
+       padding: 1em;
+       /* Alway 1x root-font-size, root-font-size is 16px unless the user changes it in the settings. */
+   }
 
+   .m-1 {
+    margin: 1em;
+   }
+
+   body {
+       margin: 0px;
+   }
