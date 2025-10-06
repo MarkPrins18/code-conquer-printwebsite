@@ -29,30 +29,81 @@
         </section>
 
         <section class="example"> <!--section added for semantic-->
-            <div class="example-container p-1 m-1"> <!--Important! chagne example-container to global.css and implement border-->
+            <div class="example-container p-1 m-1">
+                <!--Important! chagne example-container to global.css and implement border-->
                 <div class="upper-content"> <!--div to ensure the layout stays consistent-->
-                    <div class="title">Voorbeelden van klanten</div> <!--title class (maybe global.css)-->
+                    <h1 class="title">Voorbeelden van klanten </h1> <!--title class (maybe global.css)-->
                     <h2>Wij maken precieze onderdelen</h2>
                     <p class="tekst">Hieronder zie je enkele voorbeelden</p>
-                    <div class="spacing"> <!--class to add spacing to the bottom of the tekst.-->
-                    </div>
+                    <div class="p-2"></div> <!--class to add spacing to the bottom of the tekst.-->
                 </div>
                 <!--Here is the list and content. No section required since they fall in the example section-->
                 <!--Important! need JavaScript and more CSS-->
                 <div class="example-list"> <!--div to set list and content next to eachother-->
                     <ul class="select-example">
-                        <li class="list-item" data-content="example-1">Voorbeeld 1</li>
-                        <li class="list-item" data-content="example-2">Voorbeeld 2</li>
-                        <li class="list-item" data-content="example-3">Voorbeeld 3</li>
-                        <li class="list-item" data-content="example-4">Voorbeeld 4</li>
-                        <li class="list-item" data-content="example-5">Voorbeeld 5</li>
+                        <li class="list-item" data-content="example-1">Delta Ontwikkeling</li>
+                        <li class="list-item" data-content="example-2">Studio Nova</li>
+                        <li class="list-item" data-content="example-3">UrbanBuild</li>
+                        <li class="list-item" data-content="example-4">Rossum Design</li>
+                        <li class="list-item" data-content="example-5">Willems en Zn</li>
                     </ul>
                     <div class="content">
-                        <div id="example-1" class="content-item"> Dit is de tekst voor Item 1</div>
-                        <div id="example-2" class="content-item"> Dit is de tekst voor Item 2</div>
-                        <div id="example-3" class="content-item"> Dit is de tekst voor Item 3</div>
-                        <div id="example-4" class="content-item"> Dit is de tekst voor Item 4</div>
-                        <div id="example-5" class="content-item"> Dit is de tekst voor Item 5</div>
+                        <article id="example-1" class="content-item">
+                            <blockquote>
+                                “De 3D-visualisaties van Bouw3D hebben ons enorm
+                                geholpen bij het overtuigen van onze opdrachtgever. Het ontwerp kwam tot leven nog
+                                vóór de eerste steen gelegd was.”
+                            </blockquote>
+                            <figure>
+                                <img src="assets/images/Klant-1.png" alt="Klantfoto" 
+                                    style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
+                                <!--add style of picture to global css-->
+                            </figure>
+                        </article>
+                        <article id="example-2" class="content-item">
+                            <blockquote>
+                                “Dankzij Bouw3D konden we ons bouwplan helder presenteren aan de gemeente. De
+                                visualisaties waren professioneel en tot in detail uitgewerkt.”
+                            </blockquote>
+                            <figure>
+                                <img src="assets/images/klant-2.jpg" alt="Klantfoto" 
+                                style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
+                                <!--add style of picture to global css-->
+                            </figure>
+                        </article>
+                        <article id="example-3" class="content-item">
+                            <blockquote>
+                                “We hadden snel een 3D-model nodig voor een pitch, en Bouw3D leverde binnen 48 uur een
+                                prachtig resultaat. Ze denken mee en leveren kwaliteit.”
+                            </blockquote>
+                            <figure>
+                                <img src="assets/images/klant-3.png" alt="Klantfoto" 
+                                style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
+                                <!--add style of picture to global css-->
+                            </figure>
+                        </article>
+                        <article id="example-4" class="content-item">
+                            <blockquote>
+                                “Onze klanten waren onder de indruk van de realistische
+                                renders die Bouw3D maakte. Het gaf hen direct vertrouwen in het ontwerp.”
+                            </blockquote>
+                            <figure>
+                                <img src="assets/images/klant-4.jpg" alt="Klantfoto" 
+                                style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
+                                <!--add style of picture to global css-->
+                            </figure>
+                        </article>
+                        <article id="example-5" class="content-item">
+                            <blockquote>
+                                “Door de visualisaties van Bouw3D ontdekten we een fout
+                                in de indeling nog vóór de bouw begon. Dat heeft ons veel tijd en kosten bespaard.”
+                            </blockquote>
+                            <figure>
+                                <img src="assets/images/klant-5.jpg" alt="Klantfoto" 
+                                style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">>
+                                <!--add style of picture to global css-->
+                            </figure>
+                        </article>
                     </div>
                 </div>
             </div>
