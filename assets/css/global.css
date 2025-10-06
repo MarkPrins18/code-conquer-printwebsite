@@ -22,8 +22,12 @@ background-color: var(--color-main-light-gray);
 }
 
 .p-1 {
-    padding: 1em;
+    padding: 1rem;
     /* Alway 1x root-font-size, root-font-size is 16px unless the user changes it in the settings. */
+}
+
+.p-2{
+  padding: 2rem;
 }
 
 .m-1 {
