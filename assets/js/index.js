@@ -10,3 +10,4 @@ items.forEach(item => {
     document.getElementById(id).style.display = 'block';
   });
 });
+items[0].click();
