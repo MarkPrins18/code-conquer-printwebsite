@@ -62,6 +62,10 @@ p {
 
 /* Mark Can you add fontsize? */
 
+.fs-2 {   /*temparery fontsize*/
+  font-size: 2rem;
+}
+
 .text-left {
   text-align: left;
 }
