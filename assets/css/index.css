@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(assets\images\Bouw3D-hero-content.jpg);
+  background-image: url(../images/Bouw3D-hero-content.jpg);
   background-position: center 35%;
   background-size: cover;
 }
