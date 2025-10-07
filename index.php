@@ -49,9 +49,7 @@
           <div class="example-list">
             <!--div to set list and content next to eachother-->
             <ul class="select-example">
-              <li class="list-item" data-content="example-1">
-                Delta Ontwikkeling
-              </li>
+              <li class="list-item" data-content="example-1">Delta Ontwikkeling</li>
               <li class="list-item" data-content="example-2">Studio Nova</li>
               <li class="list-item" data-content="example-3">Urban Build</li>
               <li class="list-item" data-content="example-4">Rossum Design</li>
@@ -163,10 +161,17 @@
         </div>
       </section>
 
-      <section class="advertisement">
+      <section class="awards">
         <!--section added for semantic-->
-        <h2>Placeholder</h2>
+        <h2>Onze awards!</h2>
+        <div class="awards-container">
+          <div class="award-1"> <
+
+          </div>
+        </div>
       </section>
+
+
 
       <!--placeholder for footer-->
       <div class="footer"></div>
