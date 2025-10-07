@@ -1,123 +1,179 @@
 <!DOCTYPE html>
 <html lang="nl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/global.css">
-    <link rel="stylesheet" href="assets/css/index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/index.css" />
     <script src="assets/js/index.js" defer></script>
-    <title>Bouw3D</title> <!--add logo-->
-</head>
+    <title>Bouw3D</title>
+    <!--add logo-->
+  </head>
 
-<body>
+  <body>
     <!--Header added for semantic-->
     <header>
-        <!--Placeholder for the header-->
-        <div class="header"></div>
+      <!--Placeholder for the header-->
+      <div class="header"></div>
     </header>
     <!--main added for semantic-->
-    <main class="bg-light font-styling"> <!--background and font are added herewaarom komen -->
-        <!--Hero section added for semantic and oversight-->
-        <!--Important! change to glabal.css-->
-        <section class="hero">
-            <div class="hero-content">
-                <h2>Welkom op onze website!</h2>
-                <p>hier een introductie met call to action</p>
-                <a href="#" class="btn">Ontdek meer</a> <!--Important! change link to correct HTML page-->
+    <main class="bg-light font-styling">
+      <!--background and font are added herewaarom komen -->
+      <!--Hero section added for semantic and oversight-->
+      <!--Important! change to glabal.css-->
+      <section class="hero">
+        <div class="hero-content">
+          <h2>Welkom op onze website!</h2>
+          <p>hier een introductie met call to action</p>
+          <a href="#" class="btn">Ontdek meer</a>
+          <!--Important! change link to correct HTML page-->
+        </div>
+      </section>
+
+      <section class="example">
+        <!--section added for semantic-->
+        <div class="example-container p-1 m-1">
+          <!--Important! change example-container to global.css and implement border-->
+          <div class="upper-content">
+            <!--div to ensure the layout stays consistent-->
+            <h1 class="title">Voorbeelden van klanten</h1>
+            <!--title class (maybe global.css)-->
+            <h2>Wij maken precieze onderdelen</h2>
+            <p class="fs-2 text-center">Hieronder zie je enkele voorbeelden</p>
+            <div class="p-2"></div>
+            <!--class to add spacing to the bottom of the tekst.-->
+          </div>
+          <!--Here is the list and content. No section required since they fall in the example section-->
+          <!--Important! need JavaScript and more CSS-->
+          <div class="example-list">
+            <!--div to set list and content next to eachother-->
+            <ul class="select-example">
+              <li class="list-item" data-content="example-1">
+                Delta Ontwikkeling
+              </li>
+              <li class="list-item" data-content="example-2">Studio Nova</li>
+              <li class="list-item" data-content="example-3">Urban Build</li>
+              <li class="list-item" data-content="example-4">Rossum Design</li>
+              <li class="list-item" data-content="example-5">Willems en Zn</li>
+            </ul>
+            <div class="content">
+              <article id="example-1" class="content-item">
+                <blockquote>
+                  “De 3D-visualisaties van Bouw3D hebben ons enorm geholpen bij
+                  het overtuigen van onze opdrachtgever. Het ontwerp kwam tot
+                  leven nog vóór de eerste steen gelegd was.”
+                </blockquote>
+                <figure>
+                  <img
+                    src="assets/images/index-images/Klant-1.png"
+                    alt="Klantfoto"
+                    title="Klantfoto-title"
+                    style="
+                      max-width: 100%;
+                      height: auto;
+                      border-radius: 8px;
+                      margin-bottom: 10px;
+                    "
+                  />
+                  <!--add style of picture to global css-->
+                </figure>
+              </article>
+              <article id="example-2" class="content-item">
+                <blockquote>
+                  “Dankzij Bouw3D konden we ons bouwplan helder presenteren aan
+                  de gemeente. De visualisaties waren professioneel en tot in
+                  detail uitgewerkt.”
+                </blockquote>
+                <figure>
+                  <img
+                    src="assets/images/index-images/klant-2.jpg"
+                    alt="Klantfoto"
+                    title="Klantfoto-title"
+                    style="
+                      max-width: 100%;
+                      height: auto;
+                      border-radius: 8px;
+                      margin-bottom: 10px;
+                    "
+                  />
+                  <!--add style of picture to global css-->
+                </figure>
+              </article>
+              <article id="example-3" class="content-item">
+                <blockquote>
+                  “We hadden snel een 3D-model nodig voor een pitch, en Bouw3D
+                  leverde binnen 48 uur een prachtig resultaat. Ze denken mee en
+                  leveren kwaliteit.”
+                </blockquote>
+                <figure>
+                  <img
+                    src="assets/images/index-images/klant-3.png"
+                    alt="Klantfoto"
+                    title="Klantfoto-title"
+                    style="
+                      max-width: 100%;
+                      height: auto;
+                      border-radius: 8px;
+                      margin-bottom: 10px;
+                    "
+                  />
+                  <!--add style of picture to global css-->
+                </figure>
+              </article>
+              <article id="example-4" class="content-item">
+                <blockquote>
+                  “Onze klanten waren onder de indruk van de realistische
+                  renders die Bouw3D maakte. Het gaf hen direct vertrouwen in
+                  het ontwerp.”
+                </blockquote>
+                <figure>
+                  <img
+                    src="assets/images/index-images/klant-4.jpg"
+                    alt="Klantfoto"
+                    title="Klantfoto-title"
+                    style="
+                      max-width: 100%;
+                      height: auto;
+                      border-radius: 8px;
+                      margin-bottom: 10px;
+                    "
+                  />
+                  <!--add style of picture to global css-->
+                </figure>
+              </article>
+              <article id="example-5" class="content-item">
+                <blockquote>
+                  “Door de visualisaties van Bouw3D ontdekten we een fout in de
+                  indeling nog vóór de bouw begon. Dat heeft ons veel tijd en
+                  kosten bespaard.”
+                </blockquote>
+                <figure>
+                  <img
+                    src="assets/images/index-images/klant-5.jpg"
+                    alt="Klantfoto"
+                    title="Klantfoto-title"
+                    style="
+                      max-width: 100%;
+                      height: auto;
+                      border-radius: 8px;
+                      margin-bottom: 10px;
+                    "
+                  />>
+                  <!--add style of picture to global css-->
+                </figure>
+              </article>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section class="example"> <!--section added for semantic-->
-            <div class="example-container p-1 m-1">
-                <!--Important! change example-container to global.css and implement border-->
-                <div class="upper-content"> <!--div to ensure the layout stays consistent-->
-                    <h1 class="title">Voorbeelden van klanten </h1> <!--title class (maybe global.css)-->
-                    <h2>Wij maken precieze onderdelen</h2>
-                    <p class="fs-2 text-center">Hieronder zie je enkele voorbeelden</p>
-                    <div class="p-2"></div> <!--class to add spacing to the bottom of the tekst.-->
-                </div>
-                <!--Here is the list and content. No section required since they fall in the example section-->
-                <!--Important! need JavaScript and more CSS-->
-                <div class="example-list"> <!--div to set list and content next to eachother-->
-                    <ul class="select-example">
-                        <li class="list-item" data-content="example-1">Delta Ontwikkeling</li>
-                        <li class="list-item" data-content="example-2">Studio Nova</li>
-                        <li class="list-item" data-content="example-3">Urban Build</li>
-                        <li class="list-item" data-content="example-4">Rossum Design</li>
-                        <li class="list-item" data-content="example-5">Willems en Zn</li>
-                    </ul>
-                    <div class="content">
-                        <article id="example-1" class="content-item">
-                            <blockquote>
-                                “De 3D-visualisaties van Bouw3D hebben ons enorm
-                                geholpen bij het overtuigen van onze opdrachtgever. Het ontwerp kwam tot leven nog
-                                vóór de eerste steen gelegd was.”
-                            </blockquote>
-                            <figure>
-                                <img src="assets/images/index-images/Klant-1.png" alt="Klantfoto" title="Klantfoto-title"
-                                    style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
-                                <!--add style of picture to global css-->
-                            </figure>
-                        </article>
-                        <article id="example-2" class="content-item">
-                            <blockquote>
-                                “Dankzij Bouw3D konden we ons bouwplan helder presenteren aan de gemeente. De
-                                visualisaties waren professioneel en tot in detail uitgewerkt.”
-                            </blockquote>
-                            <figure>
-                                <img src="assets/images/index-images/klant-2.jpg" alt="Klantfoto" title="Klantfoto-title"
-                                    style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
-                                <!--add style of picture to global css-->
-                            </figure>
-                        </article>
-                        <article id="example-3" class="content-item">
-                            <blockquote>
-                                “We hadden snel een 3D-model nodig voor een pitch, en Bouw3D leverde binnen 48 uur een
-                                prachtig resultaat. Ze denken mee en leveren kwaliteit.”
-                            </blockquote>
-                            <figure>
-                                <img src="assets/images/index-images/klant-3.png" alt="Klantfoto" title="Klantfoto-title"
-                                    style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
-                                <!--add style of picture to global css-->
-                            </figure>
-                        </article>
-                        <article id="example-4" class="content-item">
-                            <blockquote>
-                                “Onze klanten waren onder de indruk van de realistische
-                                renders die Bouw3D maakte. Het gaf hen direct vertrouwen in het ontwerp.”
-                            </blockquote>
-                            <figure>
-                                <img src="assets/images/index-images/klant-4.jpg" alt="Klantfoto" title="Klantfoto-title"
-                                    style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
-                                <!--add style of picture to global css-->
-                            </figure>
-                        </article>
-                        <article id="example-5" class="content-item">
-                            <blockquote>
-                                “Door de visualisaties van Bouw3D ontdekten we een fout
-                                in de indeling nog vóór de bouw begon. Dat heeft ons veel tijd en kosten bespaard.”
-                            </blockquote>
-                            <figure>
-                                <img src="assets/images/index-images/klant-5.jpg" alt="Klantfoto" title="Klantfoto-title"
-                                    style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">>
-                                <!--add style of picture to global css-->
-                            </figure>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <section class="advertisement">
+        <!--section added for semantic-->
+        <h2>Placeholder</h2>
+      </section>
 
-        <section class="advertisement"> <!--section added for semantic-->
-            <h2>Placeholder</h2>
-        </section>
-
-        <!--placeholder for footer-->
-        <div class="footer"></div>
-
-
+      <!--placeholder for footer-->
+      <div class="footer"></div>
     </main>
-</body>
-
+  </body>
 </html>
