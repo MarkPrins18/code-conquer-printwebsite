@@ -24,8 +24,8 @@
       <!--Important! change to glabal.css-->
       <section class="hero">
         <div class="hero-content">
-          <h2>Welkom op onze website!</h2>
-          <p>hier een introductie met call to action</p>
+          <h1>Welkom op onze website!</h1>
+          <h2>hier een introductie met call to action</h2>
           <a href="#" class="btn">Ontdek meer</a>
           <!--Important! change link to correct HTML page-->
         </div>
