@@ -1,45 +1,45 @@
 :root {
-    --color-accent-orange: #FF6600;
+  --color-accent-orange: #ff6600;
 
-    --color-main-light-gray: #d3d3d3;
+  --color-main-light-gray: #d3d3d3;
 
-    --color-main-dark-gray: #6E6E6E;
+  --color-main-dark-gray: #6e6e6e;
 
-    --color-header-footer-dark-blue: #1A237E;
+  --color-header-footer-dark-blue: #1a237e;
 
-    --color-hover: #303F9F;
+  --color-hover: #303f9f;
 }
 
 .accent-color {
-    color: var(--color-accent-orange);
+  color: var(--color-accent-orange);
 }
 
 .bg-light {
-background-color: var(--color-main-light-gray);
+  background-color: var(--color-main-light-gray);
 }
 
 .bg-dark {
-    background-color: var(--color-main-dark-gray);
+  background-color: var(--color-main-dark-gray);
 }
 
 .p-1 {
-    padding: 1rem;
-    /* Alway 1x root-font-size, root-font-size is 16px unless the user changes it in the settings. */
+  padding: 1rem;
+  /* Alway 1x root-font-size, root-font-size is 16px unless the user changes it in the settings. */
 }
 
-.p-2{
+.p-2 {
   padding: 2rem;
 }
 
 .m-1 {
-margin: 1em;
+  margin: 1em;
 }
 
 body {
-    margin: 0px;
+  margin: 0px;
 }
 
-   /* Clamp() makes texts responsive without having to use media queries. 
+/* Clamp() makes texts responsive without having to use media queries. 
 First value = min fontsize, last value = max fontsize, middle = preferred (scales with viewport and used only if between min and max) */
 h1 {
   font-size: clamp(2rem, 5vw, 4rem);
@@ -63,7 +63,8 @@ p {
 
 /* Mark Can you add fontsize? */
 
-.fs-2 {   /*temparery fontsize*/
+.fs-2 {
+  /*temparery fontsize*/
   font-size: 2rem;
 }
 
