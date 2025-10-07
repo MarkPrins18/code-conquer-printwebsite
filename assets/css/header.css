@@ -1,0 +1,121 @@
+header {
+    background-color: var(--color-header-footer-dark-blue);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2em;
+    height: 60px; 
+}
+
+#header-left a {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
+
+#header-right ul {
+    display: flex;
+    gap: 2em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+#header-right ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.25em 0.5em;
+    border-radius: 4px;
+}
+
+#header-right ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+
+#menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1.5rem;
+    height: 1.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+#menu-toggle span {
+    display: block;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    #header-right {
+        display: none; 
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 0 2em;
+        background-color: var(--color-header-footer-dark-blue);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        border-radius: 0 0 12px 12px;
+        flex-direction: column;
+    }
+
+    #header-right ul {
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+ 
+    #header-right ul li a::after {
+        content: "";
+        display: block;
+        width: 80%;                 
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.2);
+        margin-top: 0.5em;          
+    }
+
+    #header-right ul li:last-child {
+        border-bottom: none; 
+    }
+
+    #header-right ul li a {
+        display: block;
+        padding: 0.75em 0;
+        color: white;
+    }
+
+    #menu-toggle {
+        display: flex;
+    }
+
+    #menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    #menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    #menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+}
