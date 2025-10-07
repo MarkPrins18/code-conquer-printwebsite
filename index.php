@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/css/global.css" />
     <link rel="stylesheet" href="assets/css/index.css" />
+    <link rel="stylesheet" href="assets/css/header.css">
     <script src="assets/js/index.js" defer></script>
     <title>Bouw3D</title>
     <!--add logo-->
@@ -13,8 +14,8 @@
   <body>
     <!--Header added for semantic-->
     <header>
-      <!--Placeholder for the header-->
-      <div class="header"></div>
+     <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
+    <?php include 'header.html' ?>
     </header>
     <!--main added for semantic-->
     <main class="bg-light font-styling">
