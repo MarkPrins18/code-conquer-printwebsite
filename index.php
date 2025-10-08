@@ -9,6 +9,13 @@
     <script src="assets/js/index.js" defer></script>
     <title>Bouw3D</title>
     <!--add logo-->
+    <link
+      rel="icon"
+      href="assets/images/index-images/icons8-favicon-32.png"
+      type="image/png"
+    />
+
+    <!--<a target="_blank" href="https://icons8.com/icon/NyuxPErq0tu2/globe-africa">favicon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>-->
   </head>
 
   <body>
@@ -43,7 +50,6 @@
 
       <section class="example p-1 m-1 text-center">
         <div class="upper-content">
-          <!--div to ensure the layout stays consistent-->
           <h1 class="accent-color">Voorbeelden van klanten</h1>
           <p class="fs-2">Hieronder zie je enkele voorbeelden</p>
         </div>
