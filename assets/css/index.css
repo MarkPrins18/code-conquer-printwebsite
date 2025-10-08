@@ -56,13 +56,15 @@
   justify-content: center;
   align-items: center;
 }
+
 .example-list {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  text-align: center;
   gap: 20px;
   width: 100%;
 }
+
 .title {
   font-size: 2rem;
   font-weight: 700;
@@ -77,20 +79,27 @@ ul.select-example {
   margin: 0;
   padding: 0;
   list-style: none;
-  width: 30%;
+  justify-content: center;
 }
+
 .list-item {
   font-size: 2.5rem;
   padding: 10px; /* change padding */
 }
+
 .content {
   flex: 1;
 }
+
 .content-item {
   display: none;
 }
 
 /*awards section with media queries*/
+
+.awards h2 {
+  text-align: center;
+}
 
 .award {
   display: flex;
@@ -111,6 +120,16 @@ ul.select-example {
 }
 
 @media (min-width: 768px) {
+  /*qeury selector select-example*/
+
+  .example-list {
+    flex-direction: row;
+  }
+
+  .select-example {
+    width: 30%;
+  }
+
   .award {
     flex-direction: row;
     text-align: left;
@@ -127,5 +146,9 @@ ul.select-example {
   .award div {
     flex: 1;
     padding: 0 1rem;
+  }
+
+  .awards h2 {
+    text-align: center;
   }
 }

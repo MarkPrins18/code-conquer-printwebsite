@@ -39,17 +39,16 @@
           <div class="upper-content">
             <!--div to ensure the layout stays consistent-->
             <h1 class="title">Voorbeelden van klanten</h1>
-            <!--title class (maybe global.css)-->
             <h2>Wij maken precieze onderdelen</h2>
             <p class="fs-2 text-center">Hieronder zie je enkele voorbeelden</p>
             <div class="p-2"></div>
-            <!--class to add spacing to the bottom of the tekst.-->
           </div>
           <!--Here is the list and content. No section required since they fall in the example section-->
           <!--Important! need JavaScript and more CSS-->
           <div class="example-list">
             <!--div to set list and content next to eachother-->
             <ul class="select-example">
+              <!--Media qeury-->
               <li class="list-item" data-content="example-1">
                 Delta Ontwikkeling
               </li>
