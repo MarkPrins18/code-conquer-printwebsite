@@ -69,13 +69,9 @@
                     src="assets/images/index-images/Klant-1.png"
                     alt="Klantfoto"
                     title="Klantfoto-title"
-                    style="
-                      max-width: 100%;
-                      height: auto;
-                      border-radius: 8px;
-                      margin-bottom: 10px;
-                    "
                   />
+                  <!--remove title here or add title below-->
+                  <figcaption>Delta Bouw</figcaption>
                 </figure>
               </article>
               <article id="example-2" class="content-item">
@@ -89,13 +85,8 @@
                     src="assets/images/index-images/klant-2.jpg"
                     alt="Klantfoto"
                     title="Klantfoto-title"
-                    style="
-                      max-width: 100%;
-                      height: auto;
-                      border-radius: 8px;
-                      margin-bottom: 10px;
-                    "
                   />
+                  <figcaption>Studio Nova</figcaption>
                 </figure>
               </article>
               <article id="example-3" class="content-item">
@@ -109,13 +100,8 @@
                     src="assets/images/index-images/klant-3.png"
                     alt="Klantfoto"
                     title="Klantfoto-title"
-                    style="
-                      max-width: 100%;
-                      height: auto;
-                      border-radius: 8px;
-                      margin-bottom: 10px;
-                    "
                   />
+                  <figcaption>Urban Build</figcaption>
                 </figure>
               </article>
               <article id="example-4" class="content-item">
@@ -129,13 +115,8 @@
                     src="assets/images/index-images/klant-4.jpg"
                     alt="Klantfoto"
                     title="Klantfoto-title"
-                    style="
-                      max-width: 100%;
-                      height: auto;
-                      border-radius: 8px;
-                      margin-bottom: 10px;
-                    "
                   />
+                  <figcaption>Rossum Design</figcaption>
                 </figure>
               </article>
               <article id="example-5" class="content-item">
@@ -149,13 +130,8 @@
                     src="assets/images/index-images/klant-5.jpg"
                     alt="Klantfoto"
                     title="Klantfoto-title"
-                    style="
-                      max-width: 100%;
-                      height: auto;
-                      border-radius: 8px;
-                      margin-bottom: 10px;
-                    "
                   />
+                  <figcaption>Willems en Zn</figcaption>
                 </figure>
               </article>
             </div>
