@@ -89,3 +89,44 @@ ul.select-example {
 .content-item {
   display: none;
 }
+
+/*awards section with media queries*/
+
+.award {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.award img {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .award {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+  }
+
+  .award:nth-child(3) {
+    flex-direction: row-reverse;
+  }
+
+  .award img {
+    width: 40%; /* afbeelding neemt 40% van de breedte in */
+    max-width: 400px; /* voorkomt te grote plaatjes op ultrabrede schermen */
+  }
+
+  .award div {
+    flex: 1;
+    padding: 0 1rem;
+  }
+}
