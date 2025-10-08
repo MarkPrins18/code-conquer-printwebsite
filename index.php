@@ -58,6 +58,7 @@
             </ul>
             <div class="content fs-2">
               <article id="example-1" class="content-item">
+                <!--Move style to css when fixing css-->
                 <blockquote>
                   “De 3D-visualisaties van Bouw3D hebben ons enorm geholpen bij
                   het overtuigen van onze opdrachtgever. Het ontwerp kwam tot

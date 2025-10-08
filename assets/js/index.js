@@ -1,13 +1,13 @@
-const items = document.querySelectorAll('.select-example li');
-const contents = document.querySelectorAll('.content-item');
+const items = document.querySelectorAll(".select-example li");
+const contents = document.querySelectorAll(".content-item");
 
-items.forEach(item => {
-  item.addEventListener('click', () => {
+items.forEach((item) => {
+  item.addEventListener("click", () => {
     // eerst alles verbergen
-    contents.forEach(c => c.style.display = 'none');
+    contents.forEach((c) => (c.style.display = "none"));
     // juiste content tonen
     const id = item.dataset.content;
-    document.getElementById(id).style.display = 'block';
+    document.getElementById(id).style.display = "flex";
   });
 });
 items[0].click();
