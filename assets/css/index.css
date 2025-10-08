@@ -1,14 +1,20 @@
 /* Important! change font to global.css when available*/
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital@0;1&display=swap");
 
-/*add padding or margin for navbar*/
-
 .font-styling {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
+
+/* check if global.css supports this*/
+
+:root {
+  --border-radius: 10px;
+}
+
+/*-----------Hero section---------*/
 
 .hero {
   height: 70vh;
@@ -20,14 +26,14 @@
 }
 
 .hero-content {
-  color: white;
-  padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: var(--border-radius);
 }
 
 .hero-content .btn {
@@ -38,7 +44,6 @@
   margin: 2rem;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 1rem;
   cursor: pointer;
   opacity: 0.5;
@@ -49,57 +54,45 @@
   opacity: 1;
 }
 
-/*example section*/
+/*------------------example section-------------------*/
 .example-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.example-list {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  gap: 20px;
-  width: 100%;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  color: var(--color-accent-orange);
-}
-.example h2 {
-  font-size: 4rem;
-}
-
-ul.select-example {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  justify-content: center;
-}
-
-.list-item {
-  font-size: 2.5rem;
-  padding: 10px; /* change padding */
-}
-
-.content {
-  flex: 1;
-}
-
-.content-item {
-  display: none;
+  gap: 2rem;
+  .title {
+    font-weight: 700;
+    color: var(--color-accent-orange);
+  }
+  .example-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    width: 100%;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+      li {
+        font-size: 2.5rem;
+        padding: 10px; /* change padding */
+      }
+    }
+    .content {
+      flex: 1;
+    }
+    .content-item {
+      display: none;
+      flex-direction: column;
+    }
+  }
 }
 
 /*awards section with media queries*/
-
-.awards h2 {
-  text-align: center;
-}
 
 .award {
   display: flex;
@@ -120,15 +113,17 @@ ul.select-example {
 }
 
 @media (min-width: 768px) {
-  /*qeury selector select-example*/
+  /*improve css*/
 
-  .example-list {
+  .example-container .example-list {
     flex-direction: row;
   }
 
   .select-example {
     width: 30%;
   }
+
+  /* Awards layout */
 
   .award {
     flex-direction: row;
@@ -146,9 +141,5 @@ ul.select-example {
   .award div {
     flex: 1;
     padding: 0 1rem;
-  }
-
-  .awards h2 {
-    text-align: center;
   }
 }
