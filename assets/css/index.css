@@ -17,7 +17,8 @@
   align-items: center;
   background-image: url(../images/index-images/EOS\ M\ 290.webp);
   background-position: center 35%;
-  .hero-content {
+  .hero-content,
+  .hero-counter {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,6 +26,7 @@
     color: white;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.4);
+    margin: 1rem;
     border-radius: 10px;
     .btn {
       background-color: red;
@@ -42,17 +44,6 @@
         opacity: 1;
       }
     }
-  }
-  .hero-counter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.4);
-    margin: 2rem;
-    border-radius: 10px;
   }
 }
 
