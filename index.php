@@ -12,22 +12,20 @@
   </head>
 
   <body>
-    <!--Header added for semantic-->
     <header>
       <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
       <?php include 'header.html' ?>
     </header>
-    <!--main added for semantic-->
+
+    <!--main added for semantic  background and font are added here-->
     <main class="bg-light font-styling">
-      <!--background and font are added here -->
-      <!--Hero section added for semantic and oversight-->
-      <!--Important! change to glabal.css-->
+      <!--Hero section added for semantic-->
       <section class="hero">
         <div class="hero-content">
           <h1>Wij maken bouwen sneller met moderne</h1>
           <h2 class="accent-color">3d technieken.</h2>
           <!--animate with more words-->
-          <a href="#" class="btn">Ontdek meer</a>
+          <a href="/about-us.php" class="btn">Ontdek meer</a>
           <!--Important! change link to correct HTML page-->
         </div>
         <div class="hero-counter">
@@ -43,110 +41,96 @@
         </div>
       </section>
 
-      <section class="example">
-        <!--reevaluate this section because of the Div use.-->
-        <!--section added for semantic-->
-        <div class="example-container p-1 m-1">
-          <div class="upper-content">
-            <!--div to ensure the layout stays consistent-->
-            <h1 class="fs-2 text-center accent-color">
-              Voorbeelden van klanten
-            </h1>
-            <h2>Wij maken precieze onderdelen</h2>
-            <p class="fs-2 text-center">Hieronder zie je enkele voorbeelden</p>
-            <div class="p-2"></div>
-          </div>
-          <!--Here is the list and content. No section required since they fall in the example section-->
-          <!--Important! need JavaScript and more CSS-->
-          <div class="example-list">
-            <!--div to set list and content next to eachother-->
-            <ul class="select-example">
-              <!--Media qeury-->
-              <li class="list-item" data-content="example-1">Delta Bouw</li>
-              <li class="list-item" data-content="example-2">Studio Nova</li>
-              <li class="list-item" data-content="example-3">Urban Build</li>
-              <li class="list-item" data-content="example-4">Rossum Design</li>
-              <li class="list-item" data-content="example-5">Willems en Zn</li>
-            </ul>
-            <div class="content fs-2">
-              <article id="example-1" class="content-item">
-                <!--Move style to css when fixing css-->
-                <blockquote>
-                  “De 3D-visualisaties van Bouw3D hebben ons enorm geholpen bij
-                  het overtuigen van onze opdrachtgever. Het ontwerp kwam tot
-                  leven nog vóór de eerste steen gelegd was.”
-                </blockquote>
-                <figure>
-                  <img
-                    src="assets/images/index-images/Klant-1.png"
-                    alt="Klantfoto"
-                    title="Klantfoto-title"
-                  />
-                  <!--remove title here or add title below-->
-                  <figcaption>Delta Bouw</figcaption>
-                </figure>
-              </article>
-              <article id="example-2" class="content-item">
-                <blockquote>
-                  “Dankzij Bouw3D konden we ons bouwplan helder presenteren aan
-                  de gemeente. De visualisaties waren professioneel en tot in
-                  detail uitgewerkt.”
-                </blockquote>
-                <figure>
-                  <img
-                    src="assets/images/index-images/klant-2.jpg"
-                    alt="Klantfoto"
-                    title="Klantfoto-title"
-                  />
-                  <figcaption>Studio Nova</figcaption>
-                </figure>
-              </article>
-              <article id="example-3" class="content-item">
-                <blockquote>
-                  “We hadden snel een 3D-model nodig voor een pitch, en Bouw3D
-                  leverde binnen 48 uur een prachtig resultaat. Ze denken mee en
-                  leveren kwaliteit.”
-                </blockquote>
-                <figure>
-                  <img
-                    src="assets/images/index-images/klant-3.png"
-                    alt="Klantfoto"
-                    title="Klantfoto-title"
-                  />
-                  <figcaption>Urban Build</figcaption>
-                </figure>
-              </article>
-              <article id="example-4" class="content-item">
-                <blockquote>
-                  “Onze klanten waren onder de indruk van de realistische
-                  renders die Bouw3D maakte. Het gaf hen direct vertrouwen in
-                  het ontwerp.”
-                </blockquote>
-                <figure>
-                  <img
-                    src="assets/images/index-images/klant-4.jpg"
-                    alt="Klantfoto"
-                    title="Klantfoto-title"
-                  />
-                  <figcaption>Rossum Design</figcaption>
-                </figure>
-              </article>
-              <article id="example-5" class="content-item">
-                <blockquote>
-                  “Door de visualisaties van Bouw3D ontdekten we een fout in de
-                  indeling nog vóór de bouw begon. Dat heeft ons veel tijd en
-                  kosten bespaard.”
-                </blockquote>
-                <figure>
-                  <img
-                    src="assets/images/index-images/klant-5.jpg"
-                    alt="Klantfoto"
-                    title="Klantfoto-title"
-                  />
-                  <figcaption>Willems en Zn</figcaption>
-                </figure>
-              </article>
-            </div>
+      <section class="example p-1 m-1 text-center">
+        <div class="upper-content">
+          <!--div to ensure the layout stays consistent-->
+          <h1 class="fs-2 accent-color">Voorbeelden van klanten</h1>
+          <h2>Wij maken precieze onderdelen</h2>
+          <p class="fs-2">Hieronder zie je enkele voorbeelden</p>
+        </div>
+        <!--Here is the list and content. No section required since they fall in the example section-->
+        <div class="example-list">
+          <!--div to set list and content next to eachother-->
+          <ul class="select-example">
+            <!--Media qeury-->
+            <li class="list-item" data-content="example-1">Delta Bouw</li>
+            <li class="list-item" data-content="example-2">Studio Nova</li>
+            <li class="list-item" data-content="example-3">Urban Build</li>
+            <li class="list-item" data-content="example-4">Rossum Design</li>
+            <li class="list-item" data-content="example-5">Willems en Zn</li>
+          </ul>
+          <div class="content fs-2">
+            <article id="example-1" class="content-item">
+              <!--Move style to css when fixing css-->
+              <blockquote>
+                “De 3D-visualisaties van Bouw3D hebben ons enorm geholpen bij
+                het overtuigen van onze opdrachtgever. Het ontwerp kwam tot
+                leven nog vóór de eerste steen gelegd was.”
+              </blockquote>
+              <figure>
+                <img
+                  src="assets/images/index-images/Klant-1.png"
+                  alt="Klantfoto"
+                />
+                <figcaption>Delta Bouw</figcaption>
+              </figure>
+            </article>
+            <article id="example-2" class="content-item">
+              <blockquote>
+                “Dankzij Bouw3D konden we ons bouwplan helder presenteren aan de
+                gemeente. De visualisaties waren professioneel en tot in detail
+                uitgewerkt.”
+              </blockquote>
+              <figure>
+                <img
+                  src="assets/images/index-images/klant-2.jpg"
+                  alt="Klantfoto"
+                />
+                <figcaption>Studio Nova</figcaption>
+              </figure>
+            </article>
+            <article id="example-3" class="content-item">
+              <blockquote>
+                “We hadden snel een 3D-model nodig voor een pitch, en Bouw3D
+                leverde binnen 48 uur een prachtig resultaat. Ze denken mee en
+                leveren kwaliteit.”
+              </blockquote>
+              <figure>
+                <img
+                  src="assets/images/index-images/klant-3.png"
+                  alt="Klantfoto"
+                />
+                <figcaption>Urban Build</figcaption>
+              </figure>
+            </article>
+            <article id="example-4" class="content-item">
+              <blockquote>
+                “Onze klanten waren onder de indruk van de realistische renders
+                die Bouw3D maakte. Het gaf hen direct vertrouwen in het
+                ontwerp.”
+              </blockquote>
+              <figure>
+                <img
+                  src="assets/images/index-images/klant-4.jpg"
+                  alt="Klantfoto"
+                />
+                <figcaption>Rossum Design</figcaption>
+              </figure>
+            </article>
+            <article id="example-5" class="content-item">
+              <blockquote>
+                “Door de visualisaties van Bouw3D ontdekten we een fout in de
+                indeling nog vóór de bouw begon. Dat heeft ons veel tijd en
+                kosten bespaard.”
+              </blockquote>
+              <figure>
+                <img
+                  src="assets/images/index-images/klant-5.jpg"
+                  alt="Klantfoto"
+                />
+                <figcaption>Willems en Zn</figcaption>
+              </figure>
+            </article>
           </div>
         </div>
       </section>
