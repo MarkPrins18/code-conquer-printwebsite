@@ -116,7 +116,7 @@ ul.select-example {
     text-align: left;
   }
 
-  .award:nth-child(3) {
+  .award:nth-child(odd) {
     flex-direction: row-reverse;
   }
 

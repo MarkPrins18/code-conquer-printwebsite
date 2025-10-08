@@ -219,14 +219,22 @@
           </div>
         </article>
 
-        <!--hier de afsluiter
-        Groeien met onze klanten en partners
-We staan nog aan het begin, maar we bouwen aan iets groots.
-Elke samenwerking is voor ons een kans om te leren en te verbeteren.
-We luisteren, denken mee en leveren met zorg en aandacht.
-We zijn trots op het vertrouwen dat we krijgen van de eerste klanten en partners.
-alt tekst Handdruk tussen een Bouw3D teamlid en een klant, met een bouwproject op de achtergrond als symbool voor samenwerking.
--->
+        <article class="award">
+          <img
+            src="assets/images/index-images/placeholder-image.webp"
+            alt="Handdruk tussen een Bouw3D teamlid en een klant, met een bouwproject op de achtergrond als symbool voor samenwerking."
+          />
+          <div>
+            <h3>Groeien met onze klanten en partners</h3>
+            <p>
+              We staan nog aan het begin, maar we bouwen aan iets groots. Elke
+              samenwerking is voor ons een kans om te leren en te verbeteren. We
+              luisteren, denken mee en leveren met zorg en aandacht. We zijn
+              trots op het vertrouwen dat we krijgen van de eerste klanten en
+              partners.
+            </p>
+          </div>
+        </article>
       </section>
 
       <!--placeholder for footer-->
