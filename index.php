@@ -164,7 +164,7 @@
       </section>
 
       <section class="awards p-2">
-        <h2>Waar wij trots op zijn</h2>
+        <h2 class="text-center">Waar wij trots op zijn</h2>
 
         <article class="award">
           <img
