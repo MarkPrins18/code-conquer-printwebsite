@@ -81,6 +81,12 @@
         font-size: 2.5rem;
         padding: 10px; /* change padding */
       }
+      .list-item.selected {
+        background-color: var(--color-accent-orange);
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+      }
     }
     .content {
       flex: 1;
