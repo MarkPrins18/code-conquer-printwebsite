@@ -44,15 +44,13 @@
       <section class="example p-1 m-1 text-center">
         <div class="upper-content">
           <!--div to ensure the layout stays consistent-->
-          <h1 class="fs-2 accent-color">Voorbeelden van klanten</h1>
-          <h2>Wij maken precieze onderdelen</h2>
+          <h1 class="accent-color">Voorbeelden van klanten</h1>
           <p class="fs-2">Hieronder zie je enkele voorbeelden</p>
         </div>
         <!--Here is the list and content. No section required since they fall in the example section-->
         <div class="example-list">
           <!--div to set list and content next to eachother-->
           <ul class="select-example">
-            <!--Media qeury-->
             <li class="list-item" data-content="example-1">Delta Bouw</li>
             <li class="list-item" data-content="example-2">Studio Nova</li>
             <li class="list-item" data-content="example-3">Urban Build</li>
@@ -61,7 +59,6 @@
           </ul>
           <div class="content fs-2">
             <article id="example-1" class="content-item">
-              <!--Move style to css when fixing css-->
               <blockquote>
                 “De 3D-visualisaties van Bouw3D hebben ons enorm geholpen bij
                 het overtuigen van onze opdrachtgever. Het ontwerp kwam tot
