@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/css/global.css" />
     <link rel="stylesheet" href="assets/css/index.css" />
-    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/header.css" />
     <script src="assets/js/index.js" defer></script>
     <title>Bouw3D</title>
     <!--add logo-->
@@ -14,12 +14,12 @@
   <body>
     <!--Header added for semantic-->
     <header>
-     <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
-    <?php include 'header.html' ?>
+      <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
+      <?php include 'header.html' ?>
     </header>
     <!--main added for semantic-->
     <main class="bg-light font-styling">
-      <!--background and font are added herewaarom komen -->
+      <!--background and font are added here -->
       <!--Hero section added for semantic and oversight-->
       <!--Important! change to glabal.css-->
       <section class="hero">
@@ -32,6 +32,7 @@
       </section>
 
       <section class="example">
+        <!--reevaluate this section because of the Div use.-->
         <!--section added for semantic-->
         <div class="example-container p-1 m-1">
           <!--Important! change example-container to global.css and implement border-->
@@ -49,7 +50,9 @@
           <div class="example-list">
             <!--div to set list and content next to eachother-->
             <ul class="select-example">
-              <li class="list-item" data-content="example-1">Delta Ontwikkeling</li>
+              <li class="list-item" data-content="example-1">
+                Delta Ontwikkeling
+              </li>
               <li class="list-item" data-content="example-2">Studio Nova</li>
               <li class="list-item" data-content="example-3">Urban Build</li>
               <li class="list-item" data-content="example-4">Rossum Design</li>
@@ -161,17 +164,70 @@
         </div>
       </section>
 
-      <section class="awards">
-        <!--section added for semantic-->
-        <h2>Onze awards!</h2>
-        <div class="awards-container">
-          <div class="award-1"> <
+      <section class="awards p-2">
+        <h2>Waar wij trots op zijn</h2>
 
+        <article class="award">
+          <img
+            src="assets/images/index-images/placeholder-image.webp"
+            alt="Close-up van een 3D-printer die een bouwmodel print, met focus op precisie en techniek."
+          />
+          <div>
+            <h3>Onze 3D-printers maken ideeën tastbaar</h3>
+            <p>
+              We zijn trots op onze moderne 3D-printers die bouwconcepten
+              omzetten in fysieke modellen. Ze helpen klanten om hun plannen
+              beter te begrijpen en sneller keuzes te maken. Deze technologie is
+              een belangrijk onderdeel van onze missie om bouwen inzichtelijker
+              te maken. Elke print is een stap richting slimmer bouwen.
+            </p>
           </div>
-        </div>
+        </article>
+
+        <article class="award">
+          <img
+            src="assets/images/index-images/placeholder-image.webp"
+            alt="Groepsfoto van de vijf oprichters van Bouw3D, lachend en samenwerkend in een creatieve werkruimte."
+          />
+          <div>
+            <h3>Vijf oprichters, één gezamenlijke visie</h3>
+            <p>
+              Bouw3D is gestart door vijf jonge ondernemers met een passie voor
+              techniek en innovatie. We combineren verschillende achtergronden
+              en expertises om samen iets nieuws neer te zetten. Onze
+              samenwerking is de motor achter alles wat we doen. We zijn trots
+              op de energie, creativiteit en het vertrouwen dat we in elkaar
+              hebben.
+            </p>
+          </div>
+        </article>
+
+        <article class="award">
+          <img
+            src="assets/images/index-images/placeholder-image.webp"
+            alt="Een frisse blik op de bouwsector"
+          />
+          <div>
+            <h3>Een frisse blik op de bouwsector</h3>
+            <p>
+              Als startup durven we anders te kijken naar hoe bouwprojecten
+              worden voorbereid. We geloven in transparantie, snelheid en
+              visuele communicatie. Onze aanpak is persoonlijk en flexibel,
+              afgestemd op elke klant. We zijn trots op de eerste stappen die we
+              zetten in een traditionele sector.
+            </p>
+          </div>
+        </article>
+
+        <!--hier de afsluiter
+        Groeien met onze klanten en partners
+We staan nog aan het begin, maar we bouwen aan iets groots.
+Elke samenwerking is voor ons een kans om te leren en te verbeteren.
+We luisteren, denken mee en leveren met zorg en aandacht.
+We zijn trots op het vertrouwen dat we krijgen van de eerste klanten en partners.
+alt tekst Handdruk tussen een Bouw3D teamlid en een klant, met een bouwproject op de achtergrond als symbool voor samenwerking.
+-->
       </section>
-
-
 
       <!--placeholder for footer-->
       <div class="footer"></div>
