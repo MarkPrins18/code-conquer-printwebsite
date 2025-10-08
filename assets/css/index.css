@@ -96,6 +96,9 @@
         border-radius: 8px;
         margin-bottom: 10px;
       }
+      figure figcaption {
+        display: none;
+      }
     }
     .content-item {
       display: none;
@@ -113,15 +116,14 @@
   margin-bottom: 2rem;
   gap: 1rem;
   text-align: center;
-}
-
-.award img {
-  width: 100%;
-  height: auto;
-  max-width: 800px;
-  border-radius: 10px;
-  display: block; /*Block changes the img from inline(std) to block, the margin doesn't work on inline*/
-  margin: 0 auto;
+  img {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    border-radius: 10px;
+    display: block; /*Block changes the img from inline(std) to block, the margin doesn't work on inline*/
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 768px) {
@@ -129,10 +131,9 @@
 
   .example-container .example-list {
     flex-direction: row;
-  }
-
-  .select-example {
-    width: 30%;
+    .select-example {
+      width: 20%;
+    }
   }
 
   /* Awards layout */
@@ -140,18 +141,15 @@
   .award {
     flex-direction: row;
     text-align: left;
-  }
-
-  .award:nth-child(odd) {
-    flex-direction: row-reverse;
-  }
-
-  .award img {
-    width: 40%;
-  }
-
-  .award div {
-    flex: 1;
-    padding: 0 1rem;
+    &:nth-child(odd) {
+      flex-direction: row-reverse;
+    }
+    img {
+      width: 40%;
+    }
+    div {
+      flex: 1;
+      padding: 0 1rem;
+    }
   }
 }
