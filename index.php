@@ -24,10 +24,22 @@
       <!--Important! change to glabal.css-->
       <section class="hero">
         <div class="hero-content">
-          <h1>Welkom op onze website!</h1>
-          <h2>hier een introductie met call to action</h2>
+          <h1>Wij maken bouwen sneller met moderne</h1>
+          <h2 class="accent-color">3d technieken.</h2>
+          <!--animate with more words-->
           <a href="#" class="btn">Ontdek meer</a>
           <!--Important! change link to correct HTML page-->
+        </div>
+        <div class="hero-counter">
+          <h2>Onze impact in cijfers</h2>
+          <div id="counters" class="fs-2">
+            <span class="counter accent-color" data-target="50">0</span>
+            projecten voltooid<br />
+            <span class="counter accent-color" data-target="120">0</span>
+            3D-modellen gemaakt<br />
+            <span class="counter accent-color" data-target="25">0</span>
+            tevreden klanten
+          </div>
         </div>
       </section>
 

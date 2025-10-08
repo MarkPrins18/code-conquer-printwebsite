@@ -7,51 +7,53 @@
   font-weight: 500;
   font-style: normal;
 }
-
-/* check if global.css supports this*/
-
-:root {
-  --border-radius: 10px;
-}
-
 /*-----------Hero section---------*/
 
 .hero {
   height: 70vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
   background-image: url(../images/index-images/EOS\ M\ 290.webp);
   background-position: center 35%;
-}
-
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: var(--border-radius);
-}
-
-.hero-content .btn {
-  background-color: red;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  margin: 2rem;
-  text-align: center;
-  text-decoration: none;
-  font-size: 1rem;
-  cursor: pointer;
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
-}
-
-.hero-content .btn:hover {
-  opacity: 1;
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    .btn {
+      background-color: red;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      margin: 2rem;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1rem;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  .hero-counter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin: 2rem;
+    border-radius: 10px;
+  }
 }
 
 /*------------------example section-------------------*/
@@ -107,7 +109,7 @@
   }
 }
 
-/*awards section with media queries*/
+/*-----------------awards section---------------------------*/
 
 .award {
   display: flex;
@@ -121,14 +123,11 @@
     height: auto;
     max-width: 800px;
     border-radius: 10px;
-    display: block; /*Block changes the img from inline(std) to block, the margin doesn't work on inline*/
-    margin: 0 auto;
   }
 }
 
+/*-----------------media---------------------------*/
 @media (min-width: 768px) {
-  /*improve css*/
-
   .example-container .example-list {
     flex-direction: row;
     .select-example {
