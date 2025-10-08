@@ -81,7 +81,7 @@ ul.select-example {
 }
 .list-item {
   font-size: 2.5rem;
-  padding: 10px;
+  padding: 10px; /* change padding */
 }
 .content {
   flex: 1;
@@ -98,6 +98,7 @@ ul.select-example {
   align-items: center;
   margin-bottom: 2rem;
   gap: 1rem;
+  text-align: center;
 }
 
 .award img {
@@ -105,14 +106,13 @@ ul.select-example {
   height: auto;
   max-width: 800px;
   border-radius: 10px;
-  display: block;
+  display: block; /*Block changes the img from inline(std) to block, the margin doesn't work on inline*/
   margin: 0 auto;
 }
 
 @media (min-width: 768px) {
   .award {
     flex-direction: row;
-    align-items: center;
     text-align: left;
   }
 
@@ -121,8 +121,7 @@ ul.select-example {
   }
 
   .award img {
-    width: 40%; /* afbeelding neemt 40% van de breedte in */
-    max-width: 400px; /* voorkomt te grote plaatjes op ultrabrede schermen */
+    width: 40%;
   }
 
   .award div {
