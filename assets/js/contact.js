@@ -1,35 +1,19 @@
-contactForm.addEventListener("submit", function (e) {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+  const contactForm = document.getElementById("contact-form");
 
-  // Array met alle formulier velden
-  const velden = [
-    { id: "naam", label: "Naam" },
-    { id: "email", label: "Email" },
-    { id: "onderwerp", label: "Onderwerp" },
-    { id: "bericht", label: "Bericht" },
-  ];
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  // For-loop om alle velden te verwerken
-  let formulierData = {};
+    // Korte for-loop voor alle velden
+    const velden = ["naam", "email", "onderwerp", "bericht"];
+    let bericht = "Bedankt voor uw bericht! U heeft ingevuld:\n";
 
-  for (let i = 0; i < velden.length; i++) {
-    const veld = velden[i];
-    const waarde = document.getElementById(veld.id).value;
-    formulierData[veld.label] = waarde;
-  }
+    for (let i = 0; i < velden.length; i++) {
+      const waarde = document.getElementById(velden[i]).value;
+      bericht += `${velden[i]}: ${waarde}\n`;
+      document.getElementById(velden[i]).value = ""; // Reset veld
+    }
 
-  // Toon succes bericht met for-loop
-  let bericht = "Bedankt voor uw bericht!\n\nU heeft ingevuld:\n";
-
-  for (let i = 0; i < velden.length; i++) {
-    const veld = velden[i];
-    bericht += `${veld.label}: ${formulierData[veld.label]}\n`;
-  }
-
-  alert(bericht);
-
-  // Reset formulier met for-loop
-  for (let i = 0; i < velden.length; i++) {
-    document.getElementById(velden[i].id).value = "";
-  }
+    alert(bericht);
+  });
 });
