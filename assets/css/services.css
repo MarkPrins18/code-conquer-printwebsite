@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.layout-row {
+    display: flex;
+    gap: 2em;
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: white;
+    overflow: hidden;
+    min-height: 100vh;
+}
+.layout-row section,
+
+.layout-row img {
+    max-width: 45%;
+    margin:auto;
+    align-items: center;
+    height: auto;
+    display: block;
+}
