@@ -1,7 +1,7 @@
 header {
   background-color: var(--color-header-footer-dark-blue);
   color: white;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
