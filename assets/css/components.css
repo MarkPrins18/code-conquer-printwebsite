@@ -1,0 +1,27 @@
+/* Custom components.
+Components are reusable elements you can use throughout whole website */
+
+.button {
+    background-color: var(--color-accent-orange);
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button--large {
+    font-size: 1rem;
+    padding: 0.75em 1.5em;
+}
+
+.button--small {
+    font-size: 0.95rem;
+    padding: 0.65em 1.2em;
+}
+
+.button:hover {
+    background-color: var(--color-hover);
+    transform: scale(1.05);
+}
