@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Producten</title>
     <link rel="stylesheet" href="assets/css/global.css">
-    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/header-footer.css" />
     <script src="assets/js/header.js" defer></script>
     <script src="assets/js/products.js" defer></script>
     <link rel="stylesheet" href="assets/css/products.css">
@@ -35,6 +35,7 @@
         </div>
     </div>
 
+    <?php include 'footer.html' ?>
 </body>
 
 </html>
