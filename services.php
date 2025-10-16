@@ -1,8 +1,3 @@
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- NOG EVEN LATEN STAAN - OP MIJN WERK PC KAN IK NIET ZOMAAR PHP INSTALLEREN 
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,31 +14,11 @@
 </head>
 
 <body class="bg-light">
-    <!-- tijdelijke hardcoded header tot ik php werkend heb -->
     <header>
-        <nav>
-            <div id="header-left">
-                <a href="/">Logo</a>
-            </div>
-            <button id="menu-toggle" aria-label="Open menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div id="header-right">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/products.php">Producten</a></li>
-                    <li><a href="/services.php">Diensten</a></li>
-                    <li><a href="/about-us.php">Over ons</a></li>
-                    <li><a href="/contact.php">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
+        <?php include 'layout/header.html' ?>
     </header>
 
     <main>
-        <!-- margin hardcoded tot ik fix dat hij niet achter de header staat -->
         <h1>Diensten</h1>
 
         <div class="layout-row">
@@ -110,8 +85,8 @@
         </div>
     </main>
 
-    <footer style="border: 2px solid red">
-        <h2>placeholder footer</h2>
+    <footer>
+        <?php include 'layout/footer.html' ?>
     </footer>
 
     <!-- <script src = xxxx.js></script> -->
