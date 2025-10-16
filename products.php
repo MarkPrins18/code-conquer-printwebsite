@@ -16,7 +16,7 @@
 <body>
     <?php include 'header.html' ?>
 
-    <div class="main-container">
+    <main>
         <div class="header-row">
             <h1>Producten</h1>
             <div id="searchContainer">
@@ -33,9 +33,9 @@
             <p>Upload je ontwerp en wij zorgen dat het professioneel geprint wordt. Snel, makkelijk en betrouwbaar!</p>
             <button class="button button--large">Upload je ontwerp</button>
         </div>
-    </div>
+        </div>
 
-    <?php include 'footer.html' ?>
+        <?php include 'footer.html' ?>
 </body>
 
 </html>

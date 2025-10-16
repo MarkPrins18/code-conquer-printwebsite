@@ -22,7 +22,7 @@
     </header>
 
     <!--main added for semantic  background and font are added here-->
-    <main class="bg-light font-styling">
+    <main>
         <!--Hero section added for semantic-->
         <section class="hero">
             <div class="hero-content">
