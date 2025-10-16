@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/index.css" />
     <link rel="stylesheet" href="assets/css/header-footer.css" />
     <script src="assets/js/index.js" defer></script>
+    <script src="assets/js/header.js" defer></script>
     <title>Bouw3D</title>
     <!--add logo-->
     <link rel="icon" href="assets/images/index-images/icons8-favicon-32.png" type="image/png" />
