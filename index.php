@@ -18,7 +18,7 @@
 <body>
     <header>
         <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
-        <?php include 'header.html' ?>
+        <?php include 'layout/header.html' ?>
     </header>
 
     <!--main added for semantic  background and font are added here-->
@@ -183,9 +183,8 @@
                 </div>
             </article>
         </section>
-
-        <?php include 'footer.html' ?>
     </main>
+    <?php include 'layout/footer.html' ?>
 </body>
 
 </html>

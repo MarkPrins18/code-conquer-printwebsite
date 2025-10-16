@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <?php include 'header.html' ?>
+    <?php include 'layout/header.html' ?>
 
     <main>
         <div class="header-row">
@@ -33,9 +33,9 @@
             <p>Upload je ontwerp en wij zorgen dat het professioneel geprint wordt. Snel, makkelijk en betrouwbaar!</p>
             <button class="button button--large">Upload je ontwerp</button>
         </div>
-        </div>
+    </main>
 
-        <?php include 'footer.html' ?>
+    <?php include 'layout/footer.html' ?>
 </body>
 
 </html>
