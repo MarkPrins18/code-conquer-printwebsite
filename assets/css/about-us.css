@@ -1,106 +1,519 @@
- :root{
-  --panel:#fff;
-  --muted:#737b87;
-  --brand:#d4af37;
-  --shadow:0 10px 30px rgba(0,0,0,.15);
-}
+ :root {
+   --panel: #fff;
+   --muted: #737b87;
+   --brand: #d4af37;
+   --shadow: 0 10px 30px rgba(0, 0, 0, .15);
+ }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
-  color:#111827; background:linear-gradient(180deg,#eef2f6 0%, #e7ecf3 100%);
-}
+ * {
+   box-sizing: border-box
+ }
 
-/* Header / layout */
-.site-header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;box-shadow:var(--shadow);position:sticky;top:0;z-index:5}
-.brand{font-weight:800}
-.nav a{margin-left:10px;text-decoration:none;color:#374151;padding:6px 10px;border-radius:12px}
-.nav a.active,.nav a:hover{background:#f2f4f8}
-.page{display:grid;grid-template-columns:1fr minmax(360px,46vw);gap:28px;padding:24px}
-.content h1{margin:.2rem 0 1rem}
-.lead{color:var(--muted);max-width:60ch}
+ html, body {
+   height: 100%
+ }
 
-/* Tiles */
-.stats{display:grid;grid-template-columns:repeat(3,minmax(120px,1fr));gap:16px;margin:18px 0}
-.stat{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:16px}
-.stat strong{font-size:28px;display:block}
-.stat span{color:var(--muted)}
-.pill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:10px 0 26px}
-.pill{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:18px}
-.pill h3{margin:.2rem 0 .4rem}
+ body {
+   margin: 0;
+   font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+   color: #111827;
+   background: linear-gradient(180deg, #eef2f6 0%, #e7ecf3 100%);
+ }
 
-/* ===== TEAM ===== */
-.team{display:flex;flex-wrap:wrap;gap:18px;list-style:none;padding:0;margin:8px 0 26px}
-.member-card{
-  background:var(--panel); border-radius:20px; box-shadow:var(--shadow);
-  padding:16px; width:260px; display:flex; align-items:center; gap:14px;
-}
-.avatar-wrapper{
-  position:relative; width:84px; height:108px; flex:0 0 auto;
-  border-radius:18px; padding:10px;
-  background:linear-gradient(180deg,#eef2f7,#e3eaf3);
-  box-shadow:inset 0 0 0 2px #e6edf6, inset 0 8px 18px rgba(0,0,0,.06);
-}
-.avatar{
-  width:100%; height:100%; border-radius:14px; display:block; object-fit:cover;
-  background:#e9eef5;
-}
-.upload-btn{
-  position:absolute; left:8px; right:8px; bottom:8px;
-  height:28px; border:none; border-radius:10px; font-size:.8rem; font-weight:600;
-  background:#fff; color:#1f2937; box-shadow:0 4px 10px rgba(0,0,0,.08);
-  opacity:0; transition:opacity .25s;
-  cursor:pointer;
-}
-.avatar-wrapper:hover .upload-btn{opacity:1}
-.file-input{display:none}
-.member-card .id b{font-weight:700}
-.member-card .id small{color:var(--muted)}
-.member-card[data-dragover="true"] .avatar{outline:2px dashed #7aa7ff; outline-offset:4px}
+ /* Header / layout */
+ .site-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 14px 18px;
+   background: #fff;
+   box-shadow: var(--shadow);
+   position: sticky;
+   top: 0;
+   z-index: 5
+ }
 
-/* CTA + controls */
-.cta{background:#fff;border-radius:20px;padding:18px;box-shadow:var(--shadow)}
-.btn{background:var(--brand);color:#1f2937;border:none;border-radius:12px;padding:12px 14px;font-weight:600;cursor:pointer}
-.btn-outline{background:#fff;border:1px solid #d0d7e2}
-.controls{display:flex;align-items:center;gap:12px;margin-top:14px}
-.slider-label{font-size:.9rem;color:#475569}
+ .brand {
+   font-weight: 800
+ }
 
-/* ===== Scene rechts ===== */
-.scene{position:relative;height:78vh;min-height:520px;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);background:#0b0e12}
+ .nav a {
+   margin-left: 10px;
+   text-decoration: none;
+   color: #374151;
+   padding: 6px 10px;
+   border-radius: 12px
+ }
 
-/* BELANGRIJK: juist pad naar jouw afbeelding */
-.scene-bg{
-  position:absolute; inset:0;
-  background-image:url('../images/index-images/3Dprinter-about-us.png');
-  background-size:cover; background-position:60% center;
-  animation:parallax 14s ease-in-out infinite alternate;
-  filter:saturate(1.02) contrast(1.04);
-}
-.scene-vignette{position:absolute;inset:0;background:radial-gradient(120% 100% at 70% 40%,rgba(0,0,0,0) 35%,rgba(0,0,0,.35) 100%);pointer-events:none}
-.worklight{position:absolute;inset:0;background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);mix-blend-mode:screen;opacity:.25;animation:lightSweep 9s ease-in-out infinite;pointer-events:none}
-.screen-glow{position:absolute;right:10%;bottom:28%;width:13%;aspect-ratio:4/5;border-radius:6px;box-shadow:0 0 24px 8px rgba(80,200,255,.55), inset 0 0 20px rgba(20,120,220,.35);background:repeating-linear-gradient(to bottom,rgba(255,255,255,.18)0 2px,rgba(0,0,0,0)2px 4px),linear-gradient(180deg,rgba(120,200,255,.25),rgba(20,80,160,.15));opacity:.9;transform:perspective(800px) rotateY(-6deg);animation:screenPulse 2.8s ease-in-out infinite}
-.printhead{position:absolute;left:58%;top:30%;width:11%;height:8%;transform-origin:center;filter:drop-shadow(0 8px 10px rgba(0,0,0,.45));animation:headTravel 6s ease-in-out infinite}
-.nozzle{width:36%;height:80%;border-radius:6px;margin-left:auto;background:linear-gradient(180deg,#444,#222);border:1px solid rgba(255,255,255,.08);position:relative}
-.nozzle::after{content:"";position:absolute;bottom:-10px;left:50%;translate:-50% 0;width:8px;height:12px;background:linear-gradient(#ffce54,#d19a15);border-radius:6px;filter:blur(.4px);animation:filament 1.6s ease-in-out infinite}
-.head-led{position:absolute;right:6%;top:-8%;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle,#fff 0 30%,#7dd3fc 55%,transparent 70%);box-shadow:0 0 14px 5px rgba(90,200,255,.85);animation:ledBlink 1.8s infinite}
-.print-part{position:absolute;left:62%;bottom:22%;width:14%;height:18%;background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.08)0 10deg,rgba(0,0,0,0)10deg 20deg),linear-gradient(180deg,#cfd6de,#9aa6b2);border:1px solid rgba(0,0,0,.25);border-radius:12px;opacity:.9;filter:blur(.2px) contrast(1.05);animation:partRise 10s linear infinite}
-.steam{position:absolute;left:62%;bottom:38%;width:80px;height:80px;pointer-events:none;background:radial-gradient(60% 60% at 50% 60%,rgba(200,220,240,.35) 0, rgba(200,220,240,0) 70%);filter:blur(6px);animation:steamUp 3.6s ease-in-out infinite}
-.steam-2{left:60%;animation-delay:.8s;transform:scale(.9)}
-.steam-3{left:64%;animation-delay:1.6s;transform:scale(1.1)}
-.sparks{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen}
-.site-footer{padding:18px;text-align:center;color:#64748b}
+ .nav a.active, .nav a:hover {
+   background: #f2f4f8
+ }
 
-/* Animations */
-@keyframes parallax{from{transform:scale(1.045) translateX(0)}to{transform:scale(1.065) translateX(-1.2%)}}
-@keyframes lightSweep{0%{transform:translateX(-30%) rotate(0.001deg)}50%{transform:translateX(10%)}100%{transform:translateX(-30%)}}
-@keyframes screenPulse{0%,100%{opacity:.88;filter:brightness(1)}50%{opacity:1;filter:brightness(1.1)}}
-@keyframes headTravel{0%{transform:translate(-4%,-2%)}25%{transform:translate(0%,4%)}50%{transform:translate(5%,-1%)}75%{transform:translate(2%,3%)}100%{transform:translate(-4%,-2%)}}
-@keyframes filament{0%,100%{height:10px;opacity:.65}50%{height:18px;opacity:1}}
-@keyframes ledBlink{0%,100%{opacity:.8;box-shadow:0 0 14px 5px rgba(90,200,255,.8)}50%{opacity:1;box-shadow:0 0 20px 9px rgba(120,220,255,.95)}}
-@keyframes partRise{0%{transform:translateY(0)}100%{transform:translateY(-18%)}}
-@keyframes steamUp{0%{opacity:0;transform:translateY(10px) scale(1)}20%{opacity:.5}100%{opacity:0;transform:translateY(-60px) scale(1.2)}}
+ .page {
+   display: grid;
+   grid-template-columns: 1fr minmax(360px, 46vw);
+   gap: 28px;
+   padding: 24px
+ }
 
-/* Responsive */
-@media (max-width:1024px){.page{grid-template-columns:1fr}.scene{height:64vh}.screen-glow{right:12%;width:18%}.printhead{left:58%;width:16%}.print-part{left:60%;width:20%}}
-@media (max-width:560px){.stats{grid-template-columns:1fr 1fr}.pill-grid{grid-template-columns:1fr}}
+ .content h1 {
+   margin: .2rem 0 1rem
+ }
+
+ .lead {
+   color: var(--muted);
+   max-width: 60ch
+ }
+
+ /* Tiles */
+ .stats {
+   display: grid;
+   grid-template-columns: repeat(3, minmax(120px, 1fr));
+   gap: 16px;
+   margin: 18px 0
+ }
+
+ .stat {
+   background: #fff;
+   border-radius: 18px;
+   box-shadow: var(--shadow);
+   padding: 16px
+ }
+
+ .stat strong {
+   font-size: 28px;
+   display: block
+ }
+
+ .stat span {
+   color: var(--muted)
+ }
+
+ .pill-grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 16px;
+   margin: 10px 0 26px
+ }
+
+ .pill {
+   background: #fff;
+   border-radius: 18px;
+   box-shadow: var(--shadow);
+   padding: 18px
+ }
+
+ .pill h3 {
+   margin: .2rem 0 .4rem
+ }
+
+ /* ===== TEAM ===== */
+ .team {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 18px;
+   list-style: none;
+   padding: 0;
+   margin: 8px 0 26px
+ }
+
+ .member-card {
+   background: var(--panel);
+   border-radius: 20px;
+   box-shadow: var(--shadow);
+   padding: 16px;
+   width: 260px;
+   display: flex;
+   align-items: center;
+   gap: 14px;
+ }
+
+ .avatar-wrapper {
+   position: relative;
+   width: 84px;
+   height: 108px;
+   flex: 0 0 auto;
+   border-radius: 18px;
+   padding: 10px;
+   background: linear-gradient(180deg, #eef2f7, #e3eaf3);
+   box-shadow: inset 0 0 0 2px #e6edf6, inset 0 8px 18px rgba(0, 0, 0, .06);
+ }
+
+ .avatar {
+   width: 100%;
+   height: 100%;
+   border-radius: 14px;
+   display: block;
+   object-fit: cover;
+   background: #e9eef5;
+ }
+
+ .upload-btn {
+   position: absolute;
+   left: 8px;
+   right: 8px;
+   bottom: 8px;
+   height: 28px;
+   border: none;
+   border-radius: 10px;
+   font-size: .8rem;
+   font-weight: 600;
+   background: #fff;
+   color: #1f2937;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, .08);
+   opacity: 0;
+   transition: opacity .25s;
+   cursor: pointer;
+ }
+
+ .avatar-wrapper:hover .upload-btn {
+   opacity: 1
+ }
+
+ .file-input {
+   display: none
+ }
+
+ .member-card .id b {
+   font-weight: 700
+ }
+
+ .member-card .id small {
+   color: var(--muted)
+ }
+
+ .member-card[data-dragover="true"] .avatar {
+   outline: 2px dashed #7aa7ff;
+   outline-offset: 4px
+ }
+
+ /* CTA + controls */
+ .cta {
+   background: #fff;
+   border-radius: 20px;
+   padding: 18px;
+   box-shadow: var(--shadow)
+ }
+
+ .btn {
+   background: var(--brand);
+   color: #1f2937;
+   border: none;
+   border-radius: 12px;
+   padding: 12px 14px;
+   font-weight: 600;
+   cursor: pointer
+ }
+
+ .btn-outline {
+   background: #fff;
+   border: 1px solid #d0d7e2
+ }
+
+ .controls {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   margin-top: 14px
+ }
+
+ .slider-label {
+   font-size: .9rem;
+   color: #475569
+ }
+
+ /* ===== Scene rechts ===== */
+ .scene {
+   position: relative;
+   height: 78vh;
+   min-height: 520px;
+   border-radius: 20px;
+   overflow: hidden;
+   box-shadow: var(--shadow);
+   background: #0b0e12
+ }
+
+ /* BELANGRIJK: juist pad naar jouw afbeelding */
+ .scene-bg {
+   position: absolute;
+   inset: 0;
+   background-image: url('../images/index-images/3Dprinter-about-us.png');
+   background-size: cover;
+   background-position: 60% center;
+   animation: parallax 14s ease-in-out infinite alternate;
+   filter: saturate(1.02) contrast(1.04);
+ }
+
+ .scene-vignette {
+   position: absolute;
+   inset: 0;
+   background: radial-gradient(120% 100% at 70% 40%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, .35) 100%);
+   pointer-events: none
+ }
+
+ .worklight {
+   position: absolute;
+   inset: 0;
+   background: linear-gradient(120deg, transparent 40%, rgba(255, 255, 255, .18) 50%, transparent 60%);
+   mix-blend-mode: screen;
+   opacity: .25;
+   animation: lightSweep 9s ease-in-out infinite;
+   pointer-events: none
+ }
+
+ .screen-glow {
+   position: absolute;
+   right: 10%;
+   bottom: 28%;
+   width: 13%;
+   aspect-ratio: 4/5;
+   border-radius: 6px;
+   box-shadow: 0 0 24px 8px rgba(80, 200, 255, .55), inset 0 0 20px rgba(20, 120, 220, .35);
+   background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, .18)0 2px, rgba(0, 0, 0, 0)2px 4px), linear-gradient(180deg, rgba(120, 200, 255, .25), rgba(20, 80, 160, .15));
+   opacity: .9;
+   transform: perspective(800px) rotateY(-6deg);
+   animation: screenPulse 2.8s ease-in-out infinite
+ }
+
+ .printhead {
+   position: absolute;
+   left: 58%;
+   top: 30%;
+   width: 11%;
+   height: 8%;
+   transform-origin: center;
+   filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .45));
+   animation: headTravel 6s ease-in-out infinite
+ }
+
+ .nozzle {
+   width: 36%;
+   height: 80%;
+   border-radius: 6px;
+   margin-left: auto;
+   background: linear-gradient(180deg, #444, #222);
+   border: 1px solid rgba(255, 255, 255, .08);
+   position: relative
+ }
+
+ .nozzle::after {
+   content: "";
+   position: absolute;
+   bottom: -10px;
+   left: 50%;
+   translate: -50% 0;
+   width: 8px;
+   height: 12px;
+   background: linear-gradient(#ffce54, #d19a15);
+   border-radius: 6px;
+   filter: blur(.4px);
+   animation: filament 1.6s ease-in-out infinite
+ }
+
+ .head-led {
+   position: absolute;
+   right: 6%;
+   top: -8%;
+   width: 12px;
+   height: 12px;
+   border-radius: 50%;
+   background: radial-gradient(circle, #fff 0 30%, #7dd3fc 55%, transparent 70%);
+   box-shadow: 0 0 14px 5px rgba(90, 200, 255, .85);
+   animation: ledBlink 1.8s infinite
+ }
+
+ .print-part {
+   position: absolute;
+   left: 62%;
+   bottom: 22%;
+   width: 14%;
+   height: 18%;
+   background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, .08)0 10deg, rgba(0, 0, 0, 0)10deg 20deg), linear-gradient(180deg, #cfd6de, #9aa6b2);
+   border: 1px solid rgba(0, 0, 0, .25);
+   border-radius: 12px;
+   opacity: .9;
+   filter: blur(.2px) contrast(1.05);
+   animation: partRise 10s linear infinite
+ }
+
+ .steam {
+   position: absolute;
+   left: 62%;
+   bottom: 38%;
+   width: 80px;
+   height: 80px;
+   pointer-events: none;
+   background: radial-gradient(60% 60% at 50% 60%, rgba(200, 220, 240, .35) 0, rgba(200, 220, 240, 0) 70%);
+   filter: blur(6px);
+   animation: steamUp 3.6s ease-in-out infinite
+ }
+
+ .steam-2 {
+   left: 60%;
+   animation-delay: .8s;
+   transform: scale(.9)
+ }
+
+ .steam-3 {
+   left: 64%;
+   animation-delay: 1.6s;
+   transform: scale(1.1)
+ }
+
+ .sparks {
+   position: absolute;
+   inset: 0;
+   pointer-events: none;
+   mix-blend-mode: screen
+ }
+
+ .site-footer {
+   padding: 18px;
+   text-align: center;
+   color: #64748b
+ }
+
+ /* Animations */
+ @keyframes parallax {
+   from {
+     transform: scale(1.045) translateX(0)
+   }
+
+   to {
+     transform: scale(1.065) translateX(-1.2%)
+   }
+ }
+
+ @keyframes lightSweep {
+   0% {
+     transform: translateX(-30%) rotate(0.001deg)
+   }
+
+   50% {
+     transform: translateX(10%)
+   }
+
+   100% {
+     transform: translateX(-30%)
+   }
+ }
+
+ @keyframes screenPulse {
+   0%, 100% {
+     opacity: .88;
+     filter: brightness(1)
+   }
+
+   50% {
+     opacity: 1;
+     filter: brightness(1.1)
+   }
+ }
+
+ @keyframes headTravel {
+   0% {
+     transform: translate(-4%, -2%)
+   }
+
+   25% {
+     transform: translate(0%, 4%)
+   }
+
+   50% {
+     transform: translate(5%, -1%)
+   }
+
+   75% {
+     transform: translate(2%, 3%)
+   }
+
+   100% {
+     transform: translate(-4%, -2%)
+   }
+ }
+
+ @keyframes filament {
+   0%, 100% {
+     height: 10px;
+     opacity: .65
+   }
+
+   50% {
+     height: 18px;
+     opacity: 1
+   }
+ }
+
+ @keyframes ledBlink {
+   0%, 100% {
+     opacity: .8;
+     box-shadow: 0 0 14px 5px rgba(90, 200, 255, .8)
+   }
+
+   50% {
+     opacity: 1;
+     box-shadow: 0 0 20px 9px rgba(120, 220, 255, .95)
+   }
+ }
+
+ @keyframes partRise {
+   0% {
+     transform: translateY(0)
+   }
+
+   100% {
+     transform: translateY(-18%)
+   }
+ }
+
+ @keyframes steamUp {
+   0% {
+     opacity: 0;
+     transform: translateY(10px) scale(1)
+   }
+
+   20% {
+     opacity: .5
+   }
+
+   100% {
+     opacity: 0;
+     transform: translateY(-60px) scale(1.2)
+   }
+ }
+
+ /* Responsive */
+ @media (max-width:1024px) {
+   .page {
+     grid-template-columns: 1fr
+   }
+
+   .scene {
+     height: 64vh
+   }
+
+   .screen-glow {
+     right: 12%;
+     width: 18%
+   }
+
+   .printhead {
+     left: 58%;
+     width: 16%
+   }
+
+   .print-part {
+     left: 60%;
+     width: 20%
+   }
+ }
+
+ @media (max-width:560px) {
+   .stats {
+     grid-template-columns: 1fr 1fr
+   }
+
+   .pill-grid {
+     grid-template-columns: 1fr
+   }
+ }
