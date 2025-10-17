@@ -240,7 +240,7 @@
    background-image: url('../images/index-images/3Dprinter-about-us.png');
    background-size: cover;
    background-position: 60% center;
-   animation: parallax 14s ease-in-out infinite alternate;
+   /* animation: parallax 14s ease-in-out infinite alternate; */
    filter: saturate(1.02) contrast(1.04);
  }
 
