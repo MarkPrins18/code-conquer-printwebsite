@@ -7,18 +7,19 @@
     <title>Contact - BOUW³D</title>
     <link rel="stylesheet" href="assets/css/global.css" />
     <link rel="stylesheet" href="assets/css/contact.css" />
-    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/header-footer.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <script src="contact.js" defer></script>
+    <script src="header.js" defer></script>
   </head>
+
   <body>
-    <header>
       <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
-      <?php include 'header.html' ?>
-    </header>
-    
+      <?php include 'layout/header.html' ?>
+        
     <div class="container">
       <div class="contact-header">
         <h1>Contact</h1>
@@ -137,6 +138,6 @@
       </div>
     </div>
 
-    <script src="contact.js"></script>
+    
   </body>
 </html>
