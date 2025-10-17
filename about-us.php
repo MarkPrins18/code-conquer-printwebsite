@@ -6,19 +6,16 @@
   <title>BOUW³D — Over ons</title>
 
   <!-- RELATIEVE PADEN -->
-  <link rel="stylesheet" href="assets/css/about-us.css">
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/header-footer.css" />
+  <link rel="stylesheet" href="assets/css/about-us.css">    
+  <script src="assets/js/header.js" defer></script>
+  <script src="assets/js/about-us.js" defer></script>
+
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">BOUW³D</div>
-    <nav class="nav">
-      <a href="index.php">Home</a>
-      <a href="products.php">Producten</a>
-      <a href="services.html">Diensten</a>
-      <a class="active" href="about-us.html" aria-current="page">Over ons</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  
+   <?php include 'layout/header.html' ?>
 
   <main class="page">
     <!-- Linker contentkolom -->
@@ -57,7 +54,7 @@
         <li class="member-card" data-name="Leonel" data-role="Projectlead">
           <div class="avatar-wrapper" data-dropzone>
             <img class="avatar" alt="Foto Leonel"
-                 src="data:image/svg+xml;utf8,<?xml version='1.0'?><svg xmlns='http://www.w3.org/2000/svg' width='180' height='220'><rect x='10' y='10' width='160' height='200' rx='22' fill='%23e9eef5'/><rect x='22' y='22' width='136' height='176' rx='18' fill='%23dbe3ee'/><circle cx='90' cy='90' r='30' fill='%23c7d2e3'/><rect x='50' y='135' width='80' height='40' rx='10' fill='%23cfd8e6'/></svg>">
+                 src="C:\Users\stefa\source\repos\code-conquer-printwebsite-1\assets\images\index-images\3Dprinter-about-us.png"> 
             <button class="upload-btn" type="button">Foto kiezen</button>
             <input class="file-input" type="file" accept="image/*" aria-label="Upload foto Leonel">
           </div>
@@ -66,18 +63,17 @@
 
         <li class="member-card" data-name="Sherwin" data-role="Operations">
           <div class="avatar-wrapper" data-dropzone>
-            <img class="avatar" alt="Foto Sherwin"
-                 src="data:image/svg+xml;utf8,<?xml version='1.0'?><svg xmlns='http://www.w3.org/2000/svg' width='180' height='220'><rect x='10' y='10' width='160' height='200' rx='22' fill='%23e9eef5'/><rect x='22' y='22' width='136' height='176' rx='18' fill='%23dbe3ee'/><circle cx='90' cy='90' r='30' fill='%23c7d2e3'/><rect x='50' y='135' width='80' height='40' rx='10' fill='%23cfd8e6'/></svg>">
+            <img class="avatar" alt="Foto Sherwin" src="assets\images\index-images\3Dprinter-about-us.png"> 
             <button class="upload-btn" type="button">Foto kiezen</button>
             <input class="file-input" type="file" accept="image/*" aria-label="Upload foto Sherwin">
           </div>
           <div class="id"><b>Sherwin</b><small> Operations</small></div>
         </li>
 
-        <li class="member-card" data-name="Stefan" data-role="Engineering">
+        <!-- <li class="member-card" data-name="Stefan" data-role="Engineering">
           <div class="avatar-wrapper" data-dropzone>
             <img class="avatar" alt="Foto Stefan"
-                 src="data:image/svg+xml;utf8,<?xml version='1.0'?><svg xmlns='http://www.w3.org/2000/svg' width='180' height='220'><rect x='10' y='10' width='160' height='200' rx='22' fill='%23e9eef5'/><rect x='22' y='22' width='136' height='176' rx='18' fill='%23dbe3ee'/><circle cx='90' cy='90' r='30' fill='%23c7d2e3'/><rect x='50' y='135' width='80' height='40' rx='10' fill='%23cfd8e6'/></svg>">
+                 src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='220'><rect x='10' y='10' width='160' height='200' rx='22' fill='%23e9eef5'/><rect x='22' y='22' width='136' height='176' rx='18' fill='%23dbe3ee'/><circle cx='90' cy='90' r='30' fill='%23c7d2e3'/><rect x='50' y='135' width='80' height='40' rx='10' fill='%23cfd8e6'/></svg>">
             <button class="upload-btn" type="button">Foto kiezen</button>
             <input class="file-input" type="file" accept="image/*" aria-label="Upload foto Stefan">
           </div>
@@ -87,7 +83,7 @@
         <li class="member-card" data-name="Mark" data-role="Quality">
           <div class="avatar-wrapper" data-dropzone>
             <img class="avatar" alt="Foto Mark"
-                 src="data:image/svg+xml;utf8,<?xml version='1.0'?><svg xmlns='http://www.w3.org/2000/svg' width='180' height='220'><rect x='10' y='10' width='160' height='200' rx='22' fill='%23e9eef5'/><rect x='22' y='22' width='136' height='176' rx='18' fill='%23dbe3ee'/><circle cx='90' cy='90' r='30' fill='%23c7d2e3'/><rect x='50' y='135' width='80' height='40' rx='10' fill='%23cfd8e6'/></svg>">
+                 src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='220'><rect x='10' y='10' width='160' height='200' rx='22' fill='%23e9eef5'/><rect x='22' y='22' width='136' height='176' rx='18' fill='%23dbe3ee'/><circle cx='90' cy='90' r='30' fill='%23c7d2e3'/><rect x='50' y='135' width='80' height='40' rx='10' fill='%23cfd8e6'/></svg>">
             <button class="upload-btn" type="button">Foto kiezen</button>
             <input class="file-input" type="file" accept="image/*" aria-label="Upload foto Mark">
           </div>
@@ -97,12 +93,12 @@
         <li class="member-card" data-name="David" data-role="Logistiek">
           <div class="avatar-wrapper" data-dropzone>
             <img class="avatar" alt="Foto David"
-                 src="data:image/svg+xml;utf8,<?xml version='1.0'?><svg xmlns='http://www.w3.org/2000/svg' width='180' height='220'><rect x='10' y='10' width='160' height='200' rx='22' fill='%23e9eef5'/><rect x='22' y='22' width='136' height='176' rx='18' fill='%23dbe3ee'/><circle cx='90' cy='90' r='30' fill='%23c7d2e3'/><rect x='50' y='135' width='80' height='40' rx='10' fill='%23cfd8e6'/></svg>">
+                 src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='220'><rect x='10' y='10' width='160' height='200' rx='22' fill='%23e9eef5'/><rect x='22' y='22' width='136' height='176' rx='18' fill='%23dbe3ee'/><circle cx='90' cy='90' r='30' fill='%23c7d2e3'/><rect x='50' y='135' width='80' height='40' rx='10' fill='%23cfd8e6'/></svg>">
             <button class="upload-btn" type="button">Foto kiezen</button>
             <input class="file-input" type="file" accept="image/*" aria-label="Upload foto David">
           </div>
           <div class="id"><b>David</b><small> Logistiek</small></div>
-        </li>
+        </li> -->
       </ul>
       <!-- ======= EINDE TEAM ======= -->
 
@@ -134,9 +130,8 @@
     </aside>
   </main>
 
-  <footer class="site-footer">© 2025 BOUW³D — Breda</footer>
+  <?php include 'layout/footer.html' ?>
 
   <!-- RELATIEVE PAD -->
-  <script src="assets/js/about-us.js"></script>
-</body>
+ </body>
 </html>
