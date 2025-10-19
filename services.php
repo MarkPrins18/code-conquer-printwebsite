@@ -12,7 +12,11 @@
     <script src="assets/js/services.js" defer></script>
 </head>
 
+<<<<<<< HEAD
 <body class="bg-light">
+=======
+<body>
+>>>>>>> a1b5d0304b2bb5376b2dc4e51e0e00a1ac2cd3dd
     <?php include 'layout/header.html' ?>
 
     <main>
