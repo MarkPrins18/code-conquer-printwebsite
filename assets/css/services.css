@@ -8,20 +8,30 @@ body {
 
 .layout-row {
     display: flex;
-    gap: 2em;
-    margin-bottom: 50px;
-    padding: 20px;
-    border-radius: 16px;
-    background-color: white;
     overflow: hidden;
     min-height: 100vh;
+    margin-bottom: 50px;
+    padding: 20px;
+    gap: 2em;
+    border-radius: 16px;
+    background-color: white;
 }
-.layout-row section,
 
-.layout-row img {
+.layout-row section,
+.layout-row img,
+.carousel-container {
     max-width: 45%;
-    margin:auto;
-    align-items: center;
     height: auto;
+    margin: auto;
+}
+
+/* default class for images inside of the carousel container is set to 'display: none' to make all images invisible */
+.layout-row .carousel-img {
+    display: none;
+    max-width: 100%;
+}
+
+/* this class gets added to an image via js function in order to make an images visible */
+.layout-row img.showImage {
     display: block;
 }
