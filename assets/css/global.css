@@ -12,6 +12,14 @@
   --color-hover: #303f9f;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0px;
   background-color: var(--color-main-light-gray);

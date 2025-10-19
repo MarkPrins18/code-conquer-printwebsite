@@ -12,11 +12,7 @@
     <script src="assets/js/services.js" defer></script>
 </head>
 
-<<<<<<< HEAD
-<body class="bg-light">
-=======
 <body>
->>>>>>> a1b5d0304b2bb5376b2dc4e51e0e00a1ac2cd3dd
     <?php include 'layout/header.html' ?>
 
     <main>
@@ -42,9 +38,14 @@
             </section>
             <!-- IMAGE CAROUSEL -->
             <div class="carousel-container">
-                <img class="carousel-img" src="assets/images/services-images/pexels-pixabay-159298.jpg" alt="Plaatje van metalen onderdelen.">
-                <img class="carousel-img" src="assets/images/services-images/Gemini_Generated_Image_9j1udi9j1udi9j1u.png" alt="Plaatje van metalen onderdelen.">
-                <img class="carousel-img" src="assets/images/services-images/Gemini_Generated_Image_rpz1btrpz1btrpz1.png" alt="Plaatje van metalen onderdelen.">
+                <img class="carousel-img" src="assets/images/services-images/pexels-pixabay-159298.jpg"
+                    alt="Plaatje van metalen onderdelen.">
+                <img class="carousel-img"
+                    src="assets/images/services-images/Gemini_Generated_Image_9j1udi9j1udi9j1u.png"
+                    alt="Plaatje van metalen onderdelen.">
+                <img class="carousel-img"
+                    src="assets/images/services-images/Gemini_Generated_Image_rpz1btrpz1btrpz1.png"
+                    alt="Plaatje van metalen onderdelen.">
             </div>
             <!-- IMAGE CAROUSEL -->
         </div>

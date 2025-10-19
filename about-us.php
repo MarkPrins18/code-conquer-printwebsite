@@ -10,13 +10,13 @@
      <link rel="stylesheet" href="assets/css/global.css" />
      <link rel="stylesheet" href="assets/css/header-footer.css" />
      <link rel="stylesheet" href="assets/css/about-us.css">
+     <link rel="stylesheet" href="assets/css/components.css">
      <script src="assets/js/header.js" defer></script>
      <script src="assets/js/about-us.js" defer></script>
 
  </head>
 
  <body>
-
      <?php include 'layout/header.html' ?>
 
      <main class="page">
@@ -107,7 +107,8 @@
              <section class="cta">
                  <h3>Klaar voor maatwerk?</h3>
                  <p>Stuur je vraag en ontvang binnen 24 uur een voorstel.</p>
-                 <button id="contactBtn" class="btn">Neem contact op</button>
+                 <!-- This button now uses our global button css (in components.css), no need for extra css ;) -->
+                 <button class="button button--small">Neem contact op</button>
              </section>
 
              <!-- We removed animation so this is not needed anymore -->

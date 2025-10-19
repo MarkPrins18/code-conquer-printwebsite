@@ -5,34 +5,6 @@
    --shadow: 0 10px 30px rgba(0, 0, 0, .15);
  }
 
- * {
-   box-sizing: border-box
- }
-
- html, body {
-   height: 100%
- }
-
- body {
-   margin: 0;
-   font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
-   color: #111827;
-   background: linear-gradient(180deg, #eef2f6 0%, #e7ecf3 100%);
- }
-
- /* Header / layout */
- .site-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 14px 18px;
-   background: #fff;
-   box-shadow: var(--shadow);
-   position: sticky;
-   top: 0;
-   z-index: 5
- }
-
  .brand {
    font-weight: 800
  }
