@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/css/services.css">
     <link rel="stylesheet" href="assets/css/header-footer.css">
     <script src="assets/js/services.js" defer></script>
+    <script src="assets/js/header.js" defer></script>
 </head>
 
 <body>
