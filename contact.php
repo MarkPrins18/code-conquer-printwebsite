@@ -17,8 +17,7 @@
     <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
     <?php include 'layout/header.html' ?>
 
-
-    <div class="container">
+    <main>
         <div class="contact-header">
             <h1>Contact</h1>
             <div class="contact-buttons">
@@ -118,7 +117,7 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
 
 </body>
