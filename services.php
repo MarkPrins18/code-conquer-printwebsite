@@ -13,10 +13,8 @@
 
 </head>
 
-<body class="bg-light">
-    <header>
-        <?php include 'layout/header.html' ?>
-    </header>
+<body>
+    <?php include 'layout/header.html' ?>
 
     <main>
         <h1>Diensten</h1>

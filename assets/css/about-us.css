@@ -53,7 +53,7 @@
    display: grid;
    grid-template-columns: 1fr minmax(360px, 46vw);
    gap: 28px;
-   padding: 24px
+
  }
 
  .content h1 {
@@ -230,21 +230,20 @@
    border-radius: 20px;
    overflow: hidden;
    box-shadow: var(--shadow);
-   background: #0b0e12
+   background: #0b0e12;
  }
 
- /* BELANGRIJK: juist pad naar jouw afbeelding */
  .scene-bg {
    position: absolute;
    inset: 0;
-   background-image: url('../images/index-images/3Dprinter-about-us.png');
-   background-size: cover;
-   background-position: 60% center;
-   /* animation: parallax 14s ease-in-out infinite alternate; */
-   filter: saturate(1.02) contrast(1.04);
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: 60% center;
+   border-radius: 20px;
  }
 
- .scene-vignette {
+ /* .scene-vignette {
    position: absolute;
    inset: 0;
    background: radial-gradient(120% 100% at 70% 40%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, .35) 100%);
@@ -365,15 +364,9 @@
    inset: 0;
    pointer-events: none;
    mix-blend-mode: screen
- }
+ } */
 
- .site-footer {
-   padding: 18px;
-   text-align: center;
-   color: #64748b
- }
-
- /* Animations */
+ /* Animations
  @keyframes parallax {
    from {
      transform: scale(1.045) translateX(0)
@@ -480,7 +473,7 @@
      opacity: 0;
      transform: translateY(-60px) scale(1.2)
    }
- }
+ } */
 
  /* Responsive */
  @media (max-width:1024px) {
