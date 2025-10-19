@@ -110,11 +110,13 @@
                  <button id="contactBtn" class="btn">Neem contact op</button>
              </section>
 
-             <section class="controls" aria-label="Animatie-instellingen">
+             <!-- We removed animation so this is not needed anymore -->
+
+             <!-- <section class="controls" aria-label="Animatie-instellingen">
                  <button id="toggleAnim" class="btn btn-outline" aria-pressed="true">⏸︎ Pauzeer animatie</button>
                  <label for="speed" class="slider-label">Snelheid</label>
                  <input id="speed" type="range" min="0.5" max="2.0" step="0.1" value="1">
-             </section>
+             </section> -->
          </section>
 
          <!-- Rechter ‘levende’ scene -->
