@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/services.css">
     <link rel="stylesheet" href="assets/css/header-footer.css">
-    <!-- <script src="assets/js/index.js" defer></script> -->
-
+    <script src="assets/js/services.js" defer></script>
 </head>
 
+<<<<<<< HEAD
+<body class="bg-light">
+=======
 <body>
+>>>>>>> a1b5d0304b2bb5376b2dc4e51e0e00a1ac2cd3dd
     <?php include 'layout/header.html' ?>
 
     <main>
@@ -37,7 +40,13 @@
                     corrosiebestendigheid, aluminium voor lichtgewicht constructies, en titanium voor extreme sterkte en
                     hittebestendigheid.</p>
             </section>
-            <img src="assets/images/services-images/pexels-pixabay-159298.jpg" alt="Plaatje van metalen onderdelen.">
+            <!-- IMAGE CAROUSEL -->
+            <div class="carousel-container">
+                <img class="carousel-img" src="assets/images/services-images/pexels-pixabay-159298.jpg" alt="Plaatje van metalen onderdelen.">
+                <img class="carousel-img" src="assets/images/services-images/Gemini_Generated_Image_9j1udi9j1udi9j1u.png" alt="Plaatje van metalen onderdelen.">
+                <img class="carousel-img" src="assets/images/services-images/Gemini_Generated_Image_rpz1btrpz1btrpz1.png" alt="Plaatje van metalen onderdelen.">
+            </div>
+            <!-- IMAGE CAROUSEL -->
         </div>
 
         <div class="layout-row">
@@ -83,11 +92,7 @@
         </div>
     </main>
 
-    <footer>
-        <?php include 'layout/footer.html' ?>
-    </footer>
-
-    <!-- <script src = xxxx.js></script> -->
+    <?php include 'layout/footer.html' ?>
 </body>
 
 </html>
