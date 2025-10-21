@@ -1,4 +1,3 @@
-
 /*-----------Hero section---------*/
 
 .hero {
@@ -72,7 +71,6 @@
       li {
         font-size: 2.5rem;
         padding: 10px;
-        /* change padding */
       }
 
       .list-item.selected {
