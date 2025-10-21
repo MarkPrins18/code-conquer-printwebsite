@@ -12,6 +12,8 @@ items.forEach((item) => {
 });
 items[0].click();
 
+//check code and make it simpler
+
 const counters = document.querySelectorAll(".counter"); // Select all elements with the class "counter" in the document
 
 counters.forEach((counter) => {
@@ -41,3 +43,33 @@ counters.forEach((counter) => {
     updateCounter(); // Start the first update after the delay
   }, 1000); // 1000 milliseconds (1 second) delay before starting the counter
 });
+
+/*
+const counters = document.querySelectorAll(".counter");
+
+for (let i = 0; i < counters.length; i++) {
+  const counter = counters[i];
+  const target = +counter.dataset.target;
+  let current = 0;
+
+  setTimeout(() => {
+    function updateCounter() {
+      let steps = 1;
+      let temp = current;
+
+      while (temp < target && temp < current + steps) {
+        temp++;
+        counter.textContent = temp;
+      }
+
+      current = temp;
+
+      if (current < target) {
+        setTimeout(updateCounter, 50);
+      }
+    }
+
+    updateCounter();
+  }, 1000);
+}
+  */
