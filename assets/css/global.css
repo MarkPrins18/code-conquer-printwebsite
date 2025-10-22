@@ -32,7 +32,13 @@ body {
 
 /* Reset all default margins that are set by browser */
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
 }
 
@@ -60,8 +66,6 @@ h1, h2, h3, h4, h5, h6, p {
 .m-1 {
   margin: 1em;
 }
-
-
 
 /* Clamp() makes texts responsive without having to use media queries. 
 First value = min fontsize, last value = max fontsize, middle = preferred (scales with viewport and used only if between min and max) */
