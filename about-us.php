@@ -6,10 +6,10 @@
   <title>BOUW³D — Over ons</title>
 
   <!-- Centrale + pagina CSS (absoluut pad) -->
-  <link rel="stylesheet" href="/code-conquer-printwebsite/assets/css/global.css" />
-  <link rel="stylesheet" href="/code-conquer-printwebsite/assets/css/header-footer.css" />
-  <link rel="stylesheet" href="/code-conquer-printwebsite/assets/css/components.css" />
-  <link rel="stylesheet" href="/code-conquer-printwebsite/assets/css/about-us.css" />
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/header-footer.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/about-us.css" />
 
   <!-- JS -->
   <script src="/code-conquer-printwebsite/assets/js/header.js" defer></script>
@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <?php include __DIR__ . '/layout/header.html'; ?>
+  <?php include 'layout/header.html'; ?>
 
   <main class="about-page">
     <div class="container">
@@ -154,6 +154,9 @@ voor uw project.
     </div>
   </main>
 
-  <?php include __DIR__ . '/layout/footer.html'; ?>
+  
+
+    <?php include 'layout/footer.html' ?>
+
 </body>
 </html>
