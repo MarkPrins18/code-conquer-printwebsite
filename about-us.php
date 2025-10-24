@@ -26,19 +26,32 @@
         <div class="hero-text">
           <h1>Over ons</h1>
           <p class="lead">
-            BOUW³D is de 3D-printspecialist voor de bouw in Breda en omgeving.
-            We versnellen projecten, verlagen kosten en beperken verspilling met
-            hoogwaardige, op maat geprinte onderdelen.
+            
+BOUW³D brengt innovatieve 3D-printtechnologie naar de bouw in Breda 
+en regio.
+<br> Met maatwerk oplossingen helpen wij bouwprojecten te 
+versnellen, kosten te reduceren en materiaalverspilling te minimaliseren.
+
+Waar traditionele productie grenzen kent, bieden wij vrijheid: complexe 
+vormen, unieke ontwerpen en last-minute aanpassingen realiseren wij zonder 
+probleem. 
+<br>Geen lange wachttijden of minimumorders – bij ons bestelt u 
+precies wat u nodig heeft, wanneer u het nodig heeft. 
+
+<br>Neem contact op voor een vrijblijvend gesprek over de mogelijkheden 
+voor uw project.
+
+
           </p>
 
           <!-- KPI’s -->
           <div class="kpi-grid">
             <div class="kpi-card">
-              <div class="kpi-value">5</div>
+              <div class="kpi-value">1</div>
               <div class="kpi-label">Jaar actief</div>
             </div>
             <div class="kpi-card">
-              <div class="kpi-value">420</div>
+              <div class="kpi-value">50</div>
               <div class="kpi-label">Projecten geleverd</div>
             </div>
             <div class="kpi-card">
@@ -69,7 +82,7 @@
             <div class="team-grid">
               <div class="team-card">
                 <div class="avatar">
-                  <img src="/code-conquer-printwebsite/assets/images/team-leonel.jpg" alt="Leonel">
+                  <img src="/code-conquer-printwebsite/assets/images/team-leonel.jpg" alt="foto">
                 </div>
                 <div class="team-meta">
                   <strong>Leonel</strong>
@@ -79,7 +92,7 @@
 
               <div class="team-card">
                 <div class="avatar">
-                  <img src="/code-conquer-printwebsite/assets/images/team-sherwin.jpg" alt="Sherwin">
+                  <img src="/code-conquer-printwebsite/assets/images/team-sherwin.jpg" alt="foto">
                 </div>
                 <div class="team-meta">
                   <strong>Sherwin</strong>
@@ -89,7 +102,7 @@
 
               <div class="team-card">
                 <div class="avatar">
-                  <img src="/code-conquer-printwebsite/assets/images/team-stefan.jpg" alt="Stefan">
+                  <img src="/code-conquer-printwebsite/assets/images/team-stefan.jpg" alt="foto">
                 </div>
                 <div class="team-meta">
                   <strong>Stefan</strong>
@@ -99,7 +112,7 @@
 
               <div class="team-card">
                 <div class="avatar">
-                  <img src="/code-conquer-printwebsite/assets/images/team-mark.jpg" alt="Mark">
+                  <img src="/code-conquer-printwebsite/assets/images/team-mark.jpg" alt="foto">
                 </div>
                 <div class="team-meta">
                   <strong>Mark</strong>
@@ -109,7 +122,7 @@
 
               <div class="team-card">
                 <div class="avatar">
-                  <img src="/code-conquer-printwebsite/assets/images/team-david.jpg" alt="David">
+                  <img src="/code-conquer-printwebsite/assets/images/team-david.jpg" alt="foto">
                 </div>
                 <div class="team-meta">
                   <strong>David</strong>
