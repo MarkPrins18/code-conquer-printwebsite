@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="assets/js/contact.js" defer></script>
     <script src="assets/js/header.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
 </head>
 
 <body>

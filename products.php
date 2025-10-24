@@ -11,6 +11,7 @@
     <script src="assets/js/products.js" defer></script>
     <link rel="stylesheet" href="assets/css/products.css">
     <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
 </head>
 
 <body>

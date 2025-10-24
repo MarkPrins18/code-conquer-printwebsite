@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/css/header-footer.css">
     <script src="assets/js/services.js" defer></script>
     <script src="assets/js/header.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
 </head>
 
 <body>
