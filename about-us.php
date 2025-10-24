@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="assets/css/about-us.css" />
 
   <!-- JS -->
-  <script src="/code-conquer-printwebsite/assets/js/header.js" defer></script>
-  <script src="/code-conquer-printwebsite/assets/js/about-us.js" defer></script>
+  <script src="assets/js/header.js" defer></script>
+  <script src="assets/js/about-us.js" defer></script>
 </head>
 
 <body>
