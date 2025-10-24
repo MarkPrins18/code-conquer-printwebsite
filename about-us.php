@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <?php include __DIR__ . '/layout/header.html'; ?>
+  <?php include 'layout/header.html'; ?>
 
   <main class="about-page">
     <div class="container">
@@ -155,6 +155,9 @@ voor uw project.
     </div>
   </main>
 
-  <?php include __DIR__ . '/layout/footer.html'; ?>
+  
+
+    <?php include 'layout/footer.html' ?>
+
 </body>
 </html>
