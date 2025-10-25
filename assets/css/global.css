@@ -90,8 +90,6 @@ p {
   font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
-/* Mark Can you add fontsize? */
-
 .fs-2 {
   /*temparery fontsize*/
   font-size: 2rem;
