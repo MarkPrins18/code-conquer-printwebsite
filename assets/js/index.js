@@ -1,3 +1,4 @@
+//Update counters on home page hero section
 const counters = document.querySelectorAll(".counter");
 
 counters.forEach((counter) => {
@@ -16,6 +17,7 @@ counters.forEach((counter) => {
   }, 1000);
 });
 
+//select example items to show corresponding content
 const items = document.querySelectorAll(".select-example li");
 const contents = document.querySelectorAll(".content-item");
 
