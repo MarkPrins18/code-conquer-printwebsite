@@ -24,12 +24,16 @@ const displayProducts = function (products) {
   }
 
   for (const { name, description, price } of products) {
-    const card = document.createElement("div");
+    const card = document.createElement("article");
     card.classList.add("grid-card");
 
     const imageDiv = document.createElement("div");
     imageDiv.classList.add("image-container");
-    imageDiv.style.backgroundImage = "url('assets/images/placeholder.jpg')";
+
+    const img = document.createElement("img");
+    img.src = "assets/images/index-images/placeholder-image.webp";
+    img.alt = `Afbeelding van ${name}`;
+    imageDiv.appendChild(img);
 
     const infoDiv = document.createElement("div");
     infoDiv.classList.add("info-container");
@@ -68,13 +72,13 @@ const displayProducts = function (products) {
   }
 };
 
-const searchInput = document.querySelector("#searchInput");
-const resetSearch = document.querySelector("#resetSearch");
+const searchInput = document.querySelector("#search-input");
+const resetSearch = document.querySelector("#reset-search");
 
 // Listens for user input in search box. If the value matches a title or description of the allproducts array, sent that new array to the displayProducts function.
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.toLowerCase();
-  resetSearch.style.display = query ? "inline" : "none";
+  resetSearch.style.display = query ? "inline-block" : "none";
   const filtered = allProducts.filter(
     (product) =>
       product.name.toLowerCase().includes(query) ||

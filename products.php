@@ -18,22 +18,24 @@
     <?php include 'layout/header.html' ?>
 
     <main>
-        <div class="header-row">
+        <section class="header-row">
             <h1>Producten</h1>
-            <div id="searchContainer">
-                <span id="resetSearch">&#10005;</span>
-                <input type="text" id="searchInput" placeholder="Zoek producten..." />
-            </div>
-        </div>
-        <div class="products-container">
-            <!--Products get dynamically added by JS-->
-        </div>
+            <form id="search-container" role="search">
+                <label for="search-input">Zoek producten:</label>
+                <input type="text" id="search-input" placeholder="Typ hier je zoekterm..." />
+                <button type="button" id="reset-search" aria-label="Reset zoekveld">&#10005;</button>
+           </form>
+        </section>
 
-        <div class="selfprint-cta-container">
-            <h3>Wil je je eigen 3D-print laten maken?</h3>
+        <section class="products-container">
+            <!--Products get dynamically added by JS-->
+        </section>
+
+        <section class="selfprint-cta-container">
+            <h2>Wil je je eigen 3D-print laten maken?</h2>
             <p>Upload je ontwerp en wij zorgen dat het professioneel geprint wordt. Snel, makkelijk en betrouwbaar!</p>
             <button class="button button--large">Upload je ontwerp</button>
-        </div>
+        </section>
     </main>
 
     <?php include 'layout/footer.html' ?>
