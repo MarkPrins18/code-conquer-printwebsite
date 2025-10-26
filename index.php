@@ -16,7 +16,7 @@
     <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
     <?php include 'layout/header.html' ?>
 
-    <!--main added for semantic  background and font are added here-->
+    <!--main added for semantic purposes-->
     <main>
       <section class="hero">
         <div class="hero-content">
