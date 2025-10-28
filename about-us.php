@@ -83,7 +83,7 @@ voor uw project.
             <div class="team-grid">
               <div class="team-card">
                 <div class="avatar">
-                  <img src="/code-conquer-printwebsite/assets/images/team-leonel.jpg" alt="foto">
+                  <img src="assets/images/team-leonel.jpg" alt="foto">
                 </div>
                 <div class="team-meta">
                   <strong>Leonel</strong>
@@ -93,7 +93,7 @@ voor uw project.
 
               <div class="team-card">
                 <div class="avatar">
-                  <img src="/code-conquer-printwebsite/assets/images/team-sherwin.jpg" alt="foto">
+                  <img src="assets/images/team-sherwin.jpg" alt="foto">
                 </div>
                 <div class="team-meta">
                   <strong>Sherwin</strong>
@@ -103,7 +103,7 @@ voor uw project.
 
               <div class="team-card">
                 <div class="avatar">
-                  <img src="/code-conquer-printwebsite/assets/images/team-stefan.jpg" alt="foto">
+                  <img src="assets/images/team-stefan.jpg" alt="foto">
                 </div>
                 <div class="team-meta">
                   <strong>Stefan</strong>
@@ -113,7 +113,7 @@ voor uw project.
 
               <div class="team-card">
                 <div class="avatar">
-                  <img src="/code-conquer-printwebsite/assets/images/team-mark.jpg" alt="foto">
+                  <img src="assets/images/team-mark.jpg" alt="foto">
                 </div>
                 <div class="team-meta">
                   <strong>Mark</strong>
@@ -123,7 +123,7 @@ voor uw project.
 
               <div class="team-card">
                 <div class="avatar">
-                  <img src="/code-conquer-printwebsite/assets/images/team-david.jpg" alt="foto">
+                  <img src="assets/images/team-david.jpg" alt="foto">
                 </div>
                 <div class="team-meta">
                   <strong>David</strong>
@@ -138,7 +138,7 @@ voor uw project.
             <div class="cta-inner">
               <h3>Klaar voor maatwerk?</h3>
               <p>Stuur je vraag en ontvang binnen 24 uur een voorstel.</p>
-              <a class="btn btn--primary" href="/code-conquer-printwebsite/contact.php">Neem contact op</a>
+              <a class="btn btn--primary" href="contact.php">Neem contact op</a>
             </div>
           </section>
         </div>
@@ -146,7 +146,7 @@ voor uw project.
         <!-- RECHTS: sticky full-height foto -->
         <aside class="hero-media">
           <img
-            src="/code-conquer-printwebsite/assets/images/index-images/3Dprinter-about-us.png"
+            src="assets/images/index-images/3Dprinter-about-us.png"
             alt="Industriële 3D-printer in werkplaats"
             loading="lazy"
           >
