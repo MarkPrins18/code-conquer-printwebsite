@@ -73,7 +73,7 @@
         padding: 10px;
       }
 
-      .list-item.selected {
+      .list-item.active-example {
         background-color: var(--color-accent-orange);
         color: white;
         font-weight: bold;

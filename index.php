@@ -46,7 +46,7 @@
         <div class="example-list">
           <!--div to set list and content next to eachother-->
           <ul class="select-example">
-            <li class="list-item" data-content="example-1">Delta Bouw</li>
+            <li class="list-item active-example" data-content="example-1">Delta Bouw</li>
             <li class="list-item" data-content="example-2">Studio Nova</li>
             <li class="list-item" data-content="example-3">Urban Build</li>
             <li class="list-item" data-content="example-4">Rossum Design</li>

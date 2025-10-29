@@ -18,16 +18,23 @@ counters.forEach((counter) => {
 });
 
 //select example items to show corresponding content
-const items = document.querySelectorAll(".select-example li");
+const exampleItems = document.querySelectorAll(".list-item");
 const contents = document.querySelectorAll(".content-item");
-
-items.forEach((item) => {
-  item.addEventListener("click", () => {
-    contents.forEach((c) => (c.style.display = "none"));
-    const id = item.dataset.content;
-    document.getElementById(id).style.display = "flex";
-    items.forEach((i) => i.classList.remove("selected"));
-    item.classList.add("selected");
+function activeExample() {
+  exampleItems.forEach((item) => item.classList.remove("active-example"));
+  this.classList.add("active-example");
+  const contentId = this.dataset.content;
+  console.log(contentId);
+  contents.forEach((content) => {
+    if (content.id === contentId) {
+      content.style.display = "block";
+    } else {
+      content.style.display = "none";
+    }
   });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  contents[0].style.display = "block";
 });
-items[0].click();
+exampleItems.forEach((item) => item.addEventListener("click", activeExample));
