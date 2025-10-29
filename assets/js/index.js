@@ -33,7 +33,6 @@ function activeExample() {
     }
   });
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   contents[0].style.display = "block";
 });
