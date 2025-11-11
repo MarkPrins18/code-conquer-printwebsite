@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
     <link rel="stylesheet" href="assets/css/index.css" />
     <link rel="stylesheet" href="assets/css/header-footer.css" />
     <script src="assets/js/index.js" defer></script>
@@ -22,7 +23,7 @@
         <div class="hero-content">
           <h1>Wij maken bouwen sneller met moderne</h1>
           <h2 class="accent-color">3d technieken.</h2>
-          <a href="/about-us.php" class="btn">Ontdek meer</a>
+          <a href="/about-us.php" class="button button--large">Ontdek meer</a>
         </div>
         <div class="hero-counter">
           <h2>Onze impact in cijfers</h2>
