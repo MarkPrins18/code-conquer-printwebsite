@@ -4,20 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BOUW³D — Over ons</title>
-
-  <!-- Centrale + pagina CSS (absoluut pad) -->
   <link rel="stylesheet" href="assets/css/global.css" />
   <link rel="stylesheet" href="assets/css/header-footer.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
   <link rel="stylesheet" href="assets/css/about-us.css" />
-
-  <!-- JS -->
   <script src="assets/js/header.js" defer></script>
   <script src="assets/js/about-us.js" defer></script>
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
 </head>
 
 <body>
+    <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
   <?php include 'layout/header.html'; ?>
 
   <main class="about-page">
