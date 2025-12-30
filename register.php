@@ -22,7 +22,7 @@
                 <h1 class="accent-color">Account aanmaken</h1>
                 <p>Creëer uw gratis account en start vandaag nog met het lokaal 3D-printen voor uw bouwprojecten.</p>
 
-                <form method="post" action="">
+                <form method="post" action="includes/User-inc.php">
                     <div class="form-group">
                         <input type="text" name="company_name" placeholder="Bedrijfsnaam" value="<?= htmlspecialchars($old['company_name'] ?? '') ?>" required>
                         <?php if (isset($errors['company_name'])): ?>
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="register-button-container">
-                        <button type="submit" class="button button--large">Account aanmaken</button>
+                        <button type="submit" class="button button--large" name = "submit">Account aanmaken</button>
                     </div>
                 </form>
         
