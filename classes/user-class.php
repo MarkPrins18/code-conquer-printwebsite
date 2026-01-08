@@ -13,7 +13,7 @@ class User
     public $created_at;
     public $updated_at;
 
-    public function __construct($company_name, $email, $password, $confirmPwd, $role_id)
+    public function __construct($company_name, $email, $password, $confirmPwd)
     {
 
         $this->company_name = $company_name;
@@ -44,13 +44,21 @@ class User
         }
 
         $this->createUser($this->company_name, $this->email, $this->password, $this->role_id);
+
+        // get the role name based on role_id
+        $role = new Role($this->role_id, "");
+        $role->read(); //test
+        $roleName = $role->name;
+        return $roleName; //test
+
+        // end
     }
 
     // createUser is currently a placeholder method, but should be the method that passes user data to the database
     private function createUser($company_name, $email, $hashedPwd, $role_id)
     {
         $hashedPwd = password_hash($hashedPwd, PASSWORD_DEFAULT);
-        var_dump($company_name, $email, $hashedPwd, $role_id); //end
+        var_dump($company_name, $email, $hashedPwd, $role_id);
         
         // code to verify User object is made and Pwd is hashed:
         // die("died after creation");

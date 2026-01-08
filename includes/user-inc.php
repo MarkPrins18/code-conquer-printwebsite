@@ -7,8 +7,8 @@ if (isset($_POST["submit"])) {
     $confirmPwd = $_POST["confirm"];
 
     //instantiate Use- class
+    include "../classes/role-class.php";
     include "../classes/user-class.php";
-    // include "../classes/role-class.php";
     $registerUser = new User($company_name, $email, $password, $confirmPwd);
 
 
@@ -18,9 +18,12 @@ if (isset($_POST["submit"])) {
     // die("<br>Stopped execution to inspect var_dump.");
     
     //run handler
-    $registerUser->signupUser();
+    //$registerUser->signupUser();
+    $roleName = $registerUser->signupUser(); // <-- Vang de roleName op
+
 
     //back to front page
-    header("location: ../register.php?object=success");
+    header("location: ../register.php?object=success&role=" . urlencode($roleName));
+    //header("location: ../register.php?object=success");
     exit();
 }
