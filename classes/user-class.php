@@ -47,9 +47,9 @@ class User
 
         // get the role name based on role_id
         $role = new Role($this->role_id, "");
-        $role->read(); //test
+        $role->read();
         $roleName = $role->name;
-        return $roleName; //test
+        return $roleName; //return roleName to see in URL
 
         // end
     }
@@ -110,10 +110,6 @@ class User
             $result = true;
         }
         return $result;
-    }
-
-    private function getRoleID() {
-
     }
 
 }

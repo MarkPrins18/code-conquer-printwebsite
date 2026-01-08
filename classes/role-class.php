@@ -5,7 +5,7 @@ class Role {
     public $role_id;
     public $name;
 
-    // Hardcoded roles voor POC (later uit database)
+    // Hardcoded roles for POC (will be replaced by DB in future)
     private static $roles = [
         1 => "Admin",
         2 => "standaard",
@@ -22,11 +22,11 @@ class Role {
     }
 
     public function read() {
-         // Haal rolename op basis van role_id
+         // Get role name based on role_id
         if(isset(self::$roles[$this->role_id])) {
             $this->name = self::$roles[$this->role_id];
         } else {
-            // Default naar 'User' als role_id niet bestaat
+            // Default role name if role_id not found
             $this->name = self::$roles[2];
         }
         
