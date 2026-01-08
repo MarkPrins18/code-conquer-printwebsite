@@ -49,6 +49,10 @@ class User
         $role = new Role($this->role_id, "");
         $role->read();
         $roleName = $role->name;
+
+        //session management
+        $this->startSession($roleName);
+
         return $roleName; //return roleName to see in URL
 
         // end
@@ -110,6 +114,17 @@ class User
             $result = true;
         }
         return $result;
+    }
+
+    //start the session
+    private function startSession($roleName) {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $_SESSION['company_name'] = $this->company_name;
+        $_SESSION['email'] = $this->email;
+        $_SESSION['role_name'] = $roleName;
     }
 
 }
