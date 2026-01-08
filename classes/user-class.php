@@ -13,13 +13,14 @@ class User
     public $created_at;
     public $updated_at;
 
-    public function __construct($company_name, $email, $password, $confirmPwd)
+    public function __construct($company_name, $email, $password, $confirmPwd, $role_id)
     {
 
         $this->company_name = $company_name;
         $this->email = $email;
         $this->password = $password;
         $this->confirmPwd = $confirmPwd;
+        $this->role_id = 2;
     }
 
     public function signupUser()
@@ -42,14 +43,14 @@ class User
             exit();
         }
 
-        $this->createUser($this->company_name, $this->email, $this->password);
+        $this->createUser($this->company_name, $this->email, $this->password, $this->role_id);
     }
 
     // createUser is currently a placeholder method, but should be the method that passes user data to the database
-    private function createUser($company_name, $email, $hashedPwd)
+    private function createUser($company_name, $email, $hashedPwd, $role_id)
     {
         $hashedPwd = password_hash($hashedPwd, PASSWORD_DEFAULT);
-        var_dump($company_name, $email, $hashedPwd);
+        var_dump($company_name, $email, $hashedPwd, $role_id); //end
         
         // code to verify User object is made and Pwd is hashed:
         // die("died after creation");
