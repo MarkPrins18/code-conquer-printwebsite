@@ -103,6 +103,10 @@ class User
         return $result;
     }
 
+    private function getRoleID() {
+
+    }
+
 }
     
       
