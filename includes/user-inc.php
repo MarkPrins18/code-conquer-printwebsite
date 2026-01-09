@@ -27,3 +27,4 @@ if (isset($_POST["submit"])) {
     header("location: ../register.php?object=success&role=" . urlencode($roleName));
     exit();
 }
+?>
