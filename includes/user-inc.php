@@ -18,12 +18,12 @@ if (isset($_POST["submit"])) {
     // die("<br>Stopped execution to inspect var_dump.");
     
     //run handler
-    //$registerUser->signupUser();
-    $roleName = $registerUser->signupUser(); // <-- Vang de roleName op
+    //$registerUser->signupUser();   //signupUser() return void
+    $roleName = $registerUser->signupUser(); //get role name
 
 
     //back to front page
+    //header("location: ../register.php?object=success"); //without roleName in URL
     header("location: ../register.php?object=success&role=" . urlencode($roleName));
-    //header("location: ../register.php?object=success");
     exit();
 }
