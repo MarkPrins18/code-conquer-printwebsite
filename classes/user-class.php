@@ -20,6 +20,7 @@ class User
         $this->email = $email;
         $this->password = $password;
         $this->confirmPwd = $confirmPwd;
+        $this->role_id = 2;
     }
 
     public function signupUser()
@@ -42,14 +43,26 @@ class User
             exit();
         }
 
-        $this->createUser($this->company_name, $this->email, $this->password);
+        $this->createUser($this->company_name, $this->email, $this->password, $this->role_id);
+
+        // get the role name based on role_id
+        $role = new Role($this->role_id, "");
+        $role->read();
+        $roleName = $role->name;
+
+        //session management
+        $this->startSession($roleName);
+
+        return $roleName; //return roleName to see in URL
+
+        // end
     }
 
     // createUser is currently a placeholder method, but should be the method that passes user data to the database
-    private function createUser($company_name, $email, $hashedPwd)
+    private function createUser($company_name, $email, $hashedPwd, $role_id)
     {
         $hashedPwd = password_hash($hashedPwd, PASSWORD_DEFAULT);
-        var_dump($company_name, $email, $hashedPwd);
+        var_dump($company_name, $email, $hashedPwd, $role_id);
         
         // code to verify User object is made and Pwd is hashed:
         // die("died after creation");
@@ -101,6 +114,17 @@ class User
             $result = true;
         }
         return $result;
+    }
+
+    //start the session
+    private function startSession($roleName) {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $_SESSION['company_name'] = $this->company_name;
+        $_SESSION['email'] = $this->email;
+        $_SESSION['role_name'] = $roleName;
     }
 
 }

@@ -1,3 +1,9 @@
+<?php
+session_start();
+?>
+<script>
+console.log(<?php echo json_encode($_SESSION); ?>);
+</script>
 <!DOCTYPE html>
 <html lang="nl">
   <head>
