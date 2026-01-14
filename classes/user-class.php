@@ -127,9 +127,17 @@ class User
         $_SESSION['role_name'] = $roleName;
     }
 
+    public function loginUser() {
+
+    }
+
+    private function validatePassword(){
+        
+    }
+      
 }
     
-      
+    
     // public function create() {
 
     // }
