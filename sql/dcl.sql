@@ -38,7 +38,9 @@ GRANT `admin_role` TO 'admin'@'localhost';
 GRANT `app_user_role` TO 'app_user'@'localhost';
 GRANT `data_analyst_role` TO 'data_analyst'@'localhost';
 
--- GRANT geeft de rol en SET DEFAULT ROLE activeert de rol
+-- Gebruik 'FOR' voor Windows / Nieuwere MariaDB
+-- Gebruik 'TO' voor Mac / Oudere MariaDB of MySQL
+-- Als 'FOR' niet werkt, verander het handmatig naar 'TO'
 SET DEFAULT ROLE `admin_role` FOR 'admin'@'localhost';
 SET DEFAULT ROLE `app_user_role` FOR 'app_user'@'localhost';
 SET DEFAULT ROLE `data_analyst_role` FOR 'data_analyst'@'localhost';
