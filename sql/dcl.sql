@@ -1,6 +1,7 @@
-DROP ROLE IF EXISTS `admin_role`;
-DROP ROLE IF EXISTS `app_user_role`;
-DROP ROLE IF EXISTS `data_analyst_role`;
+--use drop role when rerunning dcl
+--DROP ROLE `admin_role`;
+--DROP ROLE `app_user_role`;
+--DROP ROLE `data_analyst_role`;
 
 DROP USER IF EXISTS 'admin'@'localhost';
 DROP USER IF EXISTS 'app_user'@'localhost';
@@ -38,18 +39,11 @@ GRANT `admin_role` TO 'admin'@'localhost';
 GRANT `app_user_role` TO 'app_user'@'localhost';
 GRANT `data_analyst_role` TO 'data_analyst'@'localhost';
 
--- Use 'FOR' for Windows / newer MariaDB
--- Use 'TO' for Mac / older MariaDB or MySQL
--- Double single quotes ('') inside a string are an escape sequence: two quotes next to each other result in a single quote in the final query.
-SET @keyword = IF(VERSION() LIKE '%MariaDB%' AND VERSION() >= '10.1.1', 'FOR', 'TO');
-
-PREPARE stmt FROM CONCAT('SET DEFAULT ROLE `admin_role` ', @keyword, ' ''admin''@''localhost''');
-EXECUTE stmt; DEALLOCATE PREPARE stmt;
-
-PREPARE stmt FROM CONCAT('SET DEFAULT ROLE `app_user_role` ', @keyword, ' ''app_user''@''localhost''');
-EXECUTE stmt; DEALLOCATE PREPARE stmt;
-
-PREPARE stmt FROM CONCAT('SET DEFAULT ROLE `data_analyst_role` ', @keyword, ' ''data_analyst''@''localhost''');
-EXECUTE stmt; DEALLOCATE PREPARE stmt;
+-- Use 'FOR' for Windows / Newer MariaDB
+-- Use 'TO' for Mac / Older MariaDB or MySQL
+-- If 'FOR' doesn’t work, manually change it to 'TO'
+SET DEFAULT ROLE `admin_role` FOR 'admin'@'localhost';
+SET DEFAULT ROLE `app_user_role` FOR 'app_user'@'localhost';
+SET DEFAULT ROLE `data_analyst_role` FOR 'data_analyst'@'localhost';
 
 FLUSH PRIVILEGES;
