@@ -139,7 +139,7 @@ CREATE TABLE `catalog_products`
 (
     `product_id` INT UNSIGNED PRIMARY KEY,
     `sku` VARCHAR(20) NOT NULL UNIQUE,
-    `stock_quantity` SMALLINT UNSIGNED NOT NULL,
+    `stock_quantity` SMALLINT UNSIGNED NOT NULL,  ---trigger here when order gets made. after orderlineitem insert with same id
     `description` TEXT,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
@@ -152,3 +152,17 @@ CREATE TABLE `catalog_products`
 CREATE VIEW `view_users` AS
 SELECT `user_id`, `kvk`, `role_code`, `created_at`
 FROM `users`;
+
+DELIMITER $$
+
+CREATE TRIGGER trg_after_orderline_insert
+AFTER INSERT ON order_line_items
+FOR EACH ROW
+BEGIN
+    -- Reduce stock when a new order line is inserted
+    UPDATE catalog_products
+    SET stock_quantity = stock_quantity - NEW.quantity
+    WHERE product_id = NEW.product_id;
+END$$
+
+DELIMITER ;
