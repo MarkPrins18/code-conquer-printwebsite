@@ -1,3 +1,18 @@
+<?php 
+require_once __DIR__ . 'config\init.php';
+require_once 'translations\translations.php';
+require_once 'translations\index-translation.php';
+
+session_start();
+
+$allowedLanguages = ['nl', 'en'];
+
+if (isset($_GET['lang']) && in_array($_GET['lang'], $allowedLanguages)) {
+    $_SESSION['lang'] = $_GET['lang'];
+} 
+$lang = $_SESSION['lang'] ?? 'nl';
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
   <head>
@@ -22,19 +37,19 @@
     <main>
       <section class="hero">
         <div class="hero-content">
-          <h1>Wij maken bouwen sneller met moderne</h1>
-          <h2 class="accent-color">3d technieken.</h2>
-          <a href="/about-us.php" class="button button--large">Ontdek meer</a>
+          <h1><?= translate('heroH1', $translations, $lang) ?></h1>
+          <h2 class="accent-color"><?= translate('heroH2', $translations, $lang) ?></h2>
+          <a href="/about-us.php" class="button button--large"><?= translate('discover', $translations, $lang) ?></a>
         </div>
         <div class="hero-counter">
-          <h2>Onze impact in cijfers</h2>
+          <h2><?= translate('heroCounter', $translations, $lang) ?></h2>
           <div id="counters" class="fs-2">
             <span class="counter accent-color" data-target="50">0</span>
-            projecten voltooid<br />
+            <?= translate('heroTarget1', $translations, $lang) ?><br />
             <span class="counter accent-color" data-target="120">0</span>
-            3D-modellen gemaakt<br />
+            <?= translate('heroTarget2', $translations, $lang) ?><br />
             <span class="counter accent-color" data-target="25">0</span>
-            tevreden klanten
+            <?= translate('heroTarget3', $translations, $lang) ?>
           </div>
         </div>
       </section>
