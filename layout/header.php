@@ -1,3 +1,8 @@
+<?php
+//PHPDoc annotations for Intelephense.
+/** @var array $headerFooterTranslations */
+/** @var string $lang */
+?>
 <header>
   <nav>
     <div id="header-left">
@@ -10,11 +15,11 @@
     </button>
     <div id="header-right">
       <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="products.php">Producten</a></li>
-        <li><a href="services.php">Diensten</a></li>
-        <li><a href="about-us.php">Over ons</a></li>
-        <li><a href="contact.php">Contact</a></li>
+        <li><a href="index.php"><?= translate('home', $headerFooterTranslations, $lang) ?></a></li>
+        <li><a href="products.php"><?= translate('products', $headerFooterTranslations, $lang) ?></a></li>
+        <li><a href="services.php"><?= translate('services', $headerFooterTranslations, $lang) ?></a></li>
+        <li><a href="about-us.php"><?= translate('about-us', $headerFooterTranslations, $lang) ?></a></li>
+        <li><a href="contact.php"><?= translate('contact', $headerFooterTranslations, $lang) ?></a></li>
         <li>
             <a href="register.php" class="button text button-small">Registreren</a>
         </li>

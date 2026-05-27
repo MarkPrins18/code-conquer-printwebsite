@@ -1,16 +1,6 @@
 <?php 
-require_once __DIR__ . 'config\init.php';
-require_once 'translations\translations.php';
-require_once 'translations\index-translation.php';
-
-session_start();
-
-$allowedLanguages = ['nl', 'en'];
-
-if (isset($_GET['lang']) && in_array($_GET['lang'], $allowedLanguages)) {
-    $_SESSION['lang'] = $_GET['lang'];
-} 
-$lang = $_SESSION['lang'] ?? 'nl';
+require_once __DIR__. '\config\init.php';
+require_once __DIR__. '\translations\index-translation.php';
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +21,7 @@ $lang = $_SESSION['lang'] ?? 'nl';
 
   <body>
     <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
-    <?php include 'layout/header.html' ?>
+    <?php include 'layout/header.php' ?>
 
     <!--main added for semantic purposes-->
     <main>
