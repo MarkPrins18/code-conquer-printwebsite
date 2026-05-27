@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <?php include 'layout/header.html' ?>
+    <?php include 'layout/header.php' ?>
 
     <main>
         <h1>Diensten</h1>
@@ -96,7 +96,7 @@
         </div>
     </main>
 
-    <?php include 'layout/footer.html' ?>
+    <?php include 'layout/footer.php' ?>
 </body>
 
 </html>

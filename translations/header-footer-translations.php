@@ -6,6 +6,7 @@ $headerFooterTranslations = [
         'services' => 'Diensten',
         'about-us' => 'Over ons',
         'contact' => 'Contact',
+        'footerCopyright' => 'Alle rechten voorbehouden.',
     ],
     'en' => [
     'home' => 'Home',
@@ -13,5 +14,6 @@ $headerFooterTranslations = [
     'services' => 'Services',
     'about-us' => 'About us',
     'contact' => 'Contact',
+    'footerCopyright' => 'All rights reserved.',
     ],
 ];

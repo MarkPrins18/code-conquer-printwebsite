@@ -21,7 +21,7 @@ console.log(<?php echo json_encode($_SESSION); ?>);
   </head>
 
   <body>
-    <?php include 'layout/header.html' ?>
+    <?php include 'layout/header.php' ?>
 
   <main>
         <div class="register-card">
@@ -75,6 +75,6 @@ console.log(<?php echo json_encode($_SESSION); ?>);
                 </div>
         </div>
     </main>
-    <?php include 'layout/footer.html' ?>
+    <?php include 'layout/footer.php' ?>
   </body>
 </html>

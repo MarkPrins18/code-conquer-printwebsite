@@ -18,7 +18,7 @@
 
 <body>
     <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
-    <?php include 'layout/header.html' ?>
+    <?php include 'layout/header.php' ?>
 
     <main>
         <div class="contact-header">

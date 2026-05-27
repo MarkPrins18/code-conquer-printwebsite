@@ -46,88 +46,78 @@ require_once __DIR__. '\translations\index-translation.php';
 
       <section class="example p-1 m-1 text-center">
         <div class="upper-content">
-          <h1 class="accent-color">Voorbeelden van klanten</h1>
-          <p class="fs-2">Hieronder zie je enkele voorbeelden</p>
+          <h1 class="accent-color"><?= translate('exampleTitle', $translations, $lang) ?></h1>
+          <p class="fs-2"><?= translate('exampleSubtitle', $translations, $lang) ?></p>
         </div>
         <!--Here is the list and content. No section required since they fall in the example section-->
         <div class="example-list">
           <!--div to set list and content next to eachother-->
           <ul class="select-example">
-            <li class="list-item active-example" data-content="example-1">Delta Bouw</li>
-            <li class="list-item" data-content="example-2">Studio Nova</li>
-            <li class="list-item" data-content="example-3">Urban Build</li>
-            <li class="list-item" data-content="example-4">Rossum Design</li>
-            <li class="list-item" data-content="example-5">Willems en Zn</li>
+            <li class="list-item active-example" data-content="example-1"><?= translate('clientName1', $translations, $lang) ?></li>
+            <li class="list-item" data-content="example-2"><?= translate('clientName2', $translations, $lang) ?></li>
+            <li class="list-item" data-content="example-3"><?= translate('clientName3', $translations, $lang) ?></li>
+            <li class="list-item" data-content="example-4"><?= translate('clientName4', $translations, $lang) ?></li>
+            <li class="list-item" data-content="example-5"><?= translate('clientName5', $translations, $lang) ?></li>
           </ul>
           <div class="content fs-2">
             <article id="example-1" class="content-item">
               <blockquote>
-                “De 3D-visualisaties van Bouw3D hebben ons enorm geholpen bij
-                het overtuigen van onze opdrachtgever. Het ontwerp kwam tot
-                leven nog vóór de eerste steen gelegd was.”
+                <?= translate('clientText1', $translations, $lang) ?>
               </blockquote>
               <figure>
                 <img
                   src="assets/images/index-images/Klant-1.png"
-                  alt="Klantfoto"
+                  alt="<?= translate('clientAlt', $translations, $lang) ?>"
                 />
-                <figcaption>Delta Bouw</figcaption>
+                <figcaption><?= translate('clientName1', $translations, $lang) ?></figcaption>
               </figure>
             </article>
             <article id="example-2" class="content-item">
               <blockquote>
-                “Dankzij Bouw3D konden we ons bouwplan helder presenteren aan de
-                gemeente. De visualisaties waren professioneel en tot in detail
-                uitgewerkt.”
+                <?= translate('clientText2', $translations, $lang) ?>
               </blockquote>
               <figure>
                 <img
                   src="assets/images/index-images/klant-2.jpg"
-                  alt="Klantfoto"
+                  alt="<?= translate('clientAlt', $translations, $lang) ?>"
                 />
-                <figcaption>Studio Nova</figcaption>
+                <figcaption><?= translate('clientName2', $translations, $lang) ?></figcaption>
               </figure>
             </article>
             <article id="example-3" class="content-item">
               <blockquote>
-                “We hadden snel een 3D-model nodig voor een pitch, en Bouw3D
-                leverde binnen 48 uur een prachtig resultaat. Ze denken mee en
-                leveren kwaliteit.”
+                <?= translate('clientText3', $translations, $lang) ?>
               </blockquote>
               <figure>
                 <img
                   src="assets/images/index-images/klant-3.png"
-                  alt="Klantfoto"
+                  alt="<?= translate('clientAlt', $translations, $lang) ?>"
                 />
-                <figcaption>Urban Build</figcaption>
+                <figcaption><?= translate('clientName3', $translations, $lang) ?></figcaption>
               </figure>
             </article>
             <article id="example-4" class="content-item">
               <blockquote>
-                “Onze klanten waren onder de indruk van de realistische renders
-                die Bouw3D maakte. Het gaf hen direct vertrouwen in het
-                ontwerp.”
+                <?= translate('clientText4', $translations, $lang) ?>
               </blockquote>
               <figure>
                 <img
                   src="assets/images/index-images/klant-4.jpg"
-                  alt="Klantfoto"
+                  alt="<?= translate('clientAlt', $translations, $lang) ?>"
                 />
-                <figcaption>Rossum Design</figcaption>
+                <figcaption><?= translate('clientName4', $translations, $lang) ?></figcaption>
               </figure>
             </article>
             <article id="example-5" class="content-item">
               <blockquote>
-                “Door de visualisaties van Bouw3D ontdekten we een fout in de
-                indeling nog vóór de bouw begon. Dat heeft ons veel tijd en
-                kosten bespaard.”
+                <?= translate('clientText5', $translations, $lang) ?>
               </blockquote>
               <figure>
                 <img
                   src="assets/images/index-images/klant-5.jpg"
-                  alt="Klantfoto"
+                  alt="<?= translate('clientAlt', $translations, $lang) ?>"
                 />
-                <figcaption>Willems en Zn</figcaption>
+                <figcaption><?= translate('clientName5', $translations, $lang) ?></figcaption>
               </figure>
             </article>
           </div>
@@ -135,21 +125,17 @@ require_once __DIR__. '\translations\index-translation.php';
       </section>
 
       <section class="awards p-2">
-        <h2 class="text-center">Waar wij trots op zijn</h2>
+        <h2 class="text-center"><?= translate('awardsTitle', $translations, $lang) ?></h2>
 
         <article class="award">
           <img
             src="assets/images/index-images/placeholder-image.webp"
-            alt="Close-up van een 3D-printer die een bouwmodel print, met focus op precisie en techniek."
+            alt="<?= translate('altText1', $translations, $lang) ?>"
           />
           <div>
-            <h3>Onze 3D-printers maken ideeën tastbaar</h3>
+            <h3><?= translate('awardsSubTitle1', $translations, $lang) ?></h3>
             <p>
-              We zijn trots op onze moderne 3D-printers die bouwconcepten
-              omzetten in fysieke modellen. Ze helpen klanten om hun plannen
-              beter te begrijpen en sneller keuzes te maken. Deze technologie is
-              een belangrijk onderdeel van onze missie om bouwen inzichtelijker
-              te maken. Elke print is een stap richting slimmer bouwen.
+              <?= translate('awardsText1', $translations, $lang) ?>
             </p>
           </div>
         </article>
@@ -157,17 +143,12 @@ require_once __DIR__. '\translations\index-translation.php';
         <article class="award">
           <img
             src="assets/images/index-images/placeholder-image.webp"
-            alt="Groepsfoto van de vijf oprichters van Bouw3D, lachend en samenwerkend in een creatieve werkruimte."
+            alt="<?= translate('altText2', $translations, $lang) ?>"
           />
           <div>
-            <h3>Vijf oprichters, één gezamenlijke visie</h3>
+            <h3><?= translate('awardsSubTitle2', $translations, $lang) ?></h3>
             <p>
-              Bouw3D is gestart door vijf jonge ondernemers met een passie voor
-              techniek en innovatie. We combineren verschillende achtergronden
-              en expertises om samen iets nieuws neer te zetten. Onze
-              samenwerking is de motor achter alles wat we doen. We zijn trots
-              op de energie, creativiteit en het vertrouwen dat we in elkaar
-              hebben.
+              <?= translate('awardsText2', $translations, $lang) ?>
             </p>
           </div>
         </article>
@@ -175,16 +156,12 @@ require_once __DIR__. '\translations\index-translation.php';
         <article class="award">
           <img
             src="assets/images/index-images/placeholder-image.webp"
-            alt="Een frisse blik op de bouwsector"
+            alt="<?= translate('altText3', $translations, $lang) ?>"
           />
           <div>
-            <h3>Een frisse blik op de bouwsector</h3>
+            <h3><?= translate('awardsSubTitle3', $translations, $lang) ?></h3>
             <p>
-              Als startup durven we anders te kijken naar hoe bouwprojecten
-              worden voorbereid. We geloven in transparantie, snelheid en
-              visuele communicatie. Onze aanpak is persoonlijk en flexibel,
-              afgestemd op elke klant. We zijn trots op de eerste stappen die we
-              zetten in een traditionele sector.
+              <?= translate('awardsText3', $translations, $lang) ?>
             </p>
           </div>
         </article>
@@ -192,21 +169,17 @@ require_once __DIR__. '\translations\index-translation.php';
         <article class="award">
           <img
             src="assets/images/index-images/placeholder-image.webp"
-            alt="Handdruk tussen een Bouw3D teamlid en een klant, met een bouwproject op de achtergrond als symbool voor samenwerking."
+            alt="<?= translate('altText4', $translations, $lang) ?>"
           />
           <div>
-            <h3>Groeien met onze klanten en partners</h3>
+            <h3><?= translate('awardsSubTitle4', $translations, $lang) ?></h3>
             <p>
-              We staan nog aan het begin, maar we bouwen aan iets groots. Elke
-              samenwerking is voor ons een kans om te leren en te verbeteren. We
-              luisteren, denken mee en leveren met zorg en aandacht. We zijn
-              trots op het vertrouwen dat we krijgen van de eerste klanten en
-              partners.
+              <?= translate('awardsText4', $translations, $lang) ?>
             </p>
           </div>
         </article>
       </section>
     </main>
-    <?php include 'layout/footer.html' ?>
+    <?php include 'layout/footer.php' ?>
   </body>
 </html>
