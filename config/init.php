@@ -2,7 +2,9 @@
 require_once __DIR__ . '/../translations/translations.php';
 require_once __DIR__ . '/../translations/header-footer-translations.php';
 
-session_start(); // Let op!!! dit moet binne de code van Sherwin gebeuren.
+if (session_status() === PHP_SESSION_NONE) {
+     session_start(); // Let op!!! dit moet binne de code van Sherwin gebeuren.
+};
 
 $allowedLanguages = ['nl', 'en'];
 

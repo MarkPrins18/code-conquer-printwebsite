@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__. '/config/init.php';
 ?>
 <script>
 console.log(<?php echo json_encode($_SESSION); ?>);

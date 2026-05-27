@@ -1,4 +1,7 @@
- <!DOCTYPE html>
+<?php 
+require_once __DIR__. '/config/init.php';
+?>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="utf-8" />

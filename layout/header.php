@@ -27,8 +27,10 @@
           <div class="dropdown">
             <button class="dropbtn">taal</button>
             <div class="dropdown-content">
-              <a href="?lang=nl">NL</a>
-              <a href="?lang=en">EN</a>
+              <!--<a href="?lang=nl">NL</a> This is the old way, it overides the other query parameters.
+              <a href="?lang=en">EN</a> -->
+              <a href="?<?= http_build_query(array_merge($_GET, ['lang' => 'nl'])) ?>">NL</a>
+              <a href="?<?= http_build_query(array_merge($_GET, ['lang' => 'en'])) ?>">EN</a>
             </div>
           </div>
         </li>

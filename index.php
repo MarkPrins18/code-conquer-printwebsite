@@ -1,6 +1,6 @@
 <?php 
-require_once __DIR__. '\config\init.php';
-require_once __DIR__. '\translations\index-translation.php';
+require_once __DIR__. '/config/init.php';
+require_once __DIR__. '/translations/index-translation.php';
 ?>
 
 <!DOCTYPE html>
