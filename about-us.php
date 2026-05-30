@@ -1,4 +1,7 @@
- <!DOCTYPE html>
+<?php 
+require_once __DIR__. '/config/init.php';
+?>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="utf-8" />
@@ -17,7 +20,7 @@
 
 <body>
     <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
-  <?php include 'layout/header.html'; ?>
+  <?php include 'layout/header.php'; ?>
 
   <main class="about-page">
     <div class="container">
@@ -156,7 +159,7 @@ voor uw project.
 
   
 
-    <?php include 'layout/footer.html' ?>
+    <?php include 'layout/footer.php' ?>
 
 </body>
 </html>

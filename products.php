@@ -1,3 +1,6 @@
+<?php 
+require_once __DIR__. '/config/init.php';
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -17,7 +20,7 @@
 </head>
 
 <body>
-    <?php include 'layout/header.html' ?>
+    <?php include 'layout/header.php' ?>
 
     <main>
         <section class="header-row">
@@ -40,7 +43,7 @@
         </section>
     </main>
 
-    <?php include 'layout/footer.html' ?>
+    <?php include 'layout/footer.php' ?>
 </body>
 
 </html>
