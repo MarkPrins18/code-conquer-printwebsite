@@ -1,4 +1,7 @@
 <?php
+
+require_once __DIR__. '/config/init.php';
+
 $servername = "localhost"; //temp replace with PDO
 $username = "root";
 $password = "";
@@ -33,17 +36,10 @@ INNER JOIN order_statuses
 WHERE orders.user_id = 2
 ORDER BY orders.created_at DESC
 LIMIT 0, 25";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-$stmt = $conn->query($sql);
-    if (!$stmt) {
-        die("Query failed");
-    }
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-header('Content-Type: application/json');
-echo json_encode($result);
-exit;
-}
+
+$stmt = $conn->query($sql);
+$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -58,20 +54,53 @@ exit;
     <link rel="stylesheet" href="assets/css/components.css" />
     <link rel="stylesheet" href="assets/css/order-overview.css" />
     <link rel="stylesheet" href="assets/css/header-footer.css" />
-    <script src="assets/js/order-overview.js" defer></script>
     <script src="assets/js/header.js" defer></script>
     <title>Bouw3D</title>
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
 </head>
 <body>
     <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
-    <?php include 'layout/header.html' ?>
+    <?php include 'layout/header.php' ?>
     <main>
         <section class="introduction">
             <h1>Overzicht van bestellingen geplaatst door $bedrijf.</h1>
-            <div id="order-overview-table"></div>
+            <table id="orders-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Besteldatum</th>
+                        <th>Status</th>
+                        <th>Leveringsmethode</th>
+                        <th>Afleveradres</th>
+                        <th>Product</th>
+                        <th>Aantal</th>
+                        <th>Prijs p/st</th>
+                        <th>Regelprijs</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-body">
+                    <?php if (empty($orders)): ?>
+                        <tr><td colspan="9">Geen bestellingen gevonden.</td></tr>
+                    <?php else: ?>
+                        <?php foreach ($orders as $row): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($row['order_id']) ?></td>
+                                <td><?= htmlspecialchars($row['besteldatum']) ?></td>
+                                <td><?= htmlspecialchars($row['status']) ?></td>
+                                <td><?= htmlspecialchars($row['delivery_method']) ?></td>
+                                <td><?= htmlspecialchars($row['delivery_address']) ?></td>
+                                <td><?= htmlspecialchars($row['product_naam']) ?></td>
+                                <td><?= htmlspecialchars($row['quantity']) ?></td>
+                                <td>€ <?= number_format($row['prijs_per_stuk'], 2, ',', '.') ?></td>
+                                <td>€ <?= number_format($row['regelprijs'], 2, ',', '.') ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+           
         </section>
     </main>
-    <?php include 'layout/footer.html' ?>
+    <?php include 'layout/footer.php' ?>
 </body>
 </html>
