@@ -9,11 +9,11 @@ $headerFooterTranslations = [
         'footerCopyright' => 'Alle rechten voorbehouden.',
     ],
     'en' => [
-    'home' => 'Home',
-    'products' => 'Products',
-    'services' => 'Services',
-    'about-us' => 'About us',
-    'contact' => 'Contact',
-    'footerCopyright' => 'All rights reserved.',
+        'home' => 'Home',
+        'products' => 'Products',
+        'services' => 'Services',
+        'about-us' => 'About us',
+        'contact' => 'Contact',
+        'footerCopyright' => 'All rights reserved.',
     ],
 ];
