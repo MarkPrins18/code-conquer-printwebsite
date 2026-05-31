@@ -1,16 +1,14 @@
 let allProducts = [];
 
-// Fetch product data from JSON, store it in global array allProducts so the search function has access to it, and passes it to displayProducts function
-fetch("assets/data/products.json")
-  .then((response) => response.json())
-  .then((data) => {
+fetch("api/get-products.php")
+  .then(response => response.json())
+  .then(data => {
     allProducts = data;
     displayProducts(data);
   })
   .catch((error) => console.error(error));
 
-// Creates html elements with image, title, description, price, and button with values of the products array, then adds all those elements to the gridcontainer
-
+// Creates html elements with image, title, description, price, and button with values from the bouw3d_db database, then adds all those elements to the gridcontainer
 const displayProducts = function (products) {
   const gridContainer = document.querySelector(".products-container");
   gridContainer.innerHTML = "";
@@ -23,7 +21,7 @@ const displayProducts = function (products) {
     return;
   }
 
-  for (const { name, description, price } of products) {
+  for (const { name, description, price, img_url } of products) {
     const card = document.createElement("article");
     card.classList.add("grid-card");
 
@@ -31,7 +29,8 @@ const displayProducts = function (products) {
     imageDiv.classList.add("image-container");
 
     const img = document.createElement("img");
-    img.src = "assets/images/index-images/placeholder-image.webp";
+    img.src = "/code-conquer-printwebsite/assets/images/products-images/" + img_url;
+    console.log(img.src);
     img.alt = `Afbeelding van ${name}`;
     imageDiv.appendChild(img);
 
@@ -49,8 +48,9 @@ const displayProducts = function (products) {
 
     const priceEl = document.createElement("p");
 
-    priceEl.textContent = `€${price.toFixed(2)}`;
-
+    // parseFloat required because php returns price as string
+    priceEl.textContent = `€${parseFloat(price).toFixed(2)}`;
+    
     const buyButton = document.createElement("button");
     buyButton.classList.add("button", "button--small");
     buyButton.textContent = "Voeg toe aan winkelwagen";
