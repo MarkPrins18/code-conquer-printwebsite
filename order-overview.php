@@ -1,34 +1,54 @@
 <?php
-
 require_once __DIR__. '/config/init.php';
 require_once __DIR__. '/translations/order-overview-translations.php';
 
-$sql = "SELECT 
-    orders.order_id,
-    orders.created_at                        AS besteldatum,
-    order_statuses.label                     AS status,
-    orders.delivery_method,
-    orders.delivery_address,
-    products.name                            AS product_naam,
-    order_line_items.quantity,
-    order_line_items.unit_price              AS prijs_per_stuk,
-    (order_line_items.quantity * order_line_items.unit_price) AS regelprijs
+$stmt = $pdo->prepare("
+    SELECT 
+        orders.order_id,
+        orders.created_at AS bestel_datum,
+        order_statuses.label AS status,
+        orders.delivery_method,
+        orders.delivery_address
+    FROM orders
+    INNER JOIN order_statuses
+        ON order_statuses.status_code = orders.status_code
+    WHERE orders.user_id = :user_id
+    ORDER BY orders.created_at DESC
+    LIMIT 25
+");
 
-FROM orders 
-INNER JOIN order_line_items 
-    ON order_line_items.order_id = orders.order_id
-INNER JOIN products
-    ON order_line_items.product_id = products.product_id
-INNER JOIN order_statuses
-    ON order_statuses.status_code = orders.status_code
-WHERE orders.user_id = :user_id
-ORDER BY orders.created_at DESC
-LIMIT 25";
+$stmt->execute([
+    'user_id' => $_SESSION['user_id']
+]);
 
-
-$stmt = $pdo->prepare($sql);
-$stmt->execute(['user_id' => $_SESSION['user_id']]);
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+$stmtItems = $pdo->prepare("
+    SELECT 
+        order_line_items.order_id,
+        products.name,
+        order_line_items.quantity,
+        order_line_items.unit_price,
+        (order_line_items.quantity * order_line_items.unit_price) AS total_price
+    FROM order_line_items
+    INNER JOIN products
+        ON products.product_id = order_line_items.product_id
+");
+
+$stmtItems->execute();
+$itemsRaw = $stmtItems->fetchAll(PDO::FETCH_ASSOC);
+
+$itemsByOrder = [];
+
+foreach ($itemsRaw as $item) {
+    $itemsByOrder[$item['order_id']][] = $item;
+}
+
+$orderTotal = 0;
+foreach ($itemsRaw as $item) {
+    $orderTotal += $item['total_price'];
+}
 
 ?>
 
@@ -60,28 +80,38 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['status']) ?></th>
                         <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['deliveryMethod']) ?></th>
                         <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['deliveryAddress']) ?></th>
-                        <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['product']) ?></th>
-                        <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['quantity']) ?></th>
-                        <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['pricePerUnit']) ?></th>
-                        <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['linePrice']) ?></th>
+                        <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['orderTotal']) ?></th>
                     </tr>
                 </thead>
                 <tbody id="orders-body">
                     <?php if (empty($orders)): ?>
                         <tr><td colspan="9"><?= htmlspecialchars($orderOverviewTranslations[$lang]['noOrders']) ?></td></tr>
                     <?php else: ?>
-                        <?php foreach ($orders as $row): ?>
-                            <tr>
-                                <td><?= htmlspecialchars($row['order_id']) ?></td>
-                                <td><?= htmlspecialchars($row['besteldatum']) ?></td>
-                                <td><?= htmlspecialchars($row['status']) ?></td>
-                                <td><?= htmlspecialchars($row['delivery_method']) ?></td>
-                                <td><?= htmlspecialchars($row['delivery_address']) ?></td>
-                                <td><?= htmlspecialchars($row['product_naam']) ?></td>
-                                <td><?= htmlspecialchars($row['quantity']) ?></td>
-                                <td>€ <?= number_format($row['prijs_per_stuk'], 2, ',', '.') ?></td>
-                                <td>€ <?= number_format($row['regelprijs'], 2, ',', '.') ?></td>
-                            </tr>
+                        <?php foreach ($orders as $order): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($order['order_id']) ?></td>
+                            <td><?= htmlspecialchars($order['bestel_datum']) ?></td>
+                            <td><?= htmlspecialchars($order['status']) ?></td>
+                            <td><?= htmlspecialchars($order['delivery_method']) ?></td>
+                            <td><?= htmlspecialchars($order['delivery_address']) ?></td>
+                            <td><?= htmlspecialchars($orderTotal) ?></td>   
+                        </tr>
+
+                        <tr>
+                            <td colspan="3">
+
+                                <?php foreach ($itemsByOrder[$order['order_id']] ?? [] as $item): ?>
+                                    <tr>
+                                    <td><?= htmlspecialchars($item['name']) ?></td>  
+                                    <td>x<?= $item['quantity'] ?></td>
+                                    <td> (€<?= $item['unit_price'] ?>)</td>     
+                                    <td>= €<?= $item['total_price'] ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+
+                            </td>
+                        </tr>
+
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </tbody>

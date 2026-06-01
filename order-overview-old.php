@@ -3,47 +3,32 @@
 require_once __DIR__. '/config/init.php';
 require_once __DIR__. '/translations/order-overview-translations.php';
 
-$stmt = $pdo->prepare("
-    SELECT 
-        orders.order_id,
-        orders.created_at,
-        order_statuses.label AS status,
-        orders.delivery_method,
-        orders.delivery_address
-    FROM orders
-    INNER JOIN order_statuses
-        ON order_statuses.status_code = orders.status_code
-    WHERE orders.user_id = :user_id
-    ORDER BY orders.created_at DESC
-    LIMIT 25
-");
+$sql = "SELECT 
+    orders.order_id,
+    orders.created_at                        AS besteldatum,
+    order_statuses.label                     AS status,
+    orders.delivery_method,
+    orders.delivery_address,
+    products.name                            AS product_naam,
+    order_line_items.quantity,
+    order_line_items.unit_price              AS prijs_per_stuk,
+    (order_line_items.quantity * order_line_items.unit_price) AS regelprijs
 
-$stmt->execute([
-    'user_id' => $_SESSION['user_id']
-]);
+FROM orders 
+INNER JOIN order_line_items 
+    ON order_line_items.order_id = orders.order_id
+INNER JOIN products
+    ON order_line_items.product_id = products.product_id
+INNER JOIN order_statuses
+    ON order_statuses.status_code = orders.status_code
+WHERE orders.user_id = :user_id
+ORDER BY orders.created_at DESC
+LIMIT 25";
 
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['user_id' => $_SESSION['user_id']]);
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-$stmtItems = $pdo->prepare("
-    SELECT 
-        order_line_items.order_id,
-        products.name,
-        order_line_items.quantity,
-        order_line_items.unit_price
-    FROM order_line_items
-    INNER JOIN products
-        ON products.product_id = order_line_items.product_id
-");
-
-$stmtItems->execute();
-$itemsRaw = $stmtItems->fetchAll(PDO::FETCH_ASSOC);
-
-$itemsByOrder = [];
-
-foreach ($itemsRaw as $item) {
-    $itemsByOrder[$item['order_id']][] = $item;
-}
 
 ?>
 
@@ -85,27 +70,18 @@ foreach ($itemsRaw as $item) {
                     <?php if (empty($orders)): ?>
                         <tr><td colspan="9"><?= htmlspecialchars($orderOverviewTranslations[$lang]['noOrders']) ?></td></tr>
                     <?php else: ?>
-                        <?php foreach ($orders as $order): ?>
-                        <tr>
-                            <td>#<?= htmlspecialchars($order['order_id']) ?></td>
-                            <td><?= htmlspecialchars($order['status']) ?></td>
-                            <td><?= htmlspecialchars($order['created_at']) ?></td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="3">
-
-                                <?php foreach ($itemsByOrder[$order['order_id']] ?? [] as $item): ?>
-                                    <div>
-                                        <?= htmlspecialchars($item['name']) ?>
-                                        x<?= $item['quantity'] ?>
-                                        (€<?= $item['unit_price'] ?>)
-                                    </div>
-                                <?php endforeach; ?>
-
-                            </td>
-                        </tr>
-
+                        <?php foreach ($orders as $row): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($row['order_id']) ?></td>
+                                <td><?= htmlspecialchars($row['besteldatum']) ?></td>
+                                <td><?= htmlspecialchars($row['status']) ?></td>
+                                <td><?= htmlspecialchars($row['delivery_method']) ?></td>
+                                <td><?= htmlspecialchars($row['delivery_address']) ?></td>
+                                <td><?= htmlspecialchars($row['product_naam']) ?></td>
+                                <td><?= htmlspecialchars($row['quantity']) ?></td>
+                                <td>€ <?= number_format($row['prijs_per_stuk'], 2, ',', '.') ?></td>
+                                <td>€ <?= number_format($row['regelprijs'], 2, ',', '.') ?></td>
+                            </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </tbody>
