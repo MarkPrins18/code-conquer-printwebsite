@@ -1,0 +1,29 @@
+<?php
+$orderOverviewTranslations = [
+    'nl' => [
+        'introduction' => 'overzicht van bestellingen geplaatst door $bedrijf.',
+        'orderId' => 'Order ID',
+        'orderDate' => 'Besteldatum',
+        'status' => 'Status',
+        'deliveryMethod' => 'Leveringsmethode',
+        'deliveryAddress' => 'Afleveradres',
+        'product' => 'Product',
+        'quantity' => 'Aantal',
+        'pricePerUnit' => 'Prijs p/st',
+        'linePrice' => 'Regelprijs',
+        'noOrders' => 'Geen bestellingen gevonden.',
+    ],
+    'en' => [
+        'introduction' => 'Overview of orders placed by $company.',
+        'orderId' => 'Order ID',
+        'orderDate' => 'Order Date',
+        'status' => 'Status',
+        'deliveryMethod' => 'Delivery Method',
+        'deliveryAddress' => 'Delivery Address',
+        'product' => 'Product',
+        'quantity' => 'Quantity',
+        'pricePerUnit' => 'Price per Unit',
+        'linePrice' => 'Line Price',
+        'noOrders' => 'No orders found.',
+    ],
+];
