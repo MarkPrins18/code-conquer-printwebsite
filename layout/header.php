@@ -1,8 +1,14 @@
 <?php
+
 //PHPDoc annotations for Intelephense.
 /** @var array $headerFooterTranslations */
 /** @var string $lang */
+
+$isLoggedIn = isset($_SESSION['user_id']);
+$isAdmin    = ($_SESSION['role_name'] ?? '') === 'Admin';
+
 ?>
+
 <header>
   <nav>
     <div id="header-left">
@@ -15,25 +21,52 @@
     </button>
     <div id="header-right">
       <ul>
-        <li><a href="index.php"><?= translate('home', $headerFooterTranslations, $lang) ?></a></li>
-        <li><a href="products.php"><?= translate('products', $headerFooterTranslations, $lang) ?></a></li>
-        <li><a href="services.php"><?= translate('services', $headerFooterTranslations, $lang) ?></a></li>
-        <li><a href="about-us.php"><?= translate('about-us', $headerFooterTranslations, $lang) ?></a></li>
-        <li><a href="contact.php"><?= translate('contact', $headerFooterTranslations, $lang) ?></a></li>
-        <li>
+        <?php if ($isAdmin && $isloggedIn): ?>
+          <li><a href="admin/index.php">Dashboard</a></li>
+          <li><a href="admin/orders/index.php">Bestellingen</a></li>
+          <li><a href="admin/products/index.php">Producten</a></li>
+        <?php else: ?>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="products.php">Producten</a></li>
+          <li><a href="services.php">Diensten</a></li>
+          <li><a href="about-us.php">Over ons</a></li>
+          <li><a href="contact.php">Contact</a></li>
+        <?php endif; ?>
+
+        <?php if (!$isLoggedIn): ?>
+          <li>
             <a href="register.php" class="button text button-small">Registreren</a>
-        </li>
-        <li>
-          <div class="dropdown">
-            <button class="dropbtn">taal</button>
-            <div class="dropdown-content">
-              <!--<a href="?lang=nl">NL</a> This is the old way, it overides the other query parameters.
-              <a href="?lang=en">EN</a> -->
-              <a href="?<?= http_build_query(array_merge($_GET, ['lang' => 'nl'])) ?>">NL</a>
-              <a href="?<?= http_build_query(array_merge($_GET, ['lang' => 'en'])) ?>">EN</a>
+          </li>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Taal</button>
+              <div class="dropdown-content">
+                <a href="?<?= http_build_query(array_merge($_GET, ['lang' => 'nl'])) ?>">NL</a>
+                <a href="?<?= http_build_query(array_merge($_GET, ['lang' => 'en'])) ?>">EN</a>
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
+        <?php else: ?>
+          <li>
+            <div class="dropdown profile-dropdown">
+              <button class="dropbtn" aria-label="Profiel menu">
+                <?php if ($isAdmin && $isloggedIn): ?>
+                  <span class="admin-badge">Admin</span>
+                <?php endif; ?>
+              </button>
+              <div class="dropdown-content dropdown-content--right">
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-lang">
+                  <span>Taal:</span>
+                  <a href="?<?= http_build_query(array_merge($_GET, ['lang' => 'nl'])) ?>">NL</a>
+                  <a href="?<?= http_build_query(array_merge($_GET, ['lang' => 'en'])) ?>">EN</a>
+                </div>
+                <div class="dropdown-divider"></div>
+                <a href="logout.php" class="logout-link">Uitloggen</a>
+              </div>
+            </div>
+          </li>
+        <?php endif; ?>
       </ul>
     </div>
   </nav>
