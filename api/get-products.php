@@ -1,6 +1,6 @@
 <?php
 // PDO VERVANGEN MET PERMANENTE PDO
-require_once '../pdo.php'; 
+require_once '../includes/pdo.php'; 
 require_once '../classes/product-class.php';
 require_once '../includes/product-controller.php';
 
