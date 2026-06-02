@@ -1,20 +1,21 @@
 <?php
+class Database {
+    public static function getConnection() {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "bouw3d_db";
 
-$host = 'localhost';
-$dbname = 'bouw3d_db';
-$username = 'root';
-$password = '';
+        try {
+            $pdo = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8mb4", $username, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            return $pdo;  
 
-try {
-    $pdo = new PDO(
-        "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
-        $username,
-        $password
-    );
-
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-} catch (PDOException $e) {
-    die('Databaseverbinding mislukt: ' . $e->getMessage());    
+        } catch(PDOException $e) {
+            // Log this error instead of echoing it!
+            error_log("Connection failed: " . $e->getMessage());
+            throw new Exception("Database connection failed.");
+        }
+    }
 }
