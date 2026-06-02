@@ -1,5 +1,8 @@
 let allProducts = [];
 
+const imgBase = "/code-conquer-printwebsite/assets/images/products-images/";
+const imgPlaceholder = imgBase + "placeholder-image.webp";
+
 fetch("api/get-products.php")
   .then(response => response.json())
   .then(data => {
@@ -29,7 +32,13 @@ const displayProducts = function (products) {
     imageDiv.classList.add("image-container");
 
     const img = document.createElement("img");
-    img.src = "/code-conquer-printwebsite/assets/images/products-images/" + img_url;
+    // if img src is not found run .onerror
+    img.src = imgBase + img_url;
+      img.onerror = () => {    
+        img.onerror = null;     
+        img.src = imgPlaceholder;
+      };
+
     console.log(img.src);
     img.alt = `Afbeelding van ${name}`;
     imageDiv.appendChild(img);
