@@ -8,7 +8,13 @@ $productModel = new Product(Database::getConnection());
 $controller = new ProductController($productModel);
 
 $searchTerm = $_GET['search'] ?? '';
-$products = $controller->handleRequest($searchTerm);
+    try{
+        $products = $controller->handleRequest($searchTerm);
+
+    } catch (Exception $e) {
+        error_log("Caught: $e");
+        $products = [];    
+    }
 
 header('Content-Type: application/json');
 echo json_encode($products);
