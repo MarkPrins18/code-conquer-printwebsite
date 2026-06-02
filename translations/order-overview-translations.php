@@ -1,7 +1,7 @@
 <?php
 $orderOverviewTranslations = [
     'nl' => [
-        'introduction' => 'overzicht van bestellingen geplaatst door $bedrijf.',
+        'introduction' => 'overzicht van bestellingen',
         'orderId' => 'Order ID',
         'orderDate' => 'Besteldatum',
         'status' => 'Status',
@@ -15,7 +15,7 @@ $orderOverviewTranslations = [
         'noOrders' => 'Geen bestellingen gevonden.',
     ],
     'en' => [
-        'introduction' => 'Overview of orders placed by $company.',
+        'introduction' => 'Overview of orders',
         'orderId' => 'Order ID',
         'orderDate' => 'Order Date',
         'status' => 'Status',

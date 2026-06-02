@@ -23,7 +23,6 @@ $stmt->execute([
 
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
 $stmtItems = $pdo->prepare("
     SELECT 
         order_line_items.order_id,
@@ -50,6 +49,9 @@ foreach ($itemsRaw as $item) {
     $orderTotal += $item['total_price'];
 }
 
+//var_dump(array_keys($itemsByOrder));
+//print_r($itemsByOrder);
+
 ?>
 
 <!DOCTYPE html>
@@ -72,50 +74,42 @@ foreach ($itemsRaw as $item) {
     <main>
         <section class="introduction">
             <h1><?= htmlspecialchars($orderOverviewTranslations[$lang]['introduction']) ?></h1>
-            <table id="orders-table">
-                <thead>
-                    <tr>
-                        <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['orderId']) ?></th>
-                        <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['orderDate']) ?></th>
-                        <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['status']) ?></th>
-                        <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['deliveryMethod']) ?></th>
-                        <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['deliveryAddress']) ?></th>
-                        <th><?= htmlspecialchars($orderOverviewTranslations[$lang]['orderTotal']) ?></th>
-                    </tr>
-                </thead>
-                <tbody id="orders-body">
-                    <?php if (empty($orders)): ?>
-                        <tr><td colspan="9"><?= htmlspecialchars($orderOverviewTranslations[$lang]['noOrders']) ?></td></tr>
-                    <?php else: ?>
-                        <?php foreach ($orders as $order): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($order['order_id']) ?></td>
-                            <td><?= htmlspecialchars($order['bestel_datum']) ?></td>
-                            <td><?= htmlspecialchars($order['status']) ?></td>
-                            <td><?= htmlspecialchars($order['delivery_method']) ?></td>
-                            <td><?= htmlspecialchars($order['delivery_address']) ?></td>
-                            <td><?= htmlspecialchars($orderTotal) ?></td>   
-                        </tr>
 
-                        <tr>
-                            <td colspan="3">
+            <?php
+            foreach ($orders as $order) {
+                $table = new Table();
+                $table->setData([$order], 1);  //extra parameter for empty <TD>
 
-                                <?php foreach ($itemsByOrder[$order['order_id']] ?? [] as $item): ?>
-                                    <tr>
-                                    <td><?= htmlspecialchars($item['name']) ?></td>  
-                                    <td>x<?= $item['quantity'] ?></td>
-                                    <td> (€<?= $item['unit_price'] ?>)</td>     
-                                    <td>= €<?= $item['total_price'] ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
+                echo $table->renderTable();
 
-                            </td>
-                        </tr>
+                $table = new Table();
+                $table->setData($itemsByOrder[$order['order_id']] ?? []);
 
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </tbody>
-            </table>
+                echo $table->renderTable();
+            }
+            ?>
+
+            <?php
+            $table = new Table();
+            $table->setData($orders, 1);
+            //echo $table->renderTable();
+            $tableHtml = $table->renderTable();
+
+            $dom = new DOMDocument();
+            $dom->loadHTML($tableHtml, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+            foreach ($orders as $index => $order) {
+                $td = $dom->getElementById("td-row-{$index}");
+                
+                if ($td) {
+                    $button = $dom->createElement('button', 'Bekijk');
+                    $button->setAttribute('onclick', "window.location.href += '&order_id={$order['order_id']}'");
+                    $td->appendChild($button);
+                }
+            }
+
+            echo $dom->saveHTML();
+            ?>
            
         </section>
     </main>
