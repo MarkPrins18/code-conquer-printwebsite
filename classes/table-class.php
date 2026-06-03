@@ -1,16 +1,19 @@
-<?php 
+<?php
+require_once __DIR__ . '/../config/init.php';
+require_once __DIR__ . '/../translations/table-translations.php'; 
 
 class Table 
 {
     private array $data = [];
-    private int $extraColumns = 0;
+    private array $customColumns = [];
+    private array $columnLabels = [];
 
     
 
-    public function setData(array $data, int $extraColumns = 0): void
+    public function setData(array $data, array $customColumns = []): void
     {
         $this->data = $data;
-        $this->extraColumns = $extraColumns;
+        $this->customColumns = $customColumns; //is this needed?
     }
 
     public function renderTable(): string {
@@ -21,14 +24,17 @@ class Table
         // headers
         $html = '<table>';
         $html .= '<thead><tr>';
-        foreach (array_keys($this->data[0]) as $header) {
-            $html .= '<th>' . htmlspecialchars($header) . '</th>';
+
+        foreach (array_keys($this->data[0]) as $key) {
+        $label = $this->columnLabels[$key] ?? $key;
+        $html .= '<th>' . htmlspecialchars($label) . '</th>';
         }
 
-        //extra header
-        for ($i = 0; $i < $this->extraColumns; $i++) {
-            $html .= '<th></th>';
+        foreach ($this->customColumns as $column) {
+        $html .= '<th>' . htmlspecialchars($column['label']) . '</th>';
         }
+
+        
         $html .= '</tr></thead>';
 
         //rows
@@ -41,12 +47,9 @@ class Table
                 $html .= '<td>' . htmlspecialchars($value) . '</td>';
             }
 
-            // Extra lege TD's
-            for ($i = 1; $i <= $this->extraColumns; $i++) {
-                $id = $this->extraColumns === 1
-                    ? "td-row-{$rowIndex}"
-                    : "td-row-{$rowIndex}-{$i}";
-                $html .= '<td id="' . $id . '"></td>';
+            // custom columns
+           foreach ($this->customColumns as $column) {
+            $html .= '<td>' . $column['callback']($row) . '</td>';
             }
 
             $html .= '</tr>';
@@ -54,5 +57,34 @@ class Table
         }
         $html .= '</tbody></table>';
         return $html;
+    }
+
+    public function addCustomColumn(string $label, callable $callback): void
+    {
+        $this->customColumns[] = [
+            'label' => $label,
+            'callback' => $callback
+        ];
+    }
+
+    public function autoColumnLabels(): void
+    {
+        if (empty($this->data)) {
+            return;
+        }
+
+        global $tableTranslations;
+        global $lang;
+        $labels = [];
+
+        foreach (array_keys($this->data[0]) as $key) {  
+        $labels[$key] = translate($key, $tableTranslations, $lang);
+        }
+
+        foreach ($this->customColumns as &$column) {
+        $column['label'] = translate($column['label'], $tableTranslations, 'nl');
+        }
+
+        $this->columnLabels = $labels;
     }
 }

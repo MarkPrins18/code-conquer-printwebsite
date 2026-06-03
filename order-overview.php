@@ -8,10 +8,13 @@ $stmt = $pdo->prepare("
         orders.created_at AS bestel_datum,
         order_statuses.label AS status,
         orders.delivery_method,
-        orders.delivery_address
+        orders.delivery_address,
+        SUM(order_line_items.quantity * order_line_items.unit_price) AS order_total
     FROM orders
     INNER JOIN order_statuses
         ON order_statuses.status_code = orders.status_code
+    INNER JOIN order_line_items
+        ON order_line_items.order_id = orders.order_id
     WHERE orders.user_id = :user_id
     ORDER BY orders.created_at DESC
     LIMIT 25
@@ -44,7 +47,7 @@ foreach ($itemsRaw as $item) {
     $itemsByOrder[$item['order_id']][] = $item;
 }
 
-$orderTotal = 0;
+$orderTotal = 0;    //this is not needed.
 foreach ($itemsRaw as $item) {
     $orderTotal += $item['total_price'];
 }
@@ -76,39 +79,22 @@ foreach ($itemsRaw as $item) {
             <h1><?= htmlspecialchars($orderOverviewTranslations[$lang]['introduction']) ?></h1>
 
             <?php
-            foreach ($orders as $order) {
+            if (isset($_GET['order_id'])){
+                //order details
+                $orderId = (int)$_GET['order_id'];
                 $table = new Table();
-                $table->setData([$order], 1);  //extra parameter for empty <TD>
-
+                $table->setData($itemsByOrder[$orderId]);
+                $table->autoColumnLabels();
                 echo $table->renderTable();
-
-                $table = new Table();
-                $table->setData($itemsByOrder[$order['order_id']] ?? []);
-
-                echo $table->renderTable();
-            }
-            ?>
-
-            <?php
+            } else {
             $table = new Table();
-            $table->setData($orders, 1);
-            //echo $table->renderTable();
-            $tableHtml = $table->renderTable();
-
-            $dom = new DOMDocument();
-            $dom->loadHTML($tableHtml, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-            foreach ($orders as $index => $order) {
-                $td = $dom->getElementById("td-row-{$index}");
-                
-                if ($td) {
-                    $button = $dom->createElement('button', 'Bekijk');
-                    $button->setAttribute('onclick', "window.location.href += '&order_id={$order['order_id']}'");
-                    $td->appendChild($button);
-                }
+            $table->setData($orders);
+            $table->addCustomColumn('overview', function ($row) {
+            return '<a href="?order_id=' . (int)$row['order_id'] . '">Bekijk</a>';
+            });
+            $table->autoColumnLabels();
+            echo $table->renderTable();
             }
-
-            echo $dom->saveHTML();
             ?>
            
         </section>
