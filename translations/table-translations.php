@@ -11,6 +11,8 @@ $tableTranslations = [
         'quantity' => 'Aantal',
         'unit_price' => 'Prijs per eenheid',
         'total_price' => 'Totaal prijs',
+        'status_change' => 'Status wijzigen',
+        'delete' => 'Verwijderen'
     ],
     'en' => [
         'order_id' => 'Order ID',
@@ -23,5 +25,7 @@ $tableTranslations = [
         'quantity' => 'Quantity',
         'unit_price' => 'Unit Price',
         'total_price' => 'Total Price',
+        'status_change' => 'Change Status',
+        'delete' => 'Delete'
     ],
 ];
