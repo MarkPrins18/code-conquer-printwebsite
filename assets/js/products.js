@@ -1,9 +1,9 @@
 let allProducts = [];
 
-const imgBase = "/code-conquer-printwebsite/assets/images/products-images/";
+const imgBase = "/assets/images/products-images/";
 const imgPlaceholder = imgBase + "placeholder-image.webp";
 
-fetch("api/get-products.php")
+fetch("/api/products")
   .then(response => response.json())
   .then(data => {
     allProducts = data;
