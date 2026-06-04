@@ -10,7 +10,6 @@ class OrderController {
     public function handleRequest() {
         $isDetail = isset($_GET['order_id']);
         $isAdmin    = ($_SESSION['role_name'] ?? '') === 'Admin';
-        $isAdmin = true;
         if (isset($_GET['order_id'])){
             //order details
             $orderId = (int)$_GET['order_id'];

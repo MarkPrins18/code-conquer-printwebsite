@@ -22,6 +22,12 @@ class OrderModel {
             INNER JOIN order_line_items
                 ON order_line_items.order_id = orders.order_id
             WHERE orders.user_id = :user_id
+            GROUP BY 
+                orders.order_id,
+                orders.created_at,
+                order_statuses.label,
+                orders.delivery_method,
+                orders.delivery_address
             ORDER BY orders.created_at DESC
             LIMIT 25
         ");

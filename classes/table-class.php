@@ -13,13 +13,13 @@ class Table
     public function setData(array $data, array $customColumns = []): void
     {
         $this->data = $data;
-        $this->customColumns = $customColumns; //is this needed?
+        $this->customColumns = $customColumns;
     }
 
     public function renderTable(): string {
         
         if (empty($this->data)) {
-            return '<p>No data available.</p>'; //change error
+            return '<p>No data available.</p>';
         } 
         // headers
         $html = '<table>';
@@ -82,7 +82,7 @@ class Table
         }
 
         foreach ($this->customColumns as &$column) {
-        $column['label'] = translate($column['label'], $tableTranslations, 'nl');
+        $column['label'] = translate($column['label'], $tableTranslations, $lang);
         }
 
         $this->columnLabels = $labels;
