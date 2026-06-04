@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../includes/pdo.php';
 require_once __DIR__. '/../classes/table-class.php';
 require_once __DIR__ . '/../translations/translations.php';
-require_once __DIR__ . '/../translations/header-footer-translations.php';
+require __DIR__ . '/../translations/header-footer-translations.php';
 
 if (session_status() === PHP_SESSION_NONE) {
      session_start(); // Let op!!! dit moet binne de code van Sherwin gebeuren.

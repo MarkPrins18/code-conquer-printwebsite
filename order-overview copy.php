@@ -83,32 +83,6 @@ foreach ($itemsRaw as $item) {
             } else {
             $table = new Table();
             $table->setData($orders);
-            // Status aanpassen
-            $table->addCustomColumn('status_change', function ($row) {
-                $statuses = ['pending', 'processing', 'shipped', 'cancelled'];
-                $html = '<form method="POST">';
-                $html .= '<input type="hidden" name="order_id" value="' . (int)$row['order_id'] . '">';
-                $html .= '<input type="hidden" name="action" value="update_status">';
-                $html .= '<select name="status">';
-                foreach ($statuses as $status) {
-                    $selected = $row['status'] === $status ? 'selected' : '';
-                    $html .= '<option value="' . $status . '" ' . $selected . '>' . $status . '</option>';
-                }
-                $html .= '</select>';
-                $html .= '<button type="submit">Opslaan</button>';
-                $html .= '</form>';
-                return $html;
-            });
-            // Verwijderen
-            $table->addCustomColumn('delete', function ($row) {
-                $html = '<form method="POST">';
-                $html .= '<input type="hidden" name="order_id" value="' . (int)$row['order_id'] . '">';
-                $html .= '<input type="hidden" name="action" value="delete_order">';
-                $html .= '<button type="submit">Verwijderen</button>';
-                $html .= '</form>';
-                return $html;
-            });
-            //is the view column still needed?
             $table->addCustomColumn('overview', function ($row) {
             return '<a href="?order_id=' . (int)$row['order_id'] . '">Bekijk</a>';
             });
