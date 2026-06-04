@@ -13,6 +13,8 @@ $orderOverviewTranslations = [
         'pricePerUnit' => 'Prijs p/st',
         'linePrice' => 'Regelprijs',
         'noOrders' => 'Geen bestellingen gevonden.',
+        'order_details' => 'Bestelling details',
+        'back' => 'Terug naar overzicht',
     ],
     'en' => [
         'introduction' => 'Overview of orders',
@@ -27,5 +29,7 @@ $orderOverviewTranslations = [
         'pricePerUnit' => 'Price per Unit',
         'linePrice' => 'Line Price',
         'noOrders' => 'No orders found.',
+        'order_details' => 'Order details',
+        'back' => 'Back to overview',
     ],
 ];
