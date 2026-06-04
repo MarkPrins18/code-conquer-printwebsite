@@ -1,4 +1,7 @@
 <?php  
+require_once __DIR__ . '/config/init.php';
+
+$pdo = Database::getConnection();
 
 if (session_status() === PHP_SESSION_NONE) { //start sessie als er geen sessie is.
      session_start(); 
@@ -6,7 +9,7 @@ if (session_status() === PHP_SESSION_NONE) { //start sessie als er geen sessie i
 
 if(isset($_SESSION['user_id']))   // What does this function do?                        
  {    // true then header redirect it to the home page directly 
-    header("Location:index.php"); 
+    //header("Location:index.php"); //check location of page.
  }
 
 if(isset($_POST['login']))   // it checks whether the user clicked login button or not 
@@ -14,13 +17,31 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
      $user = $_POST['user'];
      $pass = $_POST['pass'];
 
-      if($user == "Ank" && $pass == "1234")  // username is  set to "Ank"  and Password   
-         {                                   // is 1234 by default     
+     //database check voor username en wachtwoord hash.
+     //sla waardes op in variabelen.
+     $sql = "SELECT `users`.`email`, `password_hash` FROM `users` WHERE `users`.`email` = :email;";
 
-          $_SESSION['user_id']=$user;
+     $stmt = $pdo->prepare($sql);
+     $stmt->bindParam(':email', $user);
+     $stmt->execute();
+     $result = $stmt->fetch();
 
+     echo '<pre>';
+    var_dump($result);
+      echo '</pre>';
 
-         echo '<script type="text/javascript"> window.open("home.php","_self");</script>';            //  On Successful Login redirects to home.php
+      if($user == $result['email'] && password_verify($pass, $result['password_hash']))
+         {
+          $sql = "SELECT * FROM `users` WHERE `users`.`email` = :email;";
+
+          $stmt = $pdo->prepare($sql);
+          $stmt->bindParam(':email', $user);
+          $stmt->execute();
+          $result = $stmt->fetch();
+
+          $_SESSION[] = $result;
+          
+         echo '<script type="text/javascript"> window.open("index.php","_self");</script>';            //  On Successful Login redirects to index.php
 
         }
 
