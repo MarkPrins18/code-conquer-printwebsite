@@ -960,3 +960,17 @@ INSERT INTO `custom_products` (`product_id`, `file_path`, `weight_grams`, `color
 
 
 COMMIT;
+
+-- updated first catalog products to showcase working product page
+UPDATE `catalog_products` SET `img_url` = 'concrete-formwork-connector.png' WHERE product_id = 1; 
+UPDATE `catalog_products` SET `img_url` = 'ventilation-grille.png' WHERE product_id = 2; 
+UPDATE `catalog_products` SET `img_url` = 'electrical-box-cover.png' WHERE product_id = 3; 
+UPDATE `catalog_products` SET `img_url` = 'pipe-support-bracket.png' WHERE product_id = 4; 
+UPDATE `catalog_products` SET `img_url` = 'metal-wall-anchor.png' WHERE product_id = 5; 
+UPDATE `catalog_products` SET `img_url` = 'drainage-channel-segment.png' WHERE product_id = 6; 
+UPDATE `catalog_products` SET `img_url` = 'aluminium-window-latch.png' WHERE product_id = 7; 
+UPDATE `catalog_products` SET `img_url` = 'titanium-structural-node.png' WHERE product_id = 8; 
+UPDATE `catalog_products` SET `img_url` = '3d-printed-concrete-tile.png' WHERE product_id = 9; 
+UPDATE `catalog_products` SET `img_url` = 'reinforced-nylon-dowel.png' WHERE product_id = 10; 
+
+COMMIT;

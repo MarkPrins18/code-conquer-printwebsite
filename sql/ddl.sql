@@ -166,3 +166,6 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+-- altered table in order to complete products page and replace placeholder img with actual img
+ALTER TABLE `catalog_products` ADD `img_url` VARCHAR(255);
