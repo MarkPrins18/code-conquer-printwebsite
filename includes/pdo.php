@@ -2,7 +2,7 @@
 
 $host = 'localhost';
 $dbname = 'bouw3d_db';
-$username = 'root';
+$username = 'sherwin';
 $password = '';
 
 try {

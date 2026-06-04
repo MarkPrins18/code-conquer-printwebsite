@@ -35,7 +35,7 @@ $isAdmin    = ($_SESSION['role_name'] ?? '') === 'Admin';
 
                 <?php if (!$isLoggedIn): ?>
                 <li>
-                    <a href="register.php" class="button text button-small">Registreren</a>
+                    <a href="login.php" class="button text button-small">Inloggen</a>
                 </li>
                 <li>
                     <div class="dropdown">

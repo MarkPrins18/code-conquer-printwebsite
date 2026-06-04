@@ -29,7 +29,7 @@ console.log(<?php echo json_encode($_SESSION); ?>);
                 <h1 class="accent-color">Account aanmaken</h1>
                 <p>Creëer uw gratis account en start vandaag nog met het lokaal 3D-printen voor uw bouwprojecten.</p>
 
-                <form method="post" action="includes/User-inc.php">
+                <form method="post" action="includes/auth-controller.php">
                     <div class="form-group">
                         <input type="text" name="company_name" placeholder="Bedrijfsnaam" value="<?= htmlspecialchars($old['company_name'] ?? '') ?>" required>
                         <?php if (isset($errors['company_name'])): ?>
