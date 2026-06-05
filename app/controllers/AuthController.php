@@ -2,7 +2,7 @@
 
 class AuthController {
     public function showRegister(): void {
-        view('auth/register');
+        view('auth/register'); 
     }
 
     public function handleRegister(): void {

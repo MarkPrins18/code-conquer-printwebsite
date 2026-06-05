@@ -2,7 +2,7 @@
 
 class ProductController {
     public function index(): void {
-        view('products/index');
+        view('guest/products/index');
     }
 
     public function getJson(): void {
