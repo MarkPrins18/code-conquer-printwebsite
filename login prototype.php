@@ -9,7 +9,7 @@ if (session_status() === PHP_SESSION_NONE) { //start sessie als er geen sessie i
 
 if(isset($_SESSION['user_id']))   // What does this function do?                        
  {    // true then header redirect it to the home page directly 
-    //header("Location:index.php"); //check location of page.
+    header("Location:index.php"); //check location of page.
  }
 
 if(isset($_POST['login']))   // it checks whether the user clicked login button or not 

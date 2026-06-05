@@ -66,52 +66,7 @@ sessionGetAndClear('placeholder_reset_email');
             </p>
         <?php endforeach; ?>
 
-        <div class="form-group">
-            <label for="email"><?= t('form_email') ?></label>
-            <input type="email" id="email" name="email"
-                   value="<?= htmlspecialchars($old['email'] ?? '') ?>"
-                   required placeholder="<?= t('form_email') ?>">
-        </div>
-
-        <div class="form-group">
-            <label for="password"><?= t('form_password') ?></label>
-            <input type="password" id="password" name="password"
-                   required placeholder="<?= t('form_password') ?>">
-            <a href="forgot-password.php" class="forgot-link"><?= t('link_forgot') ?></a>
-        </div>
-
-        <button type="submit" class="btn btn--primary"><?= t('btn_login') ?></button>
-        <p class="form-footer"><a href="register.php"><?= t('link_register') ?></a></p>
-    </form>
-
-</main>
-
-<footer><p><?= t('footer') ?></p></footer>
-<script src="assets/js/auth.js"></script>
-</body>
-</html>
-
-
-<!-- <html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <link rel="stylesheet" href="assets/css/global.css" />
-    <link rel="stylesheet" href="assets/css/header-footer.css" />
-    <link rel="stylesheet" href="assets/css/components.css" />
-    <link rel="stylesheet" href="assets/css/register.css">
-    <script src="assets/js/index.js" defer></script>
-    <script src="assets/js/header.js" defer></script>
-    <title><?= translate('title_login', $translations, $lang) ?> – Bouw3D - Inloggen</title>
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
-  </head>
-
-  <body>
-    <?php include 'layout/header.php' ?> -->
-
-  <main>
-        <div class="login-card">
+        <<div class="login-card">
                 <h1 class="accent-color"><?= translate('title_login', $formHandlingTranslations, $lang) ?></h1>
                 <p>Voer uw gegevens in om in te loggen.</p>
 
@@ -147,7 +102,10 @@ sessionGetAndClear('placeholder_reset_email');
                     <p><?= translate('link_register', $formHandlingTranslations, $lang) ?><a class="login-link" href="register.php"><?= translate('btn_register', $formHandlingTranslations, $lang) ?></a></p>
                 </div>
         </div>
-    </main>
-    <?php include 'layout/footer.php' ?>
-  </body>
+    </form>
+
+</main>
+
+<?php include 'layout/footer.php' ?>
+</body>
 </html>

@@ -2,7 +2,7 @@
 class Database {
     public static function getConnection() {
         $servername = "localhost";
-        $username = "root";
+        $username = "sherwin";
         $password = "";
         $dbname = "bouw3d_db";
 
