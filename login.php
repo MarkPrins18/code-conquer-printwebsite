@@ -70,6 +70,9 @@ if (isset($_POST['login'])) {
     // ----------------------------------------------------------
     if (empty($errors)) {
 
+        echo "test";
+
+
         try {
             // PDO-verbinding via centrale Database-klasse (pdo.php)
             $pdo = Database::getConnection();
@@ -107,12 +110,13 @@ if (isset($_POST['login'])) {
 
                 // Doorsturen naar bestellingen-pagina na succesvol inloggen
                 header('Location: index.php');
-                exit();
+                
 
             } else {
                 // Bewust vage foutmelding: geeft aanvaller geen info
                 // of e-mail bestaat of wachtwoord fout is
                 $errors[] = translate('err_login', $formHandlingTranslations, $lang);
+                var_dump(password_verify($password, $result['password_hash']));
             }
 
         } catch (Exception $e) {
@@ -194,7 +198,7 @@ if (isset($_POST['login'])) {
 
             <!-- Inlog-knop -->
             <div class="login-button-container">
-                <button type="submit" name="submit" class="button button--large">
+                <button type="submit" name="login" class="button button--large">
                     <?= translate('btn_login', $formHandlingTranslations, $lang) ?>
                 </button>
             </div>
