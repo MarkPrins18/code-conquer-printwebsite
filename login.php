@@ -133,7 +133,7 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="assets/css/global.css" />
     <link rel="stylesheet" href="assets/css/header-footer.css" />
     <link rel="stylesheet" href="assets/css/components.css" />
-    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="stylesheet" href="assets/css/login.css">
     <script src="assets/js/index.js" defer></script>
     <script src="assets/js/header.js" defer></script>
     <title><?= translate('title_login', $formHandlingTranslations, $lang) ?> – Bouw3D</title>
