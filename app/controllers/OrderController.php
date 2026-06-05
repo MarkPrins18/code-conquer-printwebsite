@@ -14,7 +14,7 @@ class OrderController {
             $orders = $model->getOrdersByUserId(Session::get('user_id'));
         }
 
-        view('orders/index', [
+        view('user/orders/index', [
             'isDetail'                  => false,
             'isAdmin'                   => Session::isAdmin(),
             'orders'                    => $orders,
@@ -29,7 +29,7 @@ class OrderController {
         $model = new Order($pdo);
         $items = $model->getItemsByOrderId((int) $id);
 
-        view('orders/index', [
+        view('user/orders/index', [
             'isDetail'                  => true,
             'isAdmin'                   => Session::isAdmin(),
             'items'                     => $items,
