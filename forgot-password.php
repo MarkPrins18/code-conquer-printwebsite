@@ -13,8 +13,8 @@
 require_once __DIR__ . '/config/init.php';
 require_once __DIR__ . '/translations/form-handling-translations.php';
 
-// /** @var array  $formHandlingTranslations */
-// /** @var string $lang                     */
+ /** @var array  $formHandlingTranslations */
+ /** @var string $lang                     */
 
 $pdo = Database::getConnection();
 

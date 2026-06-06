@@ -18,11 +18,11 @@ $isAdmin    = Session::isAdmin();
                 <li><a href="/admin/orders">Bestellingen</a></li>
                 <li><a href="/admin/products">Producten</a></li>
                 <?php else: ?>
-                <li><a href="/">Home</a></li>
-                <li><a href="/products">Producten</a></li>
-                <li><a href="/services">Diensten</a></li>
-                <li><a href="/about-us">Over ons</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="<?= BASE_PATH ?>/">Home</a></li>
+                <li><a href="<?= BASE_PATH ?>/products">Producten</a></li>
+                <li><a href="<?= BASE_PATH ?>/services">Diensten</a></li>
+                <li><a href="<?= BASE_PATH ?>/about-us">Over ons</a></li>
+                <li><a href="<?= BASE_PATH ?>/contact">Contact</a></li>
                 <?php endif; ?>
 
                 <?php if (!$isLoggedIn): ?>

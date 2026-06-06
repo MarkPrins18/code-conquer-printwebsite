@@ -15,8 +15,8 @@
 //        SESSION         – Sessie vullen + session_regenerate_id()
 //        REDIRECT        – Na succes naar index.php
 // ======
-
-require_once __DIR__ . '/config/init.php';
+Database::getConnection();
+// require_once __DIR__ . '/config/init.php';
 require_once __DIR__ . '/translations/form-handling-translations.php';
 
 /** @var array  $formHandlingTranslations */
@@ -201,14 +201,14 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <link rel="stylesheet" href="assets/css/global.css" />
-    <link rel="stylesheet" href="assets/css/header-footer.css" />
-    <link rel="stylesheet" href="assets/css/components.css" />
-    <link rel="stylesheet" href="assets/css/register.css">
-    <script src="assets/js/index.js" defer></script>
-    <script src="assets/js/header.js" defer></script>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/global.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/register.css">
+    <script src="<?= BASE_URL ?>/assets/js/index.js" defer></script>
+    <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
     <title><?= translate('title_register', $formHandlingTranslations, $lang) ?> – Bouw3D</title>
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
 <body>
 
@@ -324,6 +324,6 @@ if (isset($_POST['submit'])) {
 
 </main>
 
-<?php include 'layout/footer.php' ?>
+<?php include __DIR__ . '/../../layouts/footer.php' ?>
 </body>
 </html>

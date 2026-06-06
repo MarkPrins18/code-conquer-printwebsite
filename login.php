@@ -2,8 +2,8 @@
 require_once __DIR__ . '/config/init.php';
 require_once __DIR__ . '/translations/form-handling-translations.php';
 
-// /** @var array  $formHandlingTranslations  geladen door init.php via translations.php */
-// /** @var string $lang                      'nl' of 'en', gezet door init.php           */
+ /** @var array  $formHandlingTranslations  geladen door init.php via translations.php */
+ /** @var string $lang                      'nl' of 'en', gezet door init.php           */
 
 $pdo = Database::getConnection();
 
