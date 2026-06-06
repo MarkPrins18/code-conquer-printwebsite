@@ -14,7 +14,7 @@
   <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
 </head>
 <body>
-  <?php include __DIR__ . '/../layouts/header.php' ?>
+  <?php include __DIR__ . '/../../layouts/header.php' ?>
 
   <main class="about-page">
     <div class="container">
@@ -101,6 +101,6 @@
     </div>
   </main>
 
-  <?php include __DIR__ . '/../layouts/footer.php' ?>
+  <?php include __DIR__ . '/../../layouts/footer.php' ?>
 </body>
 </html>

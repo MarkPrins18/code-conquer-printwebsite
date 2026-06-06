@@ -25,7 +25,7 @@
 </head>
 <body>
     <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
-    <?php include __DIR__ . '/../layouts/header.php' ?>
+    <?php include __DIR__ . '/../../layouts/header.php' ?>
     <main>
         <section class="introduction">
             <?php if ($isDetail == true): ?>
@@ -85,6 +85,6 @@
 
         </section>
     </main>
-    <?php include __DIR__ . '/../layouts/footer.php' ?>
+    <?php include __DIR__ . '/../../layouts/footer.php' ?>
 </body>
 </html>
