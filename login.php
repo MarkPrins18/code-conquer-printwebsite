@@ -1,11 +1,4 @@
 <?php
-// =========================================================
-// login.php  –  FR02 Inloggen
-// Structuur gebaseerd op login_prototype.php
-// Geïntegreerd met: init.php, pdo.php, translations,
-//                   header.php / footer.php layout
-// =========================================================
-
 require_once __DIR__ . '/config/init.php';
 require_once __DIR__ . '/translations/form-handling-translations.php';
 

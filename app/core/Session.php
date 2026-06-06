@@ -1,0 +1,27 @@
+<?php
+
+class Session {
+    public static function set(string $key, mixed $value): void {
+        $_SESSION[$key] = $value;
+    }
+
+    public static function get(string $key, mixed $default = null): mixed {
+        return $_SESSION[$key] ?? $default;
+    }
+
+    public static function forget(string $key): void {
+        unset($_SESSION[$key]);
+    }
+
+    public static function isLoggedIn(): bool {
+        return isset($_SESSION['user_id']);
+    }
+
+    public static function isAdmin(): bool {
+        return ($_SESSION['role_name'] ?? '') === 'Admin';
+    }
+
+    public static function destroy(): void {
+        session_destroy();
+    }
+}
