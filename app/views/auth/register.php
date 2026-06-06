@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <link rel="stylesheet" href="/assets/css/global.css" />
-    <link rel="stylesheet" href="/assets/css/header-footer.css" />
-    <link rel="stylesheet" href="/assets/css/components.css" />
-    <link rel="stylesheet" href="/assets/css/register.css">
-    <script src="/assets/js/header.js" defer></script>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/global.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/register.css">
+    <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
     <title>Bouw3D - Registreren</title>
-    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
   </head>
   <body>
     <?php include __DIR__ . '/../../layouts/header.php' ?>
