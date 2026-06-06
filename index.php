@@ -53,7 +53,11 @@ function view(string $path, array $data = []): void {
     require BASE_PATH . '/app/views/' . $path . '.php';
 }
 
+$baseDir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+$uri     = substr($_SERVER['REQUEST_URI'], strlen($baseDir)) ?: '/';
+
 // Creates the router, loads all route definitions from config/routes.php, then matches the current URL to the right controller and method
+
 $router = new Router();
 require BASE_PATH . '/config/routes.php';
-$router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+$router->dispatch($uri, $_SERVER['REQUEST_METHOD']);
