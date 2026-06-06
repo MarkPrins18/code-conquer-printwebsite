@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diensten - BOUW3D</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <link rel="stylesheet" href="/assets/css/global.css">
-    <link rel="stylesheet" href="/assets/css/components.css">
-    <link rel="stylesheet" href="/assets/css/services.css">
-    <link rel="stylesheet" href="/assets/css/header-footer.css">
-    <script src="/assets/js/services.js" defer></script>
-    <script src="/assets/js/header.js" defer></script>
-    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/global.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/services.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css">
+    <script src="<?= BASE_URL ?>/assets/js/services.js" defer></script>
+    <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
 <body>
     <?php include __DIR__ . '/../../layouts/header.php' ?>
@@ -33,14 +33,14 @@
                 <p>Wij werken met diverse industriële metaalpoeders, waaronder roestvrij staal (RVS) voor hoge corrosiebestendigheid, aluminium voor lichtgewicht constructies, en titanium voor extreme sterkte en hittebestendigheid.</p>
             </section>
             <div class="carousel-container">
-                <img class="carousel-img" src="/assets/images/services-images/pexels-pixabay-159298.jpg" alt="Plaatje van metalen onderdelen.">
-                <img class="carousel-img" src="/assets/images/services-images/Gemini_Generated_Image_9j1udi9j1udi9j1u.png" alt="Plaatje van metalen onderdelen.">
-                <img class="carousel-img" src="/assets/images/services-images/Gemini_Generated_Image_rpz1btrpz1btrpz1.png" alt="Plaatje van metalen onderdelen.">
+                <img class="carousel-img" src="<?= BASE_URL ?>/assets/images/services-images/pexels-pixabay-159298.jpg" alt="Plaatje van metalen onderdelen.">
+                <img class="carousel-img" src="<?= BASE_URL ?>/assets/images/services-images/Gemini_Generated_Image_9j1udi9j1udi9j1u.png" alt="Plaatje van metalen onderdelen.">
+                <img class="carousel-img" src="<?= BASE_URL ?>/assets/images/services-images/Gemini_Generated_Image_rpz1btrpz1btrpz1.png" alt="Plaatje van metalen onderdelen.">
             </div>
         </div>
 
         <div class="layout-row">
-            <img src="/assets/images/services-images/emotion-tech-HPEOsBTn8Ps-unsplash.jpg" alt="Plaatje van kunststofprinter.">
+            <img src="<?= BASE_URL ?>/assets/images/services-images/emotion-tech-HPEOsBTn8Ps-unsplash.jpg" alt="Plaatje van kunststofprinter.">
             <section>
                 <h2>Kunststof 3D-printen: snelheid, flexibiliteit en kosten-efficiëntie</h2>
                 <p>Kunststof 3D-printing biedt de ideale balans tussen snelheid, materiaaleigenschappen en kostenefficiëntie. Het is de perfecte oplossing voor het snel valideren van ontwerpen en het produceren van maatwerk onderdelen en prototypes in kleinere oplages.</p>
@@ -69,7 +69,7 @@
                 <p>Uw voordeel:</p>
                 <p>U verzekert zich van een succesvol printresultaat, bespaart tijd op herontwerp en profiteert direct van onze diepgaande materiaalkennis.</p>
             </section>
-            <img src="/assets/images/services-images/kumpan-electric-SYoS eazBrls-unsplash.jpg" alt="Plaatje van CAD-ontwerper.">
+            <img src="<?= BASE_URL ?>/assets/images/services-images/kumpan-electric-SYoS eazBrls-unsplash.jpg" alt="Plaatje van CAD-ontwerper.">
         </div>
     </main>
 

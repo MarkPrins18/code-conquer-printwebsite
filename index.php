@@ -53,8 +53,12 @@ function view(string $path, array $data = []): void {
     require BASE_PATH . '/app/views/' . $path . '.php';
 }
 
+
 $baseDir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
 $uri     = substr($_SERVER['REQUEST_URI'], strlen($baseDir)) ?: '/';
+
+
+define('BASE_URL', $baseDir);
 
 // Creates the router, loads all route definitions from config/routes.php, then matches the current URL to the right controller and method
 

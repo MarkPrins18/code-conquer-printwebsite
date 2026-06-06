@@ -15,13 +15,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <link rel="stylesheet" href="/assets/css/global.css" />
-    <link rel="stylesheet" href="/assets/css/components.css" />
-    <link rel="stylesheet" href="/assets/css/order-overview.css" />
-    <link rel="stylesheet" href="/assets/css/header-footer.css" />
-    <script src="/assets/js/header.js" defer></script>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/global.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/order-overview.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
+    <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
     <title>Bouw3D</title>
-    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
 <body>
     <!--This code should be put on any page. The pages needs to have extension .php. Html files can't run php code.-->
