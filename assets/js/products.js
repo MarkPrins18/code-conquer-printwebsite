@@ -3,7 +3,7 @@ let allProducts = [];
 const imgBase = "/assets/images/products-images/";
 const imgPlaceholder = imgBase + "placeholder-image.webp";
 
-fetch("/api/products")
+fetch("get-products-json")
   .then(response => response.json())
   .then(data => {
     allProducts = data;
