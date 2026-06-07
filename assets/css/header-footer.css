@@ -135,8 +135,9 @@ header nav {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+   display: block;
 }
 
 .dropdown-divider {

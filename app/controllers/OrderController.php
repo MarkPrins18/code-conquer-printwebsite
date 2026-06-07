@@ -23,6 +23,7 @@ class OrderController {
     }
 
     public function show(string $id): void {
+        AuthGuard::requireLogin();
         global $orderOverviewTranslations;
 
         $pdo   = Database::getConnection();
@@ -34,8 +35,13 @@ class OrderController {
             http_response_code(403);
             echo '403 - Geen toegang';
             return;
+            }
         }
-    }
+
+        $items = array_map(function($item) {
+            unset($item['user_id']);
+            return $item;
+        }, $items);
 
         view('user/orders/index', [
             'isDetail'                  => true,
