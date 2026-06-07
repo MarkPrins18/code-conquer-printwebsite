@@ -44,9 +44,12 @@ $isAdmin    = Session::isAdmin();
                         <button class="dropbtn" aria-label="Profiel menu">
                             <?php if ($isAdmin): ?>
                             <span class="admin-badge">Admin</span>
+                            <?php else: ?>
+                            <i class="fa-solid fa-user"></i>
                             <?php endif; ?>
                         </button>
                         <div class="dropdown-content dropdown-content--right">
+                            <a href="/orders">Mijn bestellingen</a>
                             <div class="dropdown-divider"></div>
                             <div class="dropdown-lang">
                                 <span>Taal:</span>

@@ -29,6 +29,14 @@ class OrderController {
         $model = new Order($pdo);
         $items = $model->getItemsByOrderId((int) $id);
 
+        if (!Session::isAdmin()) {
+        if (empty($items) || (int) $items[0]['user_id'] !== (int) Session::get('user_id')) {
+            http_response_code(403);
+            echo '403 - Geen toegang';
+            return;
+        }
+    }
+
         view('user/orders/index', [
             'isDetail'                  => true,
             'isAdmin'                   => Session::isAdmin(),
