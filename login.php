@@ -9,6 +9,7 @@ error_reporting(E_ALL);
 
 // Laad only wat we nodig hebben (Database + vertalingen + sessie + BASIS constanten)
 require_once __DIR__ . '/app/core/Database.php';
+require_once __DIR__ . '/app/core/Router.php';
 require_once __DIR__ . '/app/lang/form-handling-translations.php';
 require_once __DIR__ . '/app/lang/translations.php';
 
