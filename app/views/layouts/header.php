@@ -18,20 +18,17 @@ $isAdmin    = Session::isAdmin();
                 <li><a href="/admin/orders">Bestellingen</a></li>
                 <li><a href="/admin/products">Producten</a></li>
                 <?php else: ?>
-                <li><a href="<?= BASE_PATH ?>/">Home</a></li>
-                <li><a href="<?= BASE_PATH ?>/products">Producten</a></li>
-                <li><a href="<?= BASE_PATH ?>/services">Diensten</a></li>
-                <li><a href="<?= BASE_PATH ?>/about-us">Over ons</a></li>
-                <li><a href="<?= BASE_PATH ?>/contact">Contact</a></li>
+                <li><a href="<?= BASE_URL ?>/">Home</a></li>
+                <li><a href="<?= BASE_URL ?>/products">Producten</a></li>
+                <li><a href="<?= BASE_URL ?>/services">Diensten</a></li>
+                <li><a href="<?= BASE_URL ?>/about-us">Over ons</a></li>
+                <li><a href="<?= BASE_URL ?>/contact">Contact</a></li>
                 <?php endif; ?>
 
                 <?php if (!$isLoggedIn): ?>
                 <li>
-<<<<<<< HEAD:layout/header.php
-                    <a href="login.php" class="button text button-small">Inloggen</a>
-=======
-                    <a href="/register" class="button text button-small">Registreren</a>
->>>>>>> main:app/views/layouts/header.php
+                    <a href="<?= BASE_URL ?>/login" class="button text button-small">Inloggen</a>
+                    <a href="<?= BASE_URL ?>/register" class="button text button-small">Registreren</a>
                 </li>
                 <li>
                     <div class="dropdown">

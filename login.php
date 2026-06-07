@@ -1,15 +1,34 @@
 <?php
-require_once __DIR__ . '/config/init.php';
-require_once __DIR__ . '/translations/form-handling-translations.php';
+
+ini_set('display_errors', '1');
+error_reporting(E_ALL);
+
+// require_once __DIR__ . '/../../config/routes.php';
+// require_once __DIR__. '/../../lang/form-handling-translations.php';
+// require_once __DIR__ . '/translations/form-handling-translations.php';
+
+// Laad only wat we nodig hebben (Database + vertalingen + sessie + BASIS constanten)
+require_once __DIR__ . '/app/core/Database.php';
+require_once __DIR__ . '/app/lang/form-handling-translations.php';
+require_once __DIR__ . '/app/lang/translations.php';
+
 
  /** @var array  $formHandlingTranslations  geladen door init.php via translations.php */
  /** @var string $lang                      'nl' of 'en', gezet door init.php           */
 
-$pdo = Database::getConnection();
+// $pdo = Database::getConnection();
 
 if (session_status() === PHP_SESSION_NONE) { //start sessie als er geen sessie is.
      session_start(); 
 };
+
+// Zorg dat BASE_URL en $lang beschikbaar zijn zoals in index.php
+$baseDir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+if (!defined('BASE_URL')) {
+    define('BASE_URL', $baseDir);
+}
+$lang = $_SESSION['lang'] ?? 'nl';
+
 
 // ----------------------------------------------------------
 // 1. Al ingelogd? Stuur door naar orders-pagina
@@ -63,7 +82,6 @@ if (isset($_POST['login'])) {
     // ----------------------------------------------------------
     if (empty($errors)) {
 
-        echo "test";
 
 
         try {
@@ -82,9 +100,9 @@ if (isset($_POST['login'])) {
             $result = $stmt->fetch(); // PDO::FETCH_ASSOC is default in pdo.php
 
 
-            echo '<pre>';
-            var_dump($result);
-            echo '</pre>';
+            // echo '<pre>';
+            // var_dump($result);
+            // echo '</pre>';
 
             // ----------------------------------------------------------
             // VALIDATIE 4 – Gebruiker bestaat + wachtwoord klopt
@@ -109,7 +127,7 @@ if (isset($_POST['login'])) {
                 // Bewust vage foutmelding: geeft aanvaller geen info
                 // of e-mail bestaat of wachtwoord fout is
                 $errors[] = translate('err_login', $formHandlingTranslations, $lang);
-                var_dump(password_verify($password, $result['password_hash']));
+                // var_dump(password_verify($password, $result['password_hash']));
             }
 
         } catch (Exception $e) {
@@ -127,18 +145,18 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <link rel="stylesheet" href="assets/css/global.css" />
-    <link rel="stylesheet" href="assets/css/header-footer.css" />
-    <link rel="stylesheet" href="assets/css/components.css" />
-    <link rel="stylesheet" href="assets/css/login.css">
-    <script src="assets/js/index.js" defer></script>
-    <script src="assets/js/header.js" defer></script>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/global.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/login.css">
+    <script src="<?= BASE_URL ?>/assets/js/index.js" defer></script>
+    <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
     <title><?= translate('title_login', $formHandlingTranslations, $lang) ?> – Bouw3D</title>
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
 <body>
 
-<?php include 'layout/header.php' ?>
+<?php include __DIR__ . '/app/views/layouts/header.php' ?>
 
 <main>
 
@@ -202,7 +220,7 @@ if (isset($_POST['login'])) {
         <div class="register-link-container">
             <p>
                 <?= translate('link_register', $formHandlingTranslations, $lang) ?>
-                <a class="login-link" href="register.php">
+                <a class="login-link" href="<?= BASE_URL ?>/register.php">
                     <?= translate('btn_register', $formHandlingTranslations, $lang) ?>
                 </a>
             </p>
@@ -212,6 +230,6 @@ if (isset($_POST['login'])) {
 
 </main>
 
-<?php include 'layout/footer.php' ?>
+<?php include __DIR__ . '/app/views/layouts/footer.php' ?>
 </body>
 </html>
