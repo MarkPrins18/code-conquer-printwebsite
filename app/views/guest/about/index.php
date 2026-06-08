@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BOUW³D — Over ons</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="/assets/css/global.css" />
-  <link rel="stylesheet" href="/assets/css/components.css" />
-  <link rel="stylesheet" href="/assets/css/header-footer.css" />
-  <link rel="stylesheet" href="/assets/css/about-us.css" />
-  <script src="/assets/js/header.js" defer></script>
-  <script src="/assets/js/about-us.js" defer></script>
-  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/global.css" />
+  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css" />
+  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
+  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/about-us.css" />
+  <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
+  <script src="<?= BASE_URL ?>/assets/js/about-us.js" defer></script>
+  <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
 <body>
   <?php include __DIR__ . '/../../layouts/header.php' ?>
@@ -63,23 +63,23 @@
             <h2>Het team</h2>
             <div class="team-grid">
               <div class="team-card">
-                <div class="avatar"><img src="/assets/images/team-leonel.jpg" alt="foto"></div>
+                <div class="avatar"><img src="<?= BASE_URL ?>/assets/images/team-leonel.jpg" alt="foto"></div>
                 <div class="team-meta"><strong>Leonel</strong><small>Projectlead</small></div>
               </div>
               <div class="team-card">
-                <div class="avatar"><img src="/assets/images/team-sherwin.jpg" alt="foto"></div>
+                <div class="avatar"><img src="<?= BASE_URL ?>/assets/images/team-sherwin.jpg" alt="foto"></div>
                 <div class="team-meta"><strong>Sherwin</strong><small>Operations</small></div>
               </div>
               <div class="team-card">
-                <div class="avatar"><img src="/assets/images/team-stefan.jpg" alt="foto"></div>
+                <div class="avatar"><img src="<?= BASE_URL ?>/assets/images/team-stefan.jpg" alt="foto"></div>
                 <div class="team-meta"><strong>Stefan</strong><small>Engineer</small></div>
               </div>
               <div class="team-card">
-                <div class="avatar"><img src="/assets/images/team-mark.jpg" alt="foto"></div>
+                <div class="avatar"><img src="<?= BASE_URL ?>/assets/images/team-mark.jpg" alt="foto"></div>
                 <div class="team-meta"><strong>Mark</strong><small>Design</small></div>
               </div>
               <div class="team-card">
-                <div class="avatar"><img src="/assets/images/team-david.jpg" alt="foto"></div>
+                <div class="avatar"><img src="<?= BASE_URL ?>/assets/images/team-david.jpg" alt="foto"></div>
                 <div class="team-meta"><strong>David</strong><small>Quality</small></div>
               </div>
             </div>
@@ -95,7 +95,7 @@
         </div>
 
         <aside class="hero-media">
-          <img src="/assets/images/index-images/3Dprinter-about-us.png" alt="Industriële 3D-printer in werkplaats" loading="lazy">
+          <img src="<?= BASE_URL ?>/assets/images/index-images/3Dprinter-about-us.png" alt="Industriële 3D-printer in werkplaats" loading="lazy">
         </aside>
       </section>
     </div>
