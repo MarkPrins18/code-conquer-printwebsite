@@ -1,6 +1,6 @@
 let allProducts = [];
 
-const imgBase = "/assets/images/products-images/";
+const imgBase = "assets/images/products-images/";
 const imgPlaceholder = imgBase + "placeholder-image.webp";
 
 fetch("get-products-json")
