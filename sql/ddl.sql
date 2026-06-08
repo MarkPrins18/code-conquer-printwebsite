@@ -169,3 +169,16 @@ DELIMITER ;
 
 -- altered table in order to complete products page and replace placeholder img with actual img
 ALTER TABLE `catalog_products` ADD `img_url` VARCHAR(255);
+
+-- added table for fr008
+-- failed_search_logs tabel aanmaken
+-- kolom: log_id: INT
+-- kolom: search_string: VARCHAR255
+-- kolom: TIMESTAMP: TIMESTAMP
+CREATE TABLE `failed_search_logs`
+(
+    `log_id` INT UNSIGNED PRIMARY KEY,
+    `search_string` VARCHAR(255) NOT NULL,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+);
