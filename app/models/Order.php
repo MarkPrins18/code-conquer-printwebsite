@@ -52,6 +52,7 @@ class Order {
     public function getItemsByOrderId($orderId) {
         $stmt = $this->pdo->prepare("
             SELECT
+                orders.user_id,
                 order_line_items.order_id,
                 products.name,
                 order_line_items.quantity,
@@ -59,6 +60,7 @@ class Order {
                 (order_line_items.quantity * order_line_items.unit_price) AS total_price
             FROM order_line_items
             INNER JOIN products ON products.product_id = order_line_items.product_id
+            INNER JOIN orders ON orders.order_id = order_line_items.order_id
             WHERE order_line_items.order_id = :order_id
         ");
         $stmt->execute(['order_id' => $orderId]);

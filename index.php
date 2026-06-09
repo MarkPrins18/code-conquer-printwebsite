@@ -35,8 +35,12 @@ $lang = $_SESSION['lang'] ?? 'nl';
 
 
 if (!isset($_SESSION['user_id'])) {
-    $_SESSION['user_id'] = 2;
+    $_SESSION['user_id'] = 7;   //Test session data
+    //$_SESSION['role_name'] = 'Admin';
 }
+
+//session_destroy();
+//die();
 
 // Load all translation arrays so every controller and view can use them without loading them again
 require_once BASE_PATH . '/app/lang/translations.php';
