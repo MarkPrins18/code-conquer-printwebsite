@@ -54,7 +54,7 @@
                     minlength="8"
                     autocomplete="current-password"
                 >
-                <a href="forgot-password.php" class="forgot-link">
+                <a href="<?= BASE_URL ?>/forgot-password.php" class="forgot-link">
                     <!-- <?= $t['link_forgot'] ?> -->
                 </a>
             </div>
