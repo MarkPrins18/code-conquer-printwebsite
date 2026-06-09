@@ -24,7 +24,7 @@ class ContactController {
             'success'      => true,
             'mailPreview'  => [
                 'aan'       => 'info@bouw3d.nl',
-                'van'       => "$name <$email>",
+                'van'       => "$email",
                 'onderwerp' => 'Nieuw contactbericht',
                 'bericht'   => $message,
             ]
