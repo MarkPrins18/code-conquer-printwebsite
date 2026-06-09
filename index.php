@@ -70,13 +70,14 @@ function view(string $path, array $data = []): void {
 // }
 
 
-$baseDir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+$baseDir = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
 $uri     = substr($_SERVER['REQUEST_URI'], strlen($baseDir)) ?: '/';
 
 
 define('BASE_URL', $baseDir);
 
 // Creates the router, loads all route definitions from config/routes.php, then matches the current URL to the right controller and method
+
 
 $router = new Router();
 require BASE_PATH . '/config/routes.php';
