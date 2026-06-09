@@ -24,33 +24,21 @@
                 <div class="form-group">
                     <input type="text" name="company_name" placeholder="Bedrijfsnaam"
                            value="<?= htmlspecialchars($old['company_name'] ?? '') ?>" required>
-                    <?php if (!empty($errors['company_name'])): ?>
-                        <span class="error"><?= htmlspecialchars($errors['company_name']) ?></span>
-                    <?php endif ?>
                 </div>
 
                 <div class="form-group">
                     <input type="email" name="email" placeholder="Zakelijk E-mailadres"
                            value="<?= htmlspecialchars($old['email'] ?? '') ?>" required>
-                    <?php if (!empty($errors['email'])): ?>
-                        <span class="error"><?= htmlspecialchars($errors['email']) ?></span>
-                    <?php endif ?>
                 </div>
 
                 <div class="form-group password-wrapper">
-                    <input type="password" name="password" placeholder="Wachtwoord" required minlength="8">
-                    <?php if (!empty($errors['password'])): ?>
-                        <span class="error"><?= htmlspecialchars($errors['password']) ?></span>
-                    <?php endif ?>
+                    <input type="password" name="password" placeholder="Wachtwoord" required 
+                    <!-- minlength="8"> -->
                 </div>
 
                 <div class="form-group password-wrapper">
                     <input type="password" name="confirm" placeholder="Wachtwoord bevestigen" required>
                 </div>
-
-                <?php if (!empty($errors['empty'])): ?>
-                    <span class="error"><?= htmlspecialchars($errors['empty']) ?></span>
-                <?php endif ?>
 
                 <div class="terms-checkbox">
                     <input type="checkbox" name="terms" id="terms" required>

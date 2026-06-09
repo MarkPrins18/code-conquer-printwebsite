@@ -59,9 +59,13 @@ class User
         var_dump($this->company_name, $this->email, $hashedPwd, $this->role_id);
     }
 
-    public function loginUser() {
-
+    public function loginUser(string $email, string $password): ?array  {
+    // zoek de gebruiker op e-mail (prepared statement) -> $row
+    if ($row && password_verify($password, $row['password_hash'])) {
+        return $row; // inlog klopt!
     }
+    return null;     // onbekende gebruiker of fout wachtwoord!
+}
 
     //ERRORS
     //checks if all fields are filled in

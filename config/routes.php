@@ -10,6 +10,8 @@ $router->get('/products',     [ProductController::class, 'index']);
 $router->get('/api/products', [ProductController::class, 'getJson']);
 $router->get('/register',   [AuthController::class, 'showRegister']);
 $router->post('/register',  [AuthController::class, 'handleRegister']);
+$router->get('/login',      [AuthController::class, 'showLogin']);
+$router->post('/login',     [AuthController::class, 'handleLogin']);
 
 
 // urls for logged in users, can be guarded by a islogged in check

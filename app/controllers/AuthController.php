@@ -16,4 +16,16 @@ class AuthController {
             $user->signupUser();
         }
     }
+
+    public function handleLogin(): void {
+        $user = new User(...);  //gebruiker Object
+        $found = $user->loginUser($_POST['email'], $_POST['password']);
+        if ($found) {
+            Session::set('user_id', $found['user_id']);
+            Session::set('role_name', $found['role_label']); // nodig voor isAdmin()
+            header('Location: ' . BASE_URL . '/orders');
+        } else {
+            // terug naar het formulier met een foutmelding!
+        }
+    }
 }
