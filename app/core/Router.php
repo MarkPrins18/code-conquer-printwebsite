@@ -74,6 +74,7 @@ class Router {
             $requestSegment = $requestSegments[$index];
 
             if (str_starts_with($routeSegment, '{')) {
+                $paramName = trim($routeSegment, '{}');
                 $params[$paramName] = $requestSegment;
             } elseif ($routeSegment !== $requestSegment) {
                 return null;

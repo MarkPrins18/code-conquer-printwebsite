@@ -35,8 +35,12 @@ $lang = $_SESSION['lang'] ?? 'nl';
 
 
 if (!isset($_SESSION['user_id'])) {
-    $_SESSION['user_id'] = 2;
+    $_SESSION['user_id'] = 7;   //Test session data
+    //$_SESSION['role_name'] = 'Admin';
 }
+
+//session_destroy();
+//die();
 
 // Load all translation arrays so every controller and view can use them without loading them again
 require_once BASE_PATH . '/app/lang/translations.php';
@@ -54,13 +58,14 @@ function view(string $path, array $data = []): void {
 }
 
 
-$baseDir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+$baseDir = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
 $uri     = substr($_SERVER['REQUEST_URI'], strlen($baseDir)) ?: '/';
 
 
 define('BASE_URL', $baseDir);
 
 // Creates the router, loads all route definitions from config/routes.php, then matches the current URL to the right controller and method
+
 
 $router = new Router();
 require BASE_PATH . '/config/routes.php';
