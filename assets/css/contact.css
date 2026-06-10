@@ -1,26 +1,23 @@
-.contact-hero {
-    background-color: var(--color-header-footer-dark-blue);
-    color: white;
-    padding: 3rem 2rem;
-    text-align: center;
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.contact-hero__title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem;
+.header-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
-.contact-hero__sub {
-    font-size: 1rem;
-    opacity: 0.8;
-    margin: 0;
-}
-
-.contact-main {
+main {
     max-width: 900px;
     margin: 3rem auto;
     padding: 0 1.5rem;
+    flex: 1;
 }
 
 .contact-grid {
