@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BOUW3D</title>
+    <title>contact - BOUW3D</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/global.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/contact.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
-    <script src="<?= BASE_URL ?>/assets/js/contact.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
@@ -26,7 +25,7 @@
                 <div class="contact-info__block">
                     <i class="fa-solid fa-location-dot"></i>
                     <div>
-                        <strong><?= translate('adress', $translations, $lang) ?></strong>
+                        <strong><?= translate('address', $translations, $lang) ?></strong>
                         <span>Printstraat 3, 1234 AB Amsterdam</span>
                     </div>
                 </div>

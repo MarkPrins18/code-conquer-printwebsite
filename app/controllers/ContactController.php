@@ -7,22 +7,24 @@ class ContactController {
     }
 
     public function send(): void {
+        global $contactTranslations;
         $name    = trim($_POST['name']    ?? "");
         $email   = trim($_POST['email']   ?? "");
         $subject = trim($_POST['subject'] ?? "");
         $message = trim($_POST['message'] ?? "");
 
         if (!$name || !$email || !$subject || !$message) {
-            view('guest/contact/index', ['error' => 'Vul alle velden in.']);
+            view('guest/contact/index', ['translations' => $contactTranslations, 'error' => translate('all_fields_required', $translations, $lang)]);
             return;
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            view('guest/contact/index', ['error' => 'Vul een geldig e-mailadres in.']);
+            view('guest/contact/index', ['translations' => $contactTranslations, 'error' => translate('invalid_email', $translations, $lang)]);
             return;
         }
 
         view('guest/contact/index', [
+            'translations' => $contactTranslations,
             'success'     => true,
             'mailPreview' => [
                 'aan'       => 'info@bouw3d.nl',
