@@ -37,7 +37,8 @@ $formHandlingTranslations = [
         'err_email_exists'   => 'Dit e-mailadres is al geregistreerd. Probeer in te loggen.',
         'err_login'          => 'Het opgegeven e-mailadres of wachtwoord is onjuist.',
         'err_technical'      => 'Technische fout. Probeer het later opnieuw.',
-        'err_token'          => 'De link is verlopen. Vraag een nieuwe aan.',
+        'err_token_due'      => 'Ongeldige of verlopen token.',
+        'err_token_request'  => 'Vraag een nieuw wachtwoord-reset aan.',
         // Success messages
         'msg_reset_sent'     => 'Als dit e-mailadres bij ons bekend is, ontvangt u een reset-link.',
         'msg_reset_success'  => 'Uw wachtwoord is succesvol gewijzigd. U kunt nu inloggen.',
@@ -80,7 +81,8 @@ $formHandlingTranslations = [
         'err_email_exists'   => 'This email address is already registered. Try logging in.',
         'err_login'          => 'The provided email address or password is incorrect.',
         'err_technical'      => 'Technical error. Please try again later.',
-        'err_token'          => 'The link has expired. Please request a new one.',
+        'err_token_due'      => 'The link has expired.',
+        'err_token_request'  => 'Please request a new password reset.',
         // Success messages
         'msg_reset_sent'     => 'If this email is known to us, you will receive a reset link.',
         'msg_reset_success'  => 'Your password has been changed successfully. You can now log in.',

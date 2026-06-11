@@ -111,4 +111,136 @@ class User
         }
         return $result;
     }
+
+
+    public function findByEmail(string $email): ?array {
+    $pdo = Database::getConnection();
+
+    $stmt = $pdo->prepare("
+        SELECT *
+        FROM users
+        WHERE email = :email
+        LIMIT 1
+    ");
+
+    $stmt->execute([
+        'email' => $email
+    ]);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $user ?: null;
+    
+    }
+
+
+    public function createResetToken(string $email): ?string {
+    $user = $this->findByEmail($email);
+
+    if (!$user) {
+        return null;
+    }
+
+    $token = bin2hex(random_bytes(32));
+
+    $tokenHash = hash(
+        'sha256',
+        $token
+    );
+
+    $pdo = Database::getConnection();
+
+    $stmt = $pdo->prepare("
+        INSERT INTO password_reset_tokens
+        (
+            user_id,
+            token_hash,
+            expires_at
+        )
+        VALUES
+        (
+            :user_id,
+            :token_hash,
+            DATE_ADD(NOW(), INTERVAL 1 HOUR)
+        )
+    ");
+
+    $stmt->execute([
+        'user_id' => $user['user_id'],
+        'token_hash' => $tokenHash
+    ]);
+
+    return $token;
+    }
+
+
+    public function validateResetToken(string $email, string $token): ?array {
+    $tokenHash = hash(
+        'sha256',
+        $token
+    );
+
+    $pdo = Database::getConnection();
+
+    $stmt = $pdo->prepare("
+        SELECT
+        prt.*,
+        u.email
+    FROM password_reset_tokens prt
+    INNER JOIN users u
+        ON u.user_id = prt.user_id
+    WHERE
+        u.email = :email
+        AND prt.token_hash = :token_hash
+        AND prt.expires_at > NOW()
+    LIMIT 1
+    ");
+
+$stmt->execute([
+    'email'      => $email,
+    'token_hash' => $tokenHash
+]);
+
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $row ?: null;
+    }
+
+
+    public function resetPassword(int $userId, string $password): void
+    {
+    $passwordHash = password_hash(
+        $password,
+        PASSWORD_DEFAULT
+    );
+
+    $pdo = Database::getConnection();
+
+    $stmt = $pdo->prepare("
+        UPDATE users
+        SET password_hash = :password_hash
+        WHERE user_id = :user_id
+    ");
+
+    $stmt->execute([
+        'password_hash' => $passwordHash,
+        'user_id' => $userId
+    ]);
+    }
+
+
+    public function deleteResetToken(int $tokenId): void
+    {
+    $pdo = Database::getConnection();
+
+    $stmt = $pdo->prepare("
+        DELETE
+        FROM password_reset_tokens
+        WHERE token_id = :token_id
+    ");
+
+    $stmt->execute([
+        'token_id' => $tokenId
+    ]);
+    }
 }

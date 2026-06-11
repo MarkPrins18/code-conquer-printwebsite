@@ -1,5 +1,10 @@
+<?php
 
-/** @var array $t */
+
+
+ /** @var array  $formHandlingTranslations */
+ /** @var string $lang                     */
+?>
 
 <!DOCTYPE html>
 <html lang="<?= htmlspecialchars($_SESSION['lang'] ?? 'nl') ?>">
@@ -13,23 +18,25 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/login.css">
     <script src="<?= BASE_URL ?>/assets/js/index.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
-    <!-- <title><?= $t['title_login'] ?> – Bouw3D</title> -->
+    <title><?= translate('title_login', $formHandlingTranslations, $lang) ?> – Bouw3D</title>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
 <body>
 
-<?php include __DIR__ . '/app/views/layouts/header.php' ?>
+<?php include __DIR__ . '/../layouts/header.php' ?>
 
 <main>
 
     <div class="login-card">
 
         <h1 class="accent-color">
-            <!-- <?= $t['title_login'] ?> -->
+            <?= translate('title_login', $formHandlingTranslations, $lang) ?>
         </h1>
-        <!-- <p><?= $t['sub_login'] ?></p> -->
 
-        
+        <p>
+            <?= translate('sub_login', $formHandlingTranslations, $lang) ?>
+        </p>
+
         <form action="<?= BASE_URL ?>/login" method="POST">
 
             <!-- E-mailadres -->
@@ -37,7 +44,7 @@
                 <input
                     type="email"
                     name="email"
-                    <!-- placeholder="<?= $t['form_email'] ?>" -->
+                    placeholder="<?= translate('form_email', $formHandlingTranslations, $lang) ?>"
                     value="<?= htmlspecialchars($old['email'] ?? '') ?>"
                     required
                     autocomplete="email"
@@ -49,20 +56,22 @@
                 <input
                     type="password"
                     name="password"
-                    <!-- placeholder="<?= $t['form_password'] ?>" -->
+                    placeholder="<?= translate('form_password', $formHandlingTranslations, $lang) ?>"
                     required
                     minlength="8"
                     autocomplete="current-password"
                 >
-                <a href="<?= BASE_URL ?>/forgot-password.php" class="forgot-link">
-                    <!-- <?= $t['link_forgot'] ?> -->
+
+                <!-- Forgot-password-knop -->
+                <a href="<?= BASE_URL ?>/forgot-password" class="forgot-link">
+                    <?= translate('link_forgot', $formHandlingTranslations, $lang) ?>
                 </a>
             </div>
 
             <!-- Inlog-knop -->
             <div class="login-button-container">
                 <button type="submit" name="login" class="button button--large">
-                    <!-- <?= $t['btn_login'] ?> -->
+                    <?= translate('btn_login', $formHandlingTranslations, $lang) ?>
                 </button>
             </div>
 
@@ -71,17 +80,17 @@
         <!-- Link naar registratie -->
         <div class="register-link-container">
             <p>
-               <!-- <?= $t['link_register'] ?> -->
-                <a class="login-link" href="<?= BASE_URL ?>/register.php">
-                    <!-- <?= $t['btn_register'] ?> -->
+               <?= translate('link_register', $formHandlingTranslations, $lang) ?>
+                <a class="login-link" href="<?= BASE_URL ?>/register">
+                    <?= translate('btn_register', $formHandlingTranslations, $lang) ?>
                 </a>
             </p>
         </div>
 
-    </div><!-- /.login-card -->
+    </div>
 
 </main>
 
-<?php include __DIR__ . '/app/views/layouts/footer.php' ?>
+<?php include __DIR__ . '/../layouts/footer.php' ?>
 </body>
 </html>
