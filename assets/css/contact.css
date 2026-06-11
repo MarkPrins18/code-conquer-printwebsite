@@ -1,245 +1,144 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.contact-header {
-  text-align: center;
-  margin-bottom: 30px;
-  flex-shrink: 0;
-}
-
-.contact-header h1 {
-  /* font-size: 2.5rem;
-  color: #2c3e50; */
-  margin-bottom: 20px;
-}
-
-.contact-buttons {
+.header-row {
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.contact-btn {
-  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  gap: 8px;
-  background-color: #3498db;
-  color: white;
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 5px;
-  font-weight: 600;
-  transition: background-color 0.3s;
-}
-
-.contact-btn:hover {
-  background-color: #2980b9;
-}
-
-.content-wrapper {
-  display: flex;
-  gap: 30px;
   flex-wrap: wrap;
-  flex: 1;
-  align-items: stretch;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
-.left-column,
-.right-column {
-  flex: 1;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
+main {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    flex: 1;
 }
 
-.contact-box {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  /* Added responsive padding => minimal 20px (on phone), maximal 30 pixels (on pc). Now you don't need a media query for this */
-  padding: clamp(20px, 4vw, 30px);
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  position: relative;
-  flex: 1;
-  height: 100%;
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2.5rem;
+    align-items: start;
 }
 
 .contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.contact-item {
-  padding-bottom: 15px;
-  border-bottom: 1px solid #eee;
+.contact-info__block {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
 }
 
-.contact-item:last-child {
-  border-bottom: none;
+.contact-info__block i {
+    color: var(--color-accent-orange);
+    font-size: 1.2rem;
+    margin-top: 2px;
 }
 
-.contact-item h3 {
-  color: #3498db;
-  margin-bottom: 5px;
+.contact-info__block div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
-.contact-form-container {
-  background-color: white;
-  padding: 0;
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.contact-info__block strong {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-header-footer-dark-blue);
 }
 
-.contact-form-container h2 {
-  margin-bottom: 20px;
-  color: #2c3e50;
+.contact-info__block span {
+    font-size: 0.9rem;
+    color: var(--color-main-dark-gray);
+}
+
+.contact-alert {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
+.contact-alert--success {
+    background-color: #e6f4ea;
+    color: #2d6a3f;
+}
+
+.contact-alert--error {
+    background-color: #fdecea;
+    color: #a0281f;
 }
 
 .contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
+.contact-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
 }
 
-.form-group input,
-.form-group textarea {
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
+.contact-form__field label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-header-footer-dark-blue);
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #3498db;
+.contact-form__field input,
+.contact-form__field textarea {
+    padding: 0.6rem 0.85rem;
+    border: 1px solid var(--color-main-light-gray);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+    resize: vertical;
 }
 
-.submit-btn {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: auto;
+.contact-form__field input:focus,
+.contact-form__field textarea:focus {
+    outline: none;
+    border-color: var(--color-header-footer-dark-blue);
 }
 
-.submit-btn:hover {
-  background-color: #2980b9;
+.contact-form__btn {
+    align-self: flex-start;
+    background-color: var(--color-accent-orange);
+    color: white;
+    border: none;
+    padding: 0.65rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 0.2s ease;
 }
 
-.info-section {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  flex: 1;
-  height: 100%;
+.contact-form__btn:hover {
+    opacity: 0.85;
 }
 
-.service-info,
-.company-info,
-.follow-us {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 25px;
-  flex: 1;
-}
-
-.service-info h2,
-.company-info h2,
-.follow-us h2 {
-  color: #2c3e50;
-  margin-bottom: 15px;
-}
-
-.opening-hours {
-  color: #3498db;
-  font-size: 1.1rem;
-  margin-top: 10px;
-}
-
-.company-info p {
-  margin-bottom: 8px;
-}
-
-.follow-us {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.follow-us h2 {
-  color: #2c3e50;
-  margin-bottom: 10px;
-}
-
-.follow-us p {
-  margin-bottom: 20px;
-  color: #666;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  background-color: #3498db;
-  color: white;
-  border-radius: 50%;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1.2rem;
-}
-
-.social-link:hover {
-  background-color: #2980b9;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-}
-
-@media (max-width: 768px) {
-  .contact-btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .social-icons {
-    gap: 15px;
-  }
-
-  .social-link {
-    width: 45px;
-    height: 45px;
-    font-size: 1.1rem;
-  }
+@media (max-width: 640px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
 }

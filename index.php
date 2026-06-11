@@ -47,6 +47,7 @@ require_once BASE_PATH . '/app/lang/translations.php';
 require_once BASE_PATH . '/app/lang/header-footer-translations.php';
 require_once BASE_PATH . '/app/lang/order-overview-translations.php';
 require_once BASE_PATH . '/app/lang/table-translations.php';
+require_once BASE_PATH . '/app/lang/contact-translations.php';
 
 // Helper function used in every controller to load a view — automatically injects $lang and $headerFooterTranslations so the view always has access to them
 function view(string $path, array $data = []): void {
