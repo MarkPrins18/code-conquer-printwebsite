@@ -23,10 +23,12 @@ $isAdmin    = Session::isAdmin();
                 <li><a href="<?= BASE_URL ?>/services">Diensten</a></li>
                 <li><a href="<?= BASE_URL ?>/about-us">Over ons</a></li>
                 <li><a href="<?= BASE_URL ?>/contact">Contact</a></li>
+                <li><a href="<?= BASE_URL ?>/login">Log in</a></li>
                 <?php endif; ?>
 
                 <?php if (!$isLoggedIn): ?>
                 <li>
+                    <a href="<?= BASE_URL ?>/login" class="button text button-small">Inloggen</a>
                     <a href="<?= BASE_URL ?>/register" class="button text button-small">Registreren</a>
                 </li>
                 <li>
