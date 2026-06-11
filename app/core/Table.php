@@ -5,6 +5,7 @@ class Table
     private array $data = [];
     private array $customColumns = [];
     private array $columnLabels = [];
+    private array $columnRenderers = [];
 
     public function setData(array $data): void
     {
@@ -37,8 +38,12 @@ class Table
         $rowIndex = 0;
         foreach ($this->data as $row) {
             $html .= '<tr>';
-            foreach ($row as $value) {
-                $html .= '<td>' . htmlspecialchars($value) . '</td>';
+            foreach ($row as $key => $value) {
+                if (isset($this->columnRenderers[$key])) {
+                    $html .= '<td>' . ($this->columnRenderers[$key])($value, $row) . '</td>';
+                } else {
+                    $html .= '<td>' . htmlspecialchars($value ?? '') . '</td>';
+                }
             }
 
             // custom columns
@@ -51,6 +56,11 @@ class Table
         }
         $html .= '</tbody></table>';
         return $html;
+    }
+
+    public function setColumnRenderer(string $key, callable $callback): void
+    {
+        $this->columnRenderers[$key] = $callback;
     }
 
     public function addCustomColumn(string $label, callable $callback): void
