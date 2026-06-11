@@ -10,8 +10,14 @@ class ProductController {
 
         try {
             $pdo      = Database::getConnection();
+
             $product  = new Product($pdo);
-            $products = $product->getAll($searchTerm);
+            $logger = new SearchLog($pdo);        
+
+            // products are fetched from the database or if there are no results it logs the validated search string to the database 
+            $products = $product->getAll($searchTerm);            
+            $logs = $logger->logIfInvalid($searchTerm, $products);       
+
         } catch (Exception $e) {
             error_log('Caught: ' . $e);
             $products = [];

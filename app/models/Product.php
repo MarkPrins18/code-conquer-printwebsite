@@ -12,30 +12,14 @@ class Product {
         if ($searchTerm !== '') {
             $sql .= " WHERE products.name LIKE :term";
             $params = ['term' => '%' . $searchTerm . '%'];
-        }
+        }        
+
+error_log("Executing SQL: " . $sql);
+error_log("With params: " . json_encode($params));
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
         return $stmt->fetchAll();
     }
 
-    // alternatieve functie bij falen zoekslag
-    public function logFailedSearchResults(string $searchTerm) {
-        $sql = "INSERT INTO failed_search_results (search_string, updated_at) VALUES (:term, CURRENT_TIMESTAMP)";
-        // :term -> $searchTerm 
-    }
-
-// searchOrLog gebruiken als wrapper if TRUE = getAll() else if FALSE = logFailedSearchResults()
-    public function searchAndLog(string $searchTerm = ''){
-
-        $products = $this->getAll($searchTerm);
-
-        if (empty($products) && !empty($searchTerm)){
-            $this->logFailedSearchResults($searchTerm);
-        }        
-    }
-
-    }
-
-    
-
+    }  

@@ -85,16 +85,45 @@ const searchInput = document.querySelector("#search-input");
 const resetSearch = document.querySelector("#reset-search");
 
 // Listens for user input in search box. If the value matches a title or description of the allproducts array, sent that new array to the displayProducts function.
+// searchInput.addEventListener("input", () => {
+//   const query = searchInput.value.toLowerCase();
+//   resetSearch.style.display = query ? "inline-block" : "none";
+//   const filtered = allProducts.filter(
+//     (product) =>
+//       product.name.toLowerCase().includes(query) ||
+//       product.description.toLowerCase().includes(query)
+//   );
+//   displayProducts(filtered);
+// });
+
+// Add a timer variable to handle the 'debounce' (wait for user to stop typing)
+let debounceTimer;
+
 searchInput.addEventListener("input", () => {
-  const query = searchInput.value.toLowerCase();
+  const query = searchInput.value;
   resetSearch.style.display = query ? "inline-block" : "none";
-  const filtered = allProducts.filter(
-    (product) =>
-      product.name.toLowerCase().includes(query) ||
-      product.description.toLowerCase().includes(query)
-  );
-  displayProducts(filtered);
+
+  // Clear the previous timer if the user types again
+  clearTimeout(debounceTimer);
+
+  // Set a new timer to wait 300ms before sending the request
+  debounceTimer = setTimeout(() => {
+    // Fetch from your PHP controller with the search term
+    fetch(`get-products-json?search=${encodeURIComponent(query)}`)
+      .then(response => response.json())
+      .then(data => {
+        // Now 'data' comes directly from your database
+        // We trigger your existing display function
+        displayProducts(data);
+        
+        // IMPORTANT: If you still need the full list for something else, 
+        // you might need to handle allProducts differently.
+      })
+      .catch((error) => console.error("Search error:", error));
+  }, 300);
 });
+
+
 
 // Clicking the reset icon clears input and shows all products
 resetSearch.addEventListener("click", () => {
