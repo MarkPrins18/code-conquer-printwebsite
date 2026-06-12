@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
  /** @var array  $formHandlingTranslations */
  /** @var string $lang                     */
  /** @var array  $errors                   */
