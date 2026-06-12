@@ -129,4 +129,19 @@ class OrderTest extends TestCase {
         $this->assertEquals('49.99', $result[0]['unit_price']);
         $this->assertEquals('99.98', $result[0]['total_price']);
     }
+
+    public function testGetItemsByOrderIdNoItems() {
+    $stmtMock = $this->createMock(PDOStatement::class);
+    $stmtMock->method('execute');
+    $stmtMock->method('fetchAll')->willReturn([]);
+
+    $pdoMock = $this->createMock(PDO::class);
+    $pdoMock->method('prepare')->willReturn($stmtMock);
+
+    $order = new Order($pdoMock);
+    $result = $order->getItemsByOrderId(999);
+
+    $this->assertIsArray($result);
+    $this->assertEmpty($result);
+    }
 }
