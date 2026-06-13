@@ -167,14 +167,10 @@ END$$
 
 DELIMITER ;
 
--- altered table in order to complete products page and replace placeholder img with actual img
+-- DDL for fr007
 ALTER TABLE `catalog_products` ADD `img_url` VARCHAR(255);
 
--- added table for fr008
--- failed_search_logs tabel aanmaken
--- kolom: log_id: INT
--- kolom: search_string: VARCHAR255
--- kolom: TIMESTAMP: TIMESTAMP
+-- DDL for fr008
 CREATE TABLE `failed_search_logs`
 (
     `log_id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

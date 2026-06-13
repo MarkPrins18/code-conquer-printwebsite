@@ -928,7 +928,7 @@ INSERT INTO `order_line_items` (`order_id`, `product_id`, `quantity`, `unit_pric
 (2, 19, 1, 325.00),
 (1, 20, 2, 1400.00);
 
--- updated first catalog products to showcase working product page
+-- DML for fr007
 UPDATE `catalog_products` SET `img_url` = 'concrete-formwork-connector.png' WHERE product_id = 1; 
 UPDATE `catalog_products` SET `img_url` = 'ventilation-grille.png' WHERE product_id = 2; 
 UPDATE `catalog_products` SET `img_url` = 'electrical-box-cover.png' WHERE product_id = 3; 
