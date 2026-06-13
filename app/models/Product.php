@@ -12,10 +12,7 @@ class Product {
         if ($searchTerm !== '') {
             $sql .= " WHERE products.name LIKE :term";
             $params = ['term' => '%' . $searchTerm . '%'];
-        }        
-
-error_log("Executing SQL: " . $sql);
-error_log("With params: " . json_encode($params));
+        } 
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
