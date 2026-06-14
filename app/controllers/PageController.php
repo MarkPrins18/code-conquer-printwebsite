@@ -13,4 +13,9 @@ class PageController {
     public function services(): void {
         view('guest/services/index');
     }
+
+    // temporary view function for fr011
+     public function admin_searchlogs(): void {
+        view('admin/searchlogs/index');
+    }
 }

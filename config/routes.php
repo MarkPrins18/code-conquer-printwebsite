@@ -17,5 +17,6 @@ $router->get('/orders',      [OrderController::class, 'index']);
 $router->get('/orders/{id}', [OrderController::class, 'show']);
 
 // admin urls here
-
+// temporary working router for fr011
+$router->get('/admin/searchlogs',      [PageController::class, 'admin_searchlogs']);
 

@@ -50,7 +50,7 @@ $lang = $_SESSION['lang'] ?? 'nl';
 
  if (!isset($_SESSION['user_id'])) {
      $_SESSION['user_id'] = 7;   //Test session data
-     //$_SESSION['role_name'] = 'Admin';
+     $_SESSION['role_name'] = 'Admin';
  }
 
 // session_destroy();
