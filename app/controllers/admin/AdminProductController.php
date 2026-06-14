@@ -84,7 +84,11 @@ class AdminProductController {
 
         $ext      = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
         $filename = uniqid('product_', true) . '.' . $ext;
-        move_uploaded_file($file['tmp_name'], BASE_PATH . '/assets/images/products-images/' . $filename);
+        $dest     = BASE_PATH . '/assets/images/products-images/' . $filename;
+        if (!move_uploaded_file($file['tmp_name'], $dest)) {
+            $errors['img_url'] = 'Afbeelding kon niet worden opgeslagen, probeer opnieuw.';
+            return '';
+        }
         return '/assets/images/products-images/' . $filename;
     }
 }
