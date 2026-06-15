@@ -22,16 +22,17 @@ class AuthController {
 
 
     public function handleRegister(): void {
+
         if (isset($_POST['submit'])) {
             $user = new User(
                 trim($_POST['company_name'] ?? ''),
-            trim($_POST['email']        ?? ''),
-            $_POST['password']          ?? '',
-            $_POST['confirm']           ?? ''
-        );
+                trim($_POST['email']        ?? ''),
+                trim($_POST['password']          ?? ''),
+                trim($_POST['confirm']           ?? '')
+            );
 
         // validateRegister() geeft [veld => vertaalsleutel] terug of []
-        $errors = $user->validateRegister();
+            $errors = $user->validateRegister();
 
         // Terms apart controleren — staat niet in User omdat het geen DB-veld is
         if (empty($_POST['terms'])) {
@@ -80,11 +81,10 @@ class AuthController {
             exit;
         }
 
-        global $formHandlingTranslations;
-
         $errors  = Session::getFlash('errors',  []);
         $old     = Session::getFlash('old',     []);
         $success = Session::getFlash('success', '');
+
         global $formHandlingTranslations;
         
         view('auth/login', [
@@ -153,28 +153,31 @@ class AuthController {
             header('Location: ' . BASE_URL . '/');
             exit;
         }
-    
+
         global $formHandlingTranslations;
-       
-        $errors  = Session::getFlash('errors',  []);
-        $old     = Session::getFlash('old',     []);
-        $success = Session::getFlash('success', '');
+
+        // Lees alle flash-waarden uit — volgorde maakt niet uit
+        $errors    = Session::getFlash('errors',     []);
+        $old       = Session::getFlash('old',        []);
+        $success   = Session::getFlash('success',    '');
+        $resetLink = Session::getFlash('reset_link', '');
 
         view('auth/forgot-password', [
             'formHandlingTranslations' => $formHandlingTranslations,
             'errors'                   => $errors,
             'old'                      => $old,
-            'success'                  => $success
+            'success'                  => $success,
+            'resetLink'                => $resetLink,
         ]);
     }
 
 
     public function handleForgotPassword(): void {
 
-    $email = trim($_POST['email'] ?? '');
-
+        $email = trim($_POST['email'] ?? '');
         $userModel = new User('', '', '', '');
         $errors    = $userModel->validateForgotPassword($email);
+        
 
         if (!empty($errors)) {
             Session::flash('errors', $errors);
@@ -193,7 +196,9 @@ class AuthController {
                     . '/reset-password?token=' . urlencode($token)
                     . '&email='                . urlencode($email);
 
-                // TODO: vervang door echte Mailer::send($email, $resetLink)
+                // PoC: toon de link op de pagina zelf
+                // Niert vergeten: vervang door echte Mailer::send($email, $resetLink)
+                Session::flash('reset_link', $resetLink);
                 error_log('RESET LINK: ' . $resetLink);
             }
         } catch (Exception $e) {
@@ -209,16 +214,16 @@ class AuthController {
         header('Location: ' . BASE_URL . '/forgot-password');
         exit;
 
-        global $formHandlingTranslations, $lang;
-    view(
-        'auth/forgot-password',
-        [
-            'formHandlingTranslations' => $formHandlingTranslations,
-            'lang' => $lang,
-            'success' =>
-                $formHandlingTranslations[$lang]['msg_reset_sent']
-        ]
-    );
+    //     global $formHandlingTranslations, $lang;
+    // view(
+    //     'auth/forgot-password',
+    //     [
+    //         'formHandlingTranslations' => $formHandlingTranslations,
+    //         'lang' => $lang,
+    //         'success' =>
+    //             $formHandlingTranslations[$lang]['msg_reset_sent']
+    //     ]
+    // );
 }
            
      
@@ -311,8 +316,9 @@ class AuthController {
     private function startUserSession(array $user): void
     {
         session_regenerate_id(true);
-        Session::set('user_id',   $user['user_id']);
-        Session::set('role_name', ($user['role_label'] ?? '') === 'Admin' ? 'Admin' : 'User');
+         // Zet de sessiedata NA het regenereren
+        $_SESSION['user_id']   = $user['user_id'];
+        $_SESSION['role_name'] = ($user['role_code'] ?? '') === 'Admin' ? 'Admin' : 'User';
     }
 }
 

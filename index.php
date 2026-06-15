@@ -1,5 +1,8 @@
 <?php
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 // Defines the root folder of the project as a constant, so we can always build correct file paths from anywhere in the code
 define('BASE_PATH', __DIR__);
 
@@ -34,13 +37,13 @@ if (isset($_GET['lang']) && in_array($_GET['lang'], $allowedLanguages)) {
 $lang = $_SESSION['lang'] ?? 'nl';
 
 
-if (!isset($_SESSION['user_id'])) {
-    $_SESSION['user_id'] = 7;   //Test session data
-    //$_SESSION['role_name'] = 'Admin';
-}
+// if (!isset($_SESSION['user_id'])) {
+//     $_SESSION['user_id'] = 7;   //Test session data
+//     //$_SESSION['role_name'] = 'Admin';
+// }
 
-//session_destroy();
-//die();
+// session_destroy();
+// die();
 
 // Load all translation arrays so every controller and view can use them without loading them again
 require_once BASE_PATH . '/app/lang/translations.php';
@@ -52,15 +55,11 @@ require_once BASE_PATH . '/app/lang/form-handling-translations.php';
 
 // Helper function used in every controller to load a view — automatically injects $lang and $headerFooterTranslations so the view always has access to them
 function view(string $path, array $data = []): void {
-    global $lang, $headerFooterTranslations;
+    global $lang, $formHandlingTranslations,$headerFooterTranslations;
     $data['lang']                     = $lang;
+    $data['formHandlingTranslations'] = $formHandlingTranslations;
     $data['headerFooterTranslations'] = $headerFooterTranslations;
-    // voeg andere translation-arrays toe zodat views ze kunnen gebruiken zonder require_once
-     global $lang, $orderOverviewTranslations, $tableTranslations, $formHandlingTranslations, $translations;
-    $data['orderOverviewTranslations'] = $orderOverviewTranslations;
-    $data['tableTranslations']         = $tableTranslations;
-    $data['formHandlingTranslations']  = $formHandlingTranslations;
-    $data['translations']              = $translations;
+  
     extract($data);
     require BASE_PATH . '/app/views/' . $path . '.php';
 }

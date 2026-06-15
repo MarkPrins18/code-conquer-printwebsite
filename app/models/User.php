@@ -78,23 +78,34 @@ class User
     }
 
     // createUser is currently a placeholder method, but should be the method that passes user data to the database
-    public function create()
-    {
-         $hashedPwd = password_hash($this->password, PASSWORD_DEFAULT);
+    public function create(): void
+{
+        $hashedPwd = password_hash($this->password, PASSWORD_DEFAULT);
 
         $pdo = Database::getConnection();
 
+        // Zoek eerst het kvk-nummer op via de bedrijfsnaam
         $stmt = $pdo->prepare('
-            INSERT INTO users (company_name, email, password_hash, role_id)
-            VALUES (:company_name, :email, :password_hash, :role_id)
+            SELECT kvk FROM companies WHERE name = :name LIMIT 1
+        ');
+        $stmt->execute(['name' => $this->company_name]);
+        $kvk = $stmt->fetchColumn();
+
+        if (!$kvk) {
+            throw new Exception('Bedrijfsnaam niet gevonden in de database.');
+        }
+
+        $stmt = $pdo->prepare('
+            INSERT INTO users (kvk, role_code, email, password_hash)
+            VALUES (:kvk, :role_code, :email, :password_hash)
         ');
 
         $stmt->execute([
-            'company_name'  => $this->company_name,
+            'kvk'           => $kvk,
+            'role_code'     => 'USER',
             'email'         => $this->email,
             'password_hash' => $hashedPwd,
-            'role_id'       => $this->role_id,
-        ]);
+         ]);
     }
 
     // ── Login ─────────────────────────────────────────────────────────────────
