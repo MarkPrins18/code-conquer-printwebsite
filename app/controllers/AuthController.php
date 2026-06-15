@@ -28,8 +28,8 @@ class AuthController {
                 trim($_POST['company_name'] ?? ''),
                 trim($_POST['email']        ?? ''),
                      $_POST['password']     ?? '',
-                     $_POST['confirm']      ?? ''            
-                );
+                     $_POST['confirm']      ?? ''
+            );
 
         // validateRegister() geeft [veld => vertaalsleutel] terug of []
             $errors = $user->validateRegister();
