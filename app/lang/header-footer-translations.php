@@ -7,6 +7,7 @@ $headerFooterTranslations = [
         'about-us' => 'Over ons',
         'contact' => 'Contact',
         'footerCopyright' => 'Alle rechten voorbehouden.',
+        'title_login'        => 'Inloggen',
     ],
     'en' => [
         'home' => 'Home',
@@ -15,5 +16,6 @@ $headerFooterTranslations = [
         'about-us' => 'About us',
         'contact' => 'Contact',
         'footerCopyright' => 'All rights reserved.',
+        'title_login'        => 'Login',
     ],
 ];

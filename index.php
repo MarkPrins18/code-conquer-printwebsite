@@ -1,8 +1,7 @@
 <?php
 
-
-
-
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 // Defines the root folder of the project as a constant, so we can always build correct file paths from anywhere in the code
 define('BASE_PATH', __DIR__);
@@ -30,16 +29,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 
-// Routing for product search
-$action = $_GET['action'] ?? '';
-
-if ($action === 'get-products-json') {
-    $controller = new ProductController();
-    $controller->getJson();
-    exit; 
-}
-
-
 $allowedLanguages = ['nl', 'en'];
 if (isset($_GET['lang']) && in_array($_GET['lang'], $allowedLanguages)) {
     $_SESSION['lang'] = $_GET['lang'];
@@ -48,10 +37,10 @@ if (isset($_GET['lang']) && in_array($_GET['lang'], $allowedLanguages)) {
 $lang = $_SESSION['lang'] ?? 'nl';
 
 
- if (!isset($_SESSION['user_id'])) {
-     $_SESSION['user_id'] = 7;   //Test session data
-     //$_SESSION['role_name'] = 'Admin';
- }
+// if (!isset($_SESSION['user_id'])) {
+//     $_SESSION['user_id'] = 7;   //Test session data
+//     //$_SESSION['role_name'] = 'Admin';
+// }
 
 // session_destroy();
 // die();
@@ -61,13 +50,16 @@ require_once BASE_PATH . '/app/lang/translations.php';
 require_once BASE_PATH . '/app/lang/header-footer-translations.php';
 require_once BASE_PATH . '/app/lang/order-overview-translations.php';
 require_once BASE_PATH . '/app/lang/table-translations.php';
-require_once BASE_PATH . '/app/lang/contact-translations.php';
+require_once BASE_PATH . '/app/lang/form-handling-translations.php';
+
 
 // Helper function used in every controller to load a view — automatically injects $lang and $headerFooterTranslations so the view always has access to them
 function view(string $path, array $data = []): void {
-    global $lang, $headerFooterTranslations;
+    global $lang, $formHandlingTranslations,$headerFooterTranslations;
     $data['lang']                     = $lang;
+    $data['formHandlingTranslations'] = $formHandlingTranslations;
     $data['headerFooterTranslations'] = $headerFooterTranslations;
+  
     extract($data);
     require BASE_PATH . '/app/views/' . $path . '.php';
 }
