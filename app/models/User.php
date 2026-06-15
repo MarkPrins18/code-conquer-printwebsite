@@ -20,227 +20,336 @@ class User
         $this->role_id = 2;
     }
 
-    public function signupUser(): void
+    // ── Registratie ───────────────────────────────────────────────────────────
+
+    /**
+     * Valideert de invoer en maakt de gebruiker aan als alles klopt.
+     * Geeft de errors array terug zodat de controller hem in de flash kan zetten.
+     *
+     * @return array  Leeg bij succes, anders [veld => vertaalsleutel]
+     */
+    public function signupUser(): array
     {
-        //runs error methods before creating user
-        $errors = $this->validate();
+        $errors = $this->validateRegister();
 
         if (!empty($errors)) {
-            return;
+            return $errors;
         }
 
         $this->create();
+        return [];
     }
 
-    public function validate(): array
+    
+       /**
+     * Valideert alle registratievelden.
+     * Foutcodes verwijzen naar sleutels in $formHandlingTranslations.
+     *
+     * @return array  [veldnaam => vertaalsleutel]
+     */
+    public function validateRegister(): array
     {
         $errors = [];
 
-        if ($this->emptyInput()) {
-            $errors['empty'] = 'Vul alle velden in.';
+        // 1. Verplichte velden leeg?
+        if (empty($this->company_name) || empty($this->email) ||
+            empty($this->password)     || empty($this->confirmPwd)) {
+            $errors['empty'] = 'err_required';
         }
-        if ($this->invalidCompName()) {
-            $errors['company_name'] = 'Bedrijfsnaam mag alleen letters en cijfers bevatten.';
+
+        // 2. E-mailformaat
+        if ($this->email !== '' && !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = 'err_email';
         }
-        if ($this->invalidEmail()) {
-            $errors['email'] = 'Vul een geldig e-mailadres in.';
+
+        // 3. Wachtwoordsterkte: min. 8 tekens, 1 hoofdletter, 1 cijfer
+        if ($this->password !== '' &&
+            !preg_match('/^(?=.*[A-Z])(?=.*\d).{8,}$/', $this->password)) {
+            $errors['password'] = 'err_password';
         }
-        if ($this->pwdNotConfirmed()) {
-            $errors['password'] = 'Wachtwoorden komen niet overeen.';
+
+        // 4. Wachtwoord bevestiging
+        if ($this->password !== '' && $this->confirmPwd !== '' &&
+            $this->password !== $this->confirmPwd) {
+            $errors['confirm'] = 'err_confirm';
         }
 
         return $errors;
     }
 
     // createUser is currently a placeholder method, but should be the method that passes user data to the database
-    public function create()
-    {
+    public function create(): void
+{
         $hashedPwd = password_hash($this->password, PASSWORD_DEFAULT);
-        var_dump($this->company_name, $this->email, $hashedPwd, $this->role_id);
-    }
 
-    public function loginUser(string $email, string $password): ?array  {
-    // zoek de gebruiker op e-mail (prepared statement) -> $row
-    if ($row && password_verify($password, $row['password_hash'])) {
-        return $row; // inlog klopt!
-    }
-    return null;     // onbekende gebruiker of fout wachtwoord!
-}
+        $pdo = Database::getConnection();
 
-    //ERRORS
-    //checks if all fields are filled in
-    private function emptyInput() {
-        if(empty($this->company_name) || empty($this->email) || empty($this->password) || empty($this->confirmPwd)) {
-            $result = false;
+        // Zoek eerst het kvk-nummer op via de bedrijfsnaam
+        $stmt = $pdo->prepare('
+            SELECT kvk FROM companies WHERE name = :name LIMIT 1
+        ');
+        $stmt->execute(['name' => $this->company_name]);
+        $kvk = $stmt->fetchColumn();
+
+        if (!$kvk) {
+            throw new Exception('Bedrijfsnaam niet gevonden in de database.');
         }
-        else {
-            $result = true;
+
+        $stmt = $pdo->prepare('
+            INSERT INTO users (kvk, role_code, email, password_hash)
+            VALUES (:kvk, :role_code, :email, :password_hash)
+        ');
+
+        $stmt->execute([
+            'kvk'           => $kvk,
+            'role_code'     => 'USER',
+            'email'         => $this->email,
+            'password_hash' => $hashedPwd,
+         ]);
+    }
+
+    // ── Login ─────────────────────────────────────────────────────────────────
+
+    /**
+     * Valideert het loginformulier op formaat (geen DB-aanroep).
+     *
+     * @param  string $email
+     * @param  string $password
+     * @return array  [veldnaam => vertaalsleutel]
+     */
+    public function validateLogin(string $email, string $password): array
+    {
+        $errors = [];
+
+        if ($email === '' || $password === '') {
+            $errors['empty'] = 'err_required';
         }
-        return $result;
-    }
 
-    // //check company name for valid character input
-    private function invalidCompName() {
-        if(!preg_match("/^[a-zA-z0-9]*$/", $this->company_name)) {
-            $result = false;
+        if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = 'err_email';
         }
-        else {
-            $result = true;
+
+        return $errors;
+    }
+
+
+    /**
+     * Zoekt een gebruiker op e-mailadres en verifieert het wachtwoord.
+     * Geeft de gebruikersrij terug bij succes, of null bij mislukking.
+     *
+     * Bewust één vage foutmelding voor beide gevallen (e-mail/wachtwoord),
+     * zodat aanvallers niet kunnen raden of een adres bestaat.
+     *
+     * @return array|null  Gebruikersrij of null
+     */
+    public function loginUser(string $email, string $password): ?array
+    {
+        $user = $this->findByEmail($email);
+
+        if (!$user) {
+            return null;
         }
-        return $result;
-    }
 
-    // // built in email validation method
-    private function invalidEmail() {
-        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            $result = false;
+        if (!password_verify($password, $user['password_hash'])) {
+            return null;
         }
-        else  {
-            $result = true;
+
+        return $user;
+    }
+
+    // ── Wachtwoord vergeten ───────────────────────────────────────────────────
+
+    /**
+     * Valideert het forgot-password formulier.
+     *
+     * @param  string $email
+     * @return array  [veldnaam => vertaalsleutel]
+     */
+    public function validateForgotPassword(string $email): array
+    {
+        $errors = [];
+
+        if ($email === '') {
+            $errors['empty'] = 'err_required';
         }
-        return $result;
-    }
 
-    // // check password + password confirm = the same
-    private function pwdNotConfirmed() {
-        if($this->password !== $this->confirmPwd) {
-            $result = false;
+        if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = 'err_email';
         }
-        else  {
-            $result = true;
+
+        return $errors;
+    }
+
+    /**
+     * Maakt een reset-token aan en slaat de SHA-256 hash op in
+     * de tabel password_reset_tokens. Geeft het plaintext token terug
+     * zodat de controller het per e-mail kan versturen.
+     *
+     * Geeft null terug als het e-mailadres niet bestaat — maar de controller
+     * toont altijd dezelfde succesboodschap (geen gebruikersenumeration).
+     *
+     * @return string|null  Plaintext token of null
+     */
+    public function createResetToken(string $email): ?string
+    {
+        $user = $this->findByEmail($email);
+
+        if (!$user) {
+            return null;
         }
-        return $result;
+
+        $token     = bin2hex(random_bytes(32));
+        $tokenHash = hash('sha256', $token);
+
+        $pdo = Database::getConnection();
+
+        $stmt = $pdo->prepare('
+            INSERT INTO password_reset_tokens
+                (user_id, token_hash, expires_at)
+            VALUES
+                (:user_id, :token_hash, DATE_ADD(NOW(), INTERVAL 1 HOUR))
+        ');
+
+        $stmt->execute([
+            'user_id'    => $user['user_id'],
+            'token_hash' => $tokenHash,
+        ]);
+
+        return $token;
     }
 
+    // ── Wachtwoord resetten ───────────────────────────────────────────────────
 
-    public function findByEmail(string $email): ?array {
-    $pdo = Database::getConnection();
+    /**
+     * Valideert het reset-password formulier.
+     * Controleert ook of het token geldig en niet verlopen is.
+     *
+     * @param  string $email
+     * @param  string $token    Plaintext token uit de URL
+     * @param  string $password
+     * @param  string $confirm
+     * @return array  [veldnaam => vertaalsleutel]
+     */
+    public function validateResetPassword(
+        string $email,
+        string $token,
+        string $password,
+        string $confirm
+    ): array {
+        $errors = [];
 
-    $stmt = $pdo->prepare("
-        SELECT *
-        FROM users
-        WHERE email = :email
-        LIMIT 1
-    ");
+        // Token eerst controleren — als het ongeldig is heeft de rest geen zin
+        if (!$this->validateResetToken($email, $token)) {
+            $errors['token'] = 'err_token_due';
+            return $errors;
+        }
 
-    $stmt->execute([
-        'email' => $email
-    ]);
+        if ($password === '' || $confirm === '') {
+            $errors['empty'] = 'err_required';
+        }
 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($password !== '' && !preg_match('/^(?=.*[A-Z])(?=.*\d).{8,}$/', $password)) {
+            $errors['password'] = 'err_password';
+        }
 
-    return $user ?: null;
-    
+        if ($password !== '' && $confirm !== '' && $password !== $confirm) {
+            $errors['confirm'] = 'err_confirm';
+        }
+
+        return $errors;
     }
 
+    /**
+     * Controleert of het token bestaat en nog niet verlopen is.
+     * Geeft de token-rij terug (inclusief user_id en token_id) of null.
+     *
+     * @return array|null
+     */
+    public function validateResetToken(string $email, string $token): ?array
+    {
+        $tokenHash = hash('sha256', $token);
 
-    public function createResetToken(string $email): ?string {
-    $user = $this->findByEmail($email);
+        $pdo = Database::getConnection();
 
-    if (!$user) {
-        return null;
+        $stmt = $pdo->prepare('
+            SELECT prt.*, u.email
+            FROM   password_reset_tokens prt
+            INNER JOIN users u ON u.user_id = prt.user_id
+            WHERE  u.email          = :email
+              AND  prt.token_hash   = :token_hash
+              AND  prt.expires_at   > NOW()
+            LIMIT 1
+        ');
+
+        $stmt->execute([
+            'email'      => $email,
+            'token_hash' => $tokenHash,
+        ]);
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $row ?: null;
     }
 
-    $token = bin2hex(random_bytes(32));
-
-    $tokenHash = hash(
-        'sha256',
-        $token
-    );
-
-    $pdo = Database::getConnection();
-
-    $stmt = $pdo->prepare("
-        INSERT INTO password_reset_tokens
-        (
-            user_id,
-            token_hash,
-            expires_at
-        )
-        VALUES
-        (
-            :user_id,
-            :token_hash,
-            DATE_ADD(NOW(), INTERVAL 1 HOUR)
-        )
-    ");
-
-    $stmt->execute([
-        'user_id' => $user['user_id'],
-        'token_hash' => $tokenHash
-    ]);
-
-    return $token;
-    }
-
-
-    public function validateResetToken(string $email, string $token): ?array {
-    $tokenHash = hash(
-        'sha256',
-        $token
-    );
-
-    $pdo = Database::getConnection();
-
-    $stmt = $pdo->prepare("
-        SELECT
-        prt.*,
-        u.email
-    FROM password_reset_tokens prt
-    INNER JOIN users u
-        ON u.user_id = prt.user_id
-    WHERE
-        u.email = :email
-        AND prt.token_hash = :token_hash
-        AND prt.expires_at > NOW()
-    LIMIT 1
-    ");
-
-$stmt->execute([
-    'email'      => $email,
-    'token_hash' => $tokenHash
-]);
-
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    return $row ?: null;
-    }
-
-
+    /**
+     * Slaat het nieuwe gehashte wachtwoord op voor de gegeven user_id.
+     */
     public function resetPassword(int $userId, string $password): void
     {
-    $passwordHash = password_hash(
-        $password,
-        PASSWORD_DEFAULT
-    );
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-    $pdo = Database::getConnection();
+        $pdo = Database::getConnection();
 
-    $stmt = $pdo->prepare("
-        UPDATE users
-        SET password_hash = :password_hash
-        WHERE user_id = :user_id
-    ");
+        $stmt = $pdo->prepare('
+            UPDATE users
+            SET    password_hash = :password_hash
+            WHERE  user_id       = :user_id
+        ');
 
-    $stmt->execute([
-        'password_hash' => $passwordHash,
-        'user_id' => $userId
-    ]);
+        $stmt->execute([
+            'password_hash' => $passwordHash,
+            'user_id'       => $userId,
+        ]);
     }
 
-
+    /**
+     * Verwijdert het gebruikte reset-token zodat het niet opnieuw gebruikt kan worden.
+     */
     public function deleteResetToken(int $tokenId): void
     {
-    $pdo = Database::getConnection();
+        $pdo = Database::getConnection();
 
-    $stmt = $pdo->prepare("
-        DELETE
-        FROM password_reset_tokens
-        WHERE token_id = :token_id
-    ");
+        $stmt = $pdo->prepare('
+            DELETE FROM password_reset_tokens
+            WHERE  token_id = :token_id
+        ');
 
-    $stmt->execute([
-        'token_id' => $tokenId
-    ]);
+        $stmt->execute(['token_id' => $tokenId]);
+    }
+
+    // ── Hulpfunctie ───────────────────────────────────────────────────────────
+
+    /**
+     * Zoekt een gebruiker op e-mailadres.
+     * Gebruikt door loginUser(), createResetToken() en validateResetToken().
+     *
+     * @return array|null  Volledige gebruikersrij of null
+     */
+    public function findByEmail(string $email): ?array
+    {
+        $pdo = Database::getConnection();
+
+        $stmt = $pdo->prepare('
+            SELECT *
+            FROM   users
+            WHERE  email = :email
+            LIMIT 1
+        ');
+
+        $stmt->execute(['email' => $email]);
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $user ?: null;
     }
 }
