@@ -27,8 +27,8 @@ class AuthController {
             $user = new User(
                 trim($_POST['company_name'] ?? ''),
                 trim($_POST['email']        ?? ''),
-                trim($_POST['password']          ?? ''),
-                trim($_POST['confirm']           ?? '')
+                     $_POST['password']     ?? '',
+                     $_POST['confirm']      ?? ''
             );
 
         // validateRegister() geeft [veld => vertaalsleutel] terug of []
