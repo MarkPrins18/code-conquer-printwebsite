@@ -21,17 +21,6 @@ class Session {
         return ($_SESSION['role_name'] ?? '') === 'Admin';
     }
 
-    public static function flash(string $key, mixed $value): void {
-        $_SESSION['_flash'][$key] = $value;
-    }
-
-    public static function getFlash(string $key, mixed $default = null): mixed {
-        $value = $_SESSION['_flash'][$key] ?? $default;
-
-        // we unset it immediately after showing, because these success or error messages are temporary
-        unset($_SESSION['_flash'][$key]);
-        return $value;
-    }
 
     public static function destroy(): void {
         session_destroy();
@@ -47,7 +36,7 @@ class Session {
     
 
     public static function getFlash(string $key, mixed $default = null): mixed
-    {
+    {   // we unset it immediately after showing, because these success or error messages are temporary
         $value = $_SESSION['_flash'][$key] ?? $default;
         unset($_SESSION['_flash'][$key]);
         return $value;
