@@ -1,9 +1,10 @@
 let allProducts = [];
 
-const imgBase = "/assets/images/products-images/";
+const imgBase = "assets/images/products-images/";
 const imgPlaceholder = imgBase + "placeholder-image.webp";
 
-fetch("/api/products")
+// Default search before user input
+  fetch("?action=get-products-json&search=")
   .then(response => response.json())
   .then(data => {
     allProducts = data;
@@ -84,19 +85,24 @@ const displayProducts = function (products) {
 const searchInput = document.querySelector("#search-input");
 const resetSearch = document.querySelector("#reset-search");
 
-// Listens for user input in search box. If the value matches a title or description of the allproducts array, sent that new array to the displayProducts function.
+// debounce is neccessary to prevent logging every user keystroke
+let debounceTimer;
+
 searchInput.addEventListener("input", () => {
-  const query = searchInput.value.toLowerCase();
-  resetSearch.style.display = query ? "inline-block" : "none";
-  const filtered = allProducts.filter(
-    (product) =>
-      product.name.toLowerCase().includes(query) ||
-      product.description.toLowerCase().includes(query)
-  );
-  displayProducts(filtered);
+    const query = searchInput.value;
+    resetSearch.style.display = query ? "inline-block" : "none";
+
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+        fetch(`?action=get-products-json&search=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                displayProducts(data);
+            })
+            .catch(error => console.error("Search error:", error));
+    }, 300);
 });
 
-// Clicking the reset icon clears input and shows all products
 resetSearch.addEventListener("click", () => {
   searchInput.value = "";
   resetSearch.style.display = "none";

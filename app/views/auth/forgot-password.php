@@ -31,18 +31,17 @@
           <?= translate('title_forgot', $formHandlingTranslations, $lang) ?>
         </h1>
 
+       
         <?php if ($success !== ''): ?>
-
-          <!-- ── Successtoestand ───────────────────────────────────────────── -->
           <!-- Formulier verbergen na het versturen — alleen boodschap tonen   -->
-
-          <p class="contact-alert contact-alert--success">
+            <p class="contact-alert contact-alert--success">
             <i class="fa-solid fa-circle-check"></i>
             <?= translate($success, $formHandlingTranslations, $lang) ?>
           </p>
 
+          
           <?php if ($resetLink !== ''): ?>
-            <!-- PoC: reset-link zichtbaar op de pagina (vervangt echte e-mail) -->
+        <!-- PoC: reset-link zichtbaar op de pagina (vervangt echte e-mail) -->
             <div class="reset-link-debug">
               <p><strong>PoC — reset-link (geen echte e-mail):</strong></p>
               <a href="<?= htmlspecialchars($resetLink) ?>">
@@ -52,10 +51,7 @@
           <?php endif ?>
 
         <?php else: ?>
-
-          <!-- ── Formuliertoestand ─────────────────────────────────────────── -->
-
-          <!-- Technische fout -->
+        <!-- Technische fout -->
           <?php if (!empty($errors['technical'])): ?>
             <p class="contact-alert contact-alert--error">
               <i class="fa-solid fa-circle-exclamation"></i>
@@ -73,7 +69,7 @@
                 value="<?= htmlspecialchars($old['email'] ?? '') ?>"
                 autocomplete="email"
                 <?= (!empty($errors['email']) || !empty($errors['empty'])) ? 'class="invalid"' : '' ?>
-              >
+>
               <?php if (!empty($errors['empty'])): ?>
                 <span class="error">
                   <?= translate($errors['empty'], $formHandlingTranslations, $lang) ?>

@@ -13,10 +13,9 @@ class AuthController {
         $errors = Session::getFlash('errors', []);
         $old    = Session::getFlash('old',    []);
 
-        view('auth/register', [
-            'formHandlingTranslations' => $formHandlingTranslations,
-            'errors'                   => $errors,
-            'old'                      => $old
+        view('auth/register', ['formHandlingTranslations' => $formHandlingTranslations,
+                               'errors'                   => $errors,
+                               'old'                      => $old
         ]);
     }
 
@@ -31,10 +30,10 @@ class AuthController {
                      $_POST['confirm']      ?? ''
             );
 
-        // validateRegister() geeft [veld => vertaalsleutel] terug of []
+        
             $errors = $user->validateRegister();
 
-        // Terms apart controleren — staat niet in User omdat het geen DB-veld is
+        // Check the terms acceptance
         if (empty($_POST['terms'])) {
             $errors['terms'] = 'err_terms';
         }
@@ -62,7 +61,7 @@ class AuthController {
             exit;
         }
 
-        // Direct inloggen na registratie
+        // Direct login after registration
         $newUser = (new User('', '', '', ''))->findByEmail(trim($_POST['email']));
         if ($newUser) {
             $this->startUserSession($newUser);
@@ -87,11 +86,10 @@ class AuthController {
 
         global $formHandlingTranslations;
         
-        view('auth/login', [
-            'formHandlingTranslations' => $formHandlingTranslations,
-            'errors'                   => $errors,
-            'old'                      => $old,
-            'success'                  => $success
+        view('auth/login', ['formHandlingTranslations' => $formHandlingTranslations,
+                            'errors'                   => $errors,
+                            'old'                      => $old,
+                            'success'                  => $success
         ]);
     }
 
@@ -104,7 +102,6 @@ class AuthController {
 
         $userModel = new User('', '', '', '');
 
-        // Formaat-validatie eerst (geen DB)
         $errors = $userModel->validateLogin($email, $password);
 
         if (!empty($errors)) {
@@ -125,7 +122,7 @@ class AuthController {
         }
 
         if (!$found) {
-            // Bewust vage melding — nooit zeggen of e-mail of wachtwoord fout is
+            // Error message for invalid credentials (without further information)
             Session::flash('errors', ['credentials' => 'err_login']);
             Session::flash('old', ['email' => $email]);
             header('Location: ' . BASE_URL . '/login');
@@ -137,7 +134,6 @@ class AuthController {
         exit;
     }
 
-    // ── Uitloggen ─────────────────────────────────────────────────────────────
 
     public function logout(): void
     {
@@ -148,7 +144,7 @@ class AuthController {
 
 
     public function showForgotPassword(): void {
-        // toon formulier om wachtwoord te resetten
+        // Show form to reset password
         if (Session::isLoggedIn()) {
             header('Location: ' . BASE_URL . '/');
             exit;
@@ -156,18 +152,17 @@ class AuthController {
 
         global $formHandlingTranslations;
 
-        // Lees alle flash-waarden uit — volgorde maakt niet uit
+        // Read all flash values
         $errors    = Session::getFlash('errors',     []);
         $old       = Session::getFlash('old',        []);
         $success   = Session::getFlash('success',    '');
         $resetLink = Session::getFlash('reset_link', '');
 
-        view('auth/forgot-password', [
-            'formHandlingTranslations' => $formHandlingTranslations,
-            'errors'                   => $errors,
-            'old'                      => $old,
-            'success'                  => $success,
-            'resetLink'                => $resetLink,
+        view('auth/forgot-password', ['formHandlingTranslations' => $formHandlingTranslations,
+                                      'errors'                   => $errors,
+                                      'old'                      => $old,
+                                      'success'                  => $success,
+                                      'resetLink'                => $resetLink,
         ]);
     }
 
@@ -187,8 +182,6 @@ class AuthController {
         }
 
         try {
-            // createResetToken() geeft null terug als e-mail niet bestaat —
-            // de controller doet daar niets mee: altijd dezelfde succesboodschap
             $token = $userModel->createResetToken($email);
 
             if ($token) {
@@ -196,11 +189,10 @@ class AuthController {
                     . '/reset-password?token=' . urlencode($token)
                     . '&email='                . urlencode($email);
 
-                // PoC: toon de link op de pagina zelf
-                // Niert vergeten: vervang door echte Mailer::send($email, $resetLink)
                 Session::flash('reset_link', $resetLink);
                 error_log('RESET LINK: ' . $resetLink);
             }
+
         } catch (Exception $e) {
             error_log('Forgot-password fout: ' . $e->getMessage());
             Session::flash('errors', ['technical' => 'err_technical']);
@@ -209,29 +201,16 @@ class AuthController {
             exit;
         }
 
-        // Altijd succesboodschap tonen — ook als e-mail niet bestaat
+        
         Session::flash('success', 'msg_reset_sent');
         header('Location: ' . BASE_URL . '/forgot-password');
         exit;
 
-    //     global $formHandlingTranslations, $lang;
-    // view(
-    //     'auth/forgot-password',
-    //     [
-    //         'formHandlingTranslations' => $formHandlingTranslations,
-    //         'lang' => $lang,
-    //         'success' =>
-    //             $formHandlingTranslations[$lang]['msg_reset_sent']
-    //     ]
-    // );
-}
-           
-     
+   }
 
     public function showResetPassword(): void {
-        // Logica voor het resetten van het wachtwoord
 
-    $token = $_GET['token'] ?? '';
+        $token = $_GET['token'] ?? '';
         $email = $_GET['email'] ?? '';
 
         if ($token === '') {
@@ -243,19 +222,10 @@ class AuthController {
 
        $errors = Session::getFlash('errors', []); 
 
-    view(
-        'auth/reset-password',
-        [
-            'formHandlingTranslations'
-                => $formHandlingTranslations,
-            'errors'
-                => $errors ?? [],
-
-            'token'
-                => $token  ?? '',
-
-            'email'
-                => $email  ?? '',
+    view('auth/reset-password',['formHandlingTranslations' => $formHandlingTranslations,
+                                                  'errors' => $errors ?? [],
+                                                   'token' => $token  ?? '',
+                                                   'email' => $email  ?? '',
         ]
     );
 }
@@ -263,7 +233,7 @@ class AuthController {
 
     public function handleResetPassword(): void {
         
-    $token    = $_POST['token']            ?? '';
+        $token    = $_POST['token']            ?? '';
         $email    = trim($_POST['email']       ?? '');
         $password = $_POST['password']         ?? '';
         $confirm  = $_POST['confirm_password'] ?? '';
@@ -275,7 +245,7 @@ class AuthController {
 
         $userModel = new User('', '', '', '');
 
-        // validateResetPassword() controleert token + wachtwoord in één keer
+        // Check token + password in one go
         $errors = $userModel->validateResetPassword($email, $token, $password, $confirm);
 
         if (!empty($errors)) {
@@ -287,7 +257,7 @@ class AuthController {
         }
 
         try {
-            // Token ophalen voor user_id en token_id
+            // Get token for user_id and token_id
             $tokenRow = $userModel->validateResetToken($email, $token);
 
             $userModel->resetPassword($tokenRow['user_id'], $password);
@@ -301,22 +271,20 @@ class AuthController {
             exit;
         }
 
-        // Wachtwoord gewijzigd → naar login met succesboodschap
+        // Password changed → redirect to login with success message
         Session::flash('success', 'msg_reset_success');
         header('Location: ' . BASE_URL . '/login');
         exit;
     }
 
-    // ── Privé hulpfunctie ─────────────────────────────────────────────────────
 
-    /**
-     * Zet de sessievariabelen na een succesvolle login of registratie.
-     * session_regenerate_id() voorkomt session-fixation aanvallen.
-     */
+    //   Set session variables after a successful login or registration.
+    //   session_regenerate_id() prevents session fixation attacks.
+
     private function startUserSession(array $user): void
     {
         session_regenerate_id(true);
-         // Zet de sessiedata NA het regenereren
+         // Set session data AFTER regeneration
         $_SESSION['user_id']   = $user['user_id'];
         $_SESSION['role_name'] = ($user['role_code'] ?? '') === 'Admin' ? 'Admin' : 'User';
     }
