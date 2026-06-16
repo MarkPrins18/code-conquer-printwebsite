@@ -36,20 +36,4 @@ class Session {
     public static function destroy(): void {
         session_destroy();
     }
-
-   
-    
-    public static function flash(string $key, mixed $value): void
-    {
-        $_SESSION['_flash'][$key] = $value;
-    }
-
-    
-
-    public static function getFlash(string $key, mixed $default = null): mixed
-    {
-        $value = $_SESSION['_flash'][$key] ?? $default;
-        unset($_SESSION['_flash'][$key]);
-        return $value;
-    }
 }

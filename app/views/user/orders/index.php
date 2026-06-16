@@ -1,6 +1,4 @@
 <?php
-//check if these are needed
-//require_once __DIR__. '/../../lang/order-overview-translations.php';
 
 /** @var bool $isDetail */
 /** @var array $orders */
@@ -29,7 +27,7 @@
     <main>
         <section class="introduction">
             <?php if ($isDetail): ?>
-                <h1><?= htmlspecialchars($orderOverviewTranslations[$lang]['order_details']) ?></h1>
+                <h1><?= htmlspecialchars($orderOverviewTranslations[$lang]['orderDetails']) ?></h1>
                 <a id="backlink" href="<?= BASE_URL ?>/orders">
                     <?= htmlspecialchars($orderOverviewTranslations[$lang]['back']) ?>
                 </a>

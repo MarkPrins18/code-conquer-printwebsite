@@ -6,12 +6,13 @@ class AdminSearchLogController
     public function index(): void
     {
         AuthGuard::requireAdmin();
+        global $searchLogTranslations, $lang;
 
         $pdo      = Database::getConnection();
         $model    = new SearchLog($pdo);
         $searchlogs = $model->getAll();
 
-        view('admin/searchlogs/index', ['searchlogs' => $searchlogs]);
+        view('admin/searchlogs/index', ['searchlogs' => $searchlogs, 'translations' => $searchLogTranslations, 'lang' => $lang]);
     }
 
 
