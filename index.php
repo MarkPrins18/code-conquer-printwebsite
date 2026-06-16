@@ -53,6 +53,8 @@ require_once BASE_PATH . '/app/lang/table-translations.php';
 require_once BASE_PATH . '/app/lang/form-handling-translations.php';
 
 
+
+
 // Helper function used in every controller to load a view — automatically injects $lang and $headerFooterTranslations so the view always has access to them
 function view(string $path, array $data = []): void {
     global $lang, $formHandlingTranslations,$headerFooterTranslations;

@@ -33,7 +33,7 @@ class AuthController {
         
             $errors = $user->validateRegister();
 
-        // Terms apart controleren — staat niet in User omdat het geen DB-veld is
+        // Check the terms acceptance
         if (empty($_POST['terms'])) {
             $errors['terms'] = 'err_terms';
         }
@@ -61,7 +61,7 @@ class AuthController {
             exit;
         }
 
-        // Direct inloggen na registratie
+        // Direct login after registration
         $newUser = (new User('', '', '', ''))->findByEmail(trim($_POST['email']));
         if ($newUser) {
             $this->startUserSession($newUser);
@@ -122,7 +122,7 @@ class AuthController {
         }
 
         if (!$found) {
-            // Bewust vage melding
+            // Error message for invalid credentials (without further information)
             Session::flash('errors', ['credentials' => 'err_login']);
             Session::flash('old', ['email' => $email]);
             header('Location: ' . BASE_URL . '/login');
@@ -144,7 +144,7 @@ class AuthController {
 
 
     public function showForgotPassword(): void {
-        // toon formulier om wachtwoord te resetten
+        // Show form to reset password
         if (Session::isLoggedIn()) {
             header('Location: ' . BASE_URL . '/');
             exit;
@@ -152,7 +152,7 @@ class AuthController {
 
         global $formHandlingTranslations;
 
-        // Lees alle flash-waarden uit
+        // Read all flash values
         $errors    = Session::getFlash('errors',     []);
         $old       = Session::getFlash('old',        []);
         $success   = Session::getFlash('success',    '');
@@ -245,7 +245,7 @@ class AuthController {
 
         $userModel = new User('', '', '', '');
 
-        // controleert token + wachtwoord in één keer
+        // Check token + password in one go
         $errors = $userModel->validateResetPassword($email, $token, $password, $confirm);
 
         if (!empty($errors)) {
@@ -257,7 +257,7 @@ class AuthController {
         }
 
         try {
-            // Token ophalen voor user_id en token_id
+            // Get token for user_id and token_id
             $tokenRow = $userModel->validateResetToken($email, $token);
 
             $userModel->resetPassword($tokenRow['user_id'], $password);
@@ -271,20 +271,20 @@ class AuthController {
             exit;
         }
 
-        // Wachtwoord gewijzigd → naar login met succesboodschap
+        // Password changed → redirect to login with success message
         Session::flash('success', 'msg_reset_success');
         header('Location: ' . BASE_URL . '/login');
         exit;
     }
 
-    
-    //   Zet de sessievariabelen na een succesvolle login of registratie.
-    //   session_regenerate_id() voorkomt session-fixation aanvallen.
-    
+
+    //   Set session variables after a successful login or registration.
+    //   session_regenerate_id() prevents session fixation attacks.
+
     private function startUserSession(array $user): void
     {
         session_regenerate_id(true);
-         // Zet de sessiedata NA het regenereren
+         // Set session data AFTER regeneration
         $_SESSION['user_id']   = $user['user_id'];
         $_SESSION['role_name'] = ($user['role_code'] ?? '') === 'Admin' ? 'Admin' : 'User';
     }
