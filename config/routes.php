@@ -18,6 +18,10 @@ $router->get('/orders/{id}', [OrderController::class, 'show']);
 
 // admin urls here
 $router->get('/admin', [DashboardController::class, 'index']);
+$router->get('/admin/orders',              [AdminOrderController::class, 'index']);
+$router->get('/admin/orders/{id}',         [AdminOrderController::class, 'show']);
+$router->post('/admin/orders/update-status', [AdminOrderController::class, 'updateStatus']);
+$router->post('/admin/orders/delete',        [AdminOrderController::class, 'deleteOrder']);
 $router->get('/admin/products',        [AdminProductController::class, 'index']);
 $router->get('/admin/products/create', [AdminProductController::class, 'create']);
 $router->post('/admin/products',       [AdminProductController::class, 'store']);
