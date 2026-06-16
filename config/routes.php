@@ -21,3 +21,5 @@ $router->get('/admin', [DashboardController::class, 'index']);
 $router->get('/admin/products',        [AdminProductController::class, 'index']);
 $router->get('/admin/products/create', [AdminProductController::class, 'create']);
 $router->post('/admin/products',       [AdminProductController::class, 'store']);
+$router->get('/admin/products/import', [AdminProductController::class, 'showCsvUpload']);
+$router->post('/admin/products/import',[AdminProductController::class, 'handleCsvUpload']);
