@@ -1,3 +1,8 @@
+<?php
+
+/** @var array $searchlogs */
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -13,57 +18,6 @@
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 
-    <!-- PLACEHOLDER STYLING -->
-<style>
-    /* table en button css uit order-overview.css */
-   table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: inherit;
-}
-
-thead {
-    background-color: var(--color-header-footer-dark-blue);
-    color: white;
-}
-
-th, td {
-    padding: 10px 15px;
-    text-align: center;
-    border: 1px solid var(--color-main-light-gray);
-}
-
-tbody tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.03);
-}
-
-tbody tr:hover {
-    background-color: var(--color-hover);
-    color: white;
-    transition: background-color 0.2s ease;
-}
-
-button {
-    display: inline-block;
-    padding: 8px 12px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-button {
-    background-color: var(--color-accent-orange);
-    color: white;
-}
-
-button:hover {
-    opacity: 0.85;
-}
-</style>
-
 </head>
 
 <body>
@@ -71,37 +25,27 @@ button:hover {
 
     <main>
         <h1>Zoekslagen</h1>
+        <?php
 
-        <table>
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>string</th>
-                    <th>timestamp</th>
-                </tr>
-            </thead>
+        if (empty($searchlogs)) { ?>
+            <p>Geen zoekslagen gevonden</p>
+        <?php
+        } else {
+            $table = new Table();
 
-            <tbody>
-                Dit vullen met data uit `failed_search_logs`
-                <tr>
-                    <td>1</td>
-                    <td>Kortezoekslag</td>
-                    <td>2026-06-14</td>
-                </tr>
-                 <tr>
-                    <td>2</td>
-                    <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam amet, ducimus, cupiditate unde asperiores fuga sequi natus iure, repellendus dolorum eum? Eveniet pariatur cum, dicta voluptates itaque assumenda quidem facilis?</td>
-                    <td>2026-06-14</td>
-                </tr>
-            </tbody>
-        </table>
+            $table->setData($searchlogs);
+            $table->addCustomColumn('Select', function ($row) {
+                return '<input type="checkbox" name="selected_ids[]" value="' . $row['log_id'] . '">';
+            });
+            $table->autoColumnLabels();
 
-        <button>Delete</button>
-        <button>Delete all</button>
+            echo '<form method="POST" action=' . BASE_URL . '"/admin/searchlogs/delete">';
+            echo $table->renderTable();
+            echo '<br>' . '<button type="submit" class="button button--large" onclick="return confirm(\'Are you sure? This cannot be undone!\')">Delete</button>';
+            echo '</form>';
+        }
+        ?>
 
-
-
-        
     </main>
 
     <?php include __DIR__ . '/../../layouts/footer.php' ?>
