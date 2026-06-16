@@ -23,6 +23,7 @@ $isAdmin    = Session::isAdmin();
                 <?php if ($isAdmin && $isLoggedIn): ?>
                 <li><a href="<?= BASE_URL ?>/admin/orders">Bestellingen</a></li>
                 <li><a href="<?= BASE_URL ?>/admin/products">Producten</a></li>
+                <li><a href="<?= BASE_URL ?>/admin/searchlogs">Zoekslagen</a></li>                
                 <?php else: ?>
                 <li><a href="<?= BASE_URL ?>/">Home</a></li>
                 <li><a href="<?= BASE_URL ?>/products">Producten</a></li>
