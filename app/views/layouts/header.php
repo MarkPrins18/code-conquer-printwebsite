@@ -1,6 +1,12 @@
 <?php
+
 $isLoggedIn = Session::isLoggedIn();
 $isAdmin    = Session::isAdmin();
+
+
+ /** @var array  $formHandlingTranslations */
+ /** @var string $lang                     */
+
 ?>
 <header>
     <nav>
@@ -28,7 +34,9 @@ $isAdmin    = Session::isAdmin();
 
                 <?php if (!$isLoggedIn): ?>
                 <li>
-                    <a href="<?= BASE_URL ?>/register" class="button text button-small">Registreren</a>
+                    <a href="<?= BASE_URL ?>/login" class="button text button-small">
+                        <?= translate('title_login', $formHandlingTranslations, $lang) ?></a>
+                    
                 </li>
                 <li>
                     <div class="dropdown">

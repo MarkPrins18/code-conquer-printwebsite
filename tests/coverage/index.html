@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Bouw3D — Test Coverage Rapport</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #0f1117; color: #e0e0e0; margin: 0; padding: 2rem; }
+    h1   { color: #ff6600; margin-bottom: 0.25rem; }
+    h2   { color: #64b5f6; border-bottom: 1px solid #333; padding-bottom: 0.5rem; margin-top: 2rem; }
+    h3   { color: #90caf9; font-size: 1rem; margin: 0 0 0.5rem; }
+    .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+
+    /* Samenvatting kaarten */
+    .summary { display: flex; gap: 1.5rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .card { background: #1e2230; border-radius: 0.75rem; padding: 1.25rem 2rem; min-width: 140px; text-align: center; }
+    .card .num  { font-size: 2rem; font-weight: bold; }
+    .card .lbl  { font-size: 0.85rem; color: #888; margin-top: 0.25rem; }
+    .card.green .num { color: #4caf50; }
+    .card.red   .num { color: #f44336; }
+    .card.blue  .num { color: #64b5f6; }
+    .card.gray  .num { color: #bbb; }
+
+    /* Tabellen */
+    table { width: 100%; border-collapse: collapse; background: #1e2230; border-radius: 0.75rem; overflow: hidden; }
+    th    { background: #2a2d3e; padding: 0.75rem 1rem; text-align: left; color: #90caf9; font-size: 0.85rem; text-transform: uppercase; }
+    td    { padding: 0.6rem 1rem; border-bottom: 1px solid #2a2d3e; font-size: 0.9rem; }
+    tr.passed td { color: #e0e0e0; }
+    tr.failed td { color: #ef9a9a; background: rgba(244,67,54,0.05); }
+    .icon { font-size: 1rem; width: 2rem; }
+    tr.passed .icon { color: #4caf50; }
+    tr.failed .icon { color: #f44336; }
+    .error-msg { font-size: 0.8rem; color: #f44336; margin-top: 0.2rem; font-family: monospace; }
+
+    /* Coverage balk */
+    .bar-bg   { background: #333; border-radius: 4px; height: 10px; width: 200px; }
+    .bar-fill { height: 10px; border-radius: 4px; }
+
+    /* Broncode */
+    .source-block { margin: 1.5rem 0; background: #1e2230; border-radius: 0.75rem; overflow: hidden; padding: 1rem; }
+    .source-code  { font-family: 'Consolas', monospace; font-size: 0.8rem; overflow-x: auto; }
+    .src-line     { display: flex; line-height: 1.5; }
+    .src-line:hover { background: rgba(255,255,255,0.04); }
+    .ln  { color: #555; min-width: 3rem; text-align: right; padding-right: 1rem; user-select: none; }
+    .cnt { color: #555; min-width: 3rem; text-align: right; padding-right: 1rem; user-select: none; font-size: 0.75rem; }
+    .src { white-space: pre; }
+    .line-covered   .ln  { color: #4caf50; }
+    .line-covered   .src { color: #c8e6c9; }
+    .line-covered   .cnt { color: #4caf50; }
+    .line-uncovered .src { color: #ef9a9a; background: rgba(244,67,54,0.1); display: block; width: 100%; }
+    .line-uncovered .ln  { color: #f44336; }
+    .line-neutral   .src { color: #616161; }
+  </style>
+</head>
+<body>
+  <h1>Bouw³D — Test Coverage Rapport</h1>
+  <p class="meta">Gegenereerd op 10-06-2026 09:39:39 &nbsp;·&nbsp; PHP 8.3 + Xdebug</p>
+
+  <div class="summary">
+    <div class="card green"><div class="num">34</div><div class="lbl">Geslaagd</div></div>
+    <div class="card red">  <div class="num">0</div><div class="lbl">Mislukt</div></div>
+    <div class="card blue"> <div class="num">34</div> <div class="lbl">Totaal tests</div></div>
+    <div class="card gray"> <div class="num">39</div><div class="lbl">Assertions</div></div>
+  </div>
+
+  <h2>Testresultaten</h2>
+  <table>
+    <thead><tr><th></th><th>Klasse</th><th>Methode</th><th>Fout</th></tr></thead>
+    <tbody><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testGetRouteWordtGeregistreerd</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testPostRouteWordtGeregistreerd</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testGetRouteWordtNietGematchtBijPost</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testPostRouteWordtNietGematchtBijGet</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testDispatchGeeft404BijGeenMatch</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testDispatchRoeptControllerNietAanBij404</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testRootUrlWordtGematcht</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testMeerdereRoutesWordenCorrectGematcht</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testJuisteControllerWordtGeselecteerdUitMeerdereRoutes</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testDynamischParameterWordtDoorgegeven</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testDynamischParameterMetStringWaarde</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testStatischeRouteWordtNietGematchtAlsDynamisch</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testQuerystringWordtGenegeerd</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testTrailingSlashWordtGenegeerd</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>RouterTest</td>
+            <td>testUrlDecodingWordtToegepast</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testSetSlaatWaardeOpInSessie</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testGetLeestWaardeTerug</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testGetGeeftDefaultAlsSleutelNietBestaat</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testGetGeeftNullAlsGeenDefaultMeegegeven</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testSetOverschrijftBestaandeWaarde</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testSetSlaatStringOp</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testSetSlaatArrayOp</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testForgetVerwijdertSleutel</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testForgetOpNietBestaandeSleutelGeeftGeenFout</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testForgetVerwijdertAlleenOpgegevenSleutel</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testIsLoggedInReturnsFalseAlsGeenUserIdInSessie</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testIsLoggedInReturnsTrueAlsUserIdAanwezig</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testIsLoggedInReturnsFalseNaForgetUserid</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testIsAdminReturnsFalseAlsGeenRoleInSessie</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testIsAdminReturnsTrueAlsRoleNameAdmin</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testIsAdminReturnsFalseAlsRoleNameUser</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testIsAdminIsCaseSensitive</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testIsAdminReturnsFalseAlsRoleLeegString</td>
+            <td></td>
+        </tr><tr class='passed'>
+            <td class='icon'>✓</td>
+            <td>SessionTest</td>
+            <td>testDestroyWistAlleSessiedata</td>
+            <td></td>
+        </tr></tbody>
+  </table>
+
+  <h2>Code Coverage</h2>
+  <table>
+    <thead><tr><th>Bestand</th><th>Dekking</th><th>%</th><th>Regels</th></tr></thead>
+    <tbody><tr>
+            <td><a href='#src-Session.php'>Session.php</a></td>
+            <td>
+                <div class='bar-bg'><div class='bar-fill' style='width:100%;background:#4caf50'></div></div>
+            </td>
+            <td style='color:#4caf50;font-weight:bold'>100%</td>
+            <td>10/10 regels</td>
+        </tr><tr>
+            <td><a href='#src-Router.php'>Router.php</a></td>
+            <td>
+                <div class='bar-bg'><div class='bar-fill' style='width:78%;background:#ff9800'></div></div>
+            </td>
+            <td style='color:#ff9800;font-weight:bold'>78%</td>
+            <td>32/41 regels</td>
+        </tr></tbody>
+  </table>
+
+  <h2>Broncode annotatie</h2>
+  <p style="color:#888;font-size:0.85rem">
+    <span style="color:#4caf50">■</span> Uitgevoerd &nbsp;
+    <span style="color:#f44336">■</span> Niet uitgevoerd &nbsp;
+    <span style="color:#555">■</span> Niet uitvoerbaar (commentaar/declaratie)
+  </p>
+  <div class='source-block' id='src-Session.php'>
+            <h3>Session.php — 100% gedekt</h3>
+            <div class='source-code'><div class='src-line line-neutral'><span class='ln'>   1</span><span class='cnt'></span><span class='src'>&lt;?php
+</span></div><div class='src-line line-neutral'><span class='ln'>   2</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>   3</span><span class='cnt'></span><span class='src'>class Session {
+</span></div><div class='src-line line-neutral'><span class='ln'>   4</span><span class='cnt'></span><span class='src'>    public static function set(string $key, mixed $value): void {
+</span></div><div class='src-line line-covered'><span class='ln'>   5</span><span class='cnt'>×1</span><span class='src'>        $_SESSION[$key] = $value;
+</span></div><div class='src-line line-covered'><span class='ln'>   6</span><span class='cnt'>×1</span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'>   7</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>   8</span><span class='cnt'></span><span class='src'>    public static function get(string $key, mixed $default = null): mixed {
+</span></div><div class='src-line line-covered'><span class='ln'>   9</span><span class='cnt'>×1</span><span class='src'>        return $_SESSION[$key] ?? $default;
+</span></div><div class='src-line line-neutral'><span class='ln'>  10</span><span class='cnt'></span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'>  11</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>  12</span><span class='cnt'></span><span class='src'>    public static function forget(string $key): void {
+</span></div><div class='src-line line-covered'><span class='ln'>  13</span><span class='cnt'>×1</span><span class='src'>        unset($_SESSION[$key]);
+</span></div><div class='src-line line-covered'><span class='ln'>  14</span><span class='cnt'>×1</span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'>  15</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>  16</span><span class='cnt'></span><span class='src'>    public static function isLoggedIn(): bool {
+</span></div><div class='src-line line-covered'><span class='ln'>  17</span><span class='cnt'>×1</span><span class='src'>        return isset($_SESSION[&#039;user_id&#039;]);
+</span></div><div class='src-line line-neutral'><span class='ln'>  18</span><span class='cnt'></span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'>  19</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>  20</span><span class='cnt'></span><span class='src'>    public static function isAdmin(): bool {
+</span></div><div class='src-line line-covered'><span class='ln'>  21</span><span class='cnt'>×1</span><span class='src'>        return ($_SESSION[&#039;role_name&#039;] ?? &#039;&#039;) === &#039;Admin&#039;;
+</span></div><div class='src-line line-neutral'><span class='ln'>  22</span><span class='cnt'></span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'>  23</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>  24</span><span class='cnt'></span><span class='src'>    public static function destroy(): void {
+</span></div><div class='src-line line-covered'><span class='ln'>  25</span><span class='cnt'>×1</span><span class='src'>        session_destroy();
+</span></div><div class='src-line line-covered'><span class='ln'>  26</span><span class='cnt'>×1</span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'>  27</span><span class='cnt'></span><span class='src'>}
+</span></div></div>
+        </div><div class='source-block' id='src-Router.php'>
+            <h3>Router.php — 78% gedekt</h3>
+            <div class='source-code'><div class='src-line line-neutral'><span class='ln'>   1</span><span class='cnt'></span><span class='src'>&lt;?php
+</span></div><div class='src-line line-neutral'><span class='ln'>   2</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>   3</span><span class='cnt'></span><span class='src'>/**
+</span></div><div class='src-line line-neutral'><span class='ln'>   4</span><span class='cnt'></span><span class='src'> * Router
+</span></div><div class='src-line line-neutral'><span class='ln'>   5</span><span class='cnt'></span><span class='src'> *
+</span></div><div class='src-line line-neutral'><span class='ln'>   6</span><span class='cnt'></span><span class='src'> * Koppelt inkomende URLs aan de juiste controller-methode.
+</span></div><div class='src-line line-neutral'><span class='ln'>   7</span><span class='cnt'></span><span class='src'> * Routes worden geregistreerd in config/routes.php.
+</span></div><div class='src-line line-neutral'><span class='ln'>   8</span><span class='cnt'></span><span class='src'> * Ondersteunt dynamische URL-parameters zoals /orders/{id}.
+</span></div><div class='src-line line-neutral'><span class='ln'>   9</span><span class='cnt'></span><span class='src'> */
+</span></div><div class='src-line line-neutral'><span class='ln'>  10</span><span class='cnt'></span><span class='src'>class Router
+</span></div><div class='src-line line-neutral'><span class='ln'>  11</span><span class='cnt'></span><span class='src'>{
+</span></div><div class='src-line line-neutral'><span class='ln'>  12</span><span class='cnt'></span><span class='src'>    // Alle geregistreerde routes: [HTTP-methode, pad, [controller, actie]]
+</span></div><div class='src-line line-neutral'><span class='ln'>  13</span><span class='cnt'></span><span class='src'>    protected array $routes = [];
+</span></div><div class='src-line line-neutral'><span class='ln'>  14</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>  15</span><span class='cnt'></span><span class='src'>    public function get(string $path, array $handler): void {
+</span></div><div class='src-line line-covered'><span class='ln'>  16</span><span class='cnt'>×1</span><span class='src'>        $this-&gt;routes[] = [&#039;GET&#039;, $path, $handler];
+</span></div><div class='src-line line-covered'><span class='ln'>  17</span><span class='cnt'>×1</span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'>  18</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>  19</span><span class='cnt'></span><span class='src'>    public function post(string $path, array $handler): void {
+</span></div><div class='src-line line-covered'><span class='ln'>  20</span><span class='cnt'>×1</span><span class='src'>        $this-&gt;routes[] = [&#039;POST&#039;, $path, $handler];
+</span></div><div class='src-line line-covered'><span class='ln'>  21</span><span class='cnt'>×1</span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'>  22</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>  23</span><span class='cnt'></span><span class='src'>    public function put(string $path, array $handler): void {
+</span></div><div class='src-line line-uncovered'><span class='ln'>  24</span><span class='cnt'>—</span><span class='src'>        $this-&gt;routes[] = [&#039;PUT&#039;, $path, $handler];
+</span></div><div class='src-line line-uncovered'><span class='ln'>  25</span><span class='cnt'>—</span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'>  26</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>  27</span><span class='cnt'></span><span class='src'>    public function patch(string $path, array $handler): void {
+</span></div><div class='src-line line-uncovered'><span class='ln'>  28</span><span class='cnt'>—</span><span class='src'>        $this-&gt;routes[] = [&#039;PATCH&#039;, $path, $handler];
+</span></div><div class='src-line line-uncovered'><span class='ln'>  29</span><span class='cnt'>—</span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'>  30</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>  31</span><span class='cnt'></span><span class='src'>    public function delete(string $path, array $handler): void {
+</span></div><div class='src-line line-uncovered'><span class='ln'>  32</span><span class='cnt'>—</span><span class='src'>        $this-&gt;routes[] = [&#039;DELETE&#039;, $path, $handler];
+</span></div><div class='src-line line-uncovered'><span class='ln'>  33</span><span class='cnt'>—</span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'>  34</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>  35</span><span class='cnt'></span><span class='src'>    /**
+</span></div><div class='src-line line-neutral'><span class='ln'>  36</span><span class='cnt'></span><span class='src'>     * Wordt bij elke request aangeroepen.
+</span></div><div class='src-line line-neutral'><span class='ln'>  37</span><span class='cnt'></span><span class='src'>     * Haalt de querystring weg en loopt door alle routes om een match te vinden.
+</span></div><div class='src-line line-neutral'><span class='ln'>  38</span><span class='cnt'></span><span class='src'>     */
+</span></div><div class='src-line line-neutral'><span class='ln'>  39</span><span class='cnt'></span><span class='src'>    public function dispatch(string $uri, string $method): void
+</span></div><div class='src-line line-neutral'><span class='ln'>  40</span><span class='cnt'></span><span class='src'>    {
+</span></div><div class='src-line line-covered'><span class='ln'>  41</span><span class='cnt'>×1</span><span class='src'>        $path = &#039;/&#039; . trim(strtok(urldecode($uri), &#039;?&#039;), &#039;/&#039;);
+</span></div><div class='src-line line-neutral'><span class='ln'>  42</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-covered'><span class='ln'>  43</span><span class='cnt'>×1</span><span class='src'>        foreach ($this-&gt;routes as [$routeMethod, $routePath, [$class, $action]]) {
+</span></div><div class='src-line line-covered'><span class='ln'>  44</span><span class='cnt'>×1</span><span class='src'>            if ($method !== $routeMethod) {
+</span></div><div class='src-line line-covered'><span class='ln'>  45</span><span class='cnt'>×1</span><span class='src'>                continue;
+</span></div><div class='src-line line-neutral'><span class='ln'>  46</span><span class='cnt'></span><span class='src'>            }
+</span></div><div class='src-line line-neutral'><span class='ln'>  47</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-covered'><span class='ln'>  48</span><span class='cnt'>×1</span><span class='src'>            $params = $this-&gt;match($routePath, $path);
+</span></div><div class='src-line line-covered'><span class='ln'>  49</span><span class='cnt'>×1</span><span class='src'>            if ($params === null) {
+</span></div><div class='src-line line-covered'><span class='ln'>  50</span><span class='cnt'>×1</span><span class='src'>                continue;
+</span></div><div class='src-line line-neutral'><span class='ln'>  51</span><span class='cnt'></span><span class='src'>            }
+</span></div><div class='src-line line-neutral'><span class='ln'>  52</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-covered'><span class='ln'>  53</span><span class='cnt'>×1</span><span class='src'>            $controller = new $class();
+</span></div><div class='src-line line-covered'><span class='ln'>  54</span><span class='cnt'>×1</span><span class='src'>            if (!method_exists($controller, $action)) {
+</span></div><div class='src-line line-uncovered'><span class='ln'>  55</span><span class='cnt'>—</span><span class='src'>                http_response_code(500);
+</span></div><div class='src-line line-uncovered'><span class='ln'>  56</span><span class='cnt'>—</span><span class='src'>                echo &#039;500 - Methode niet gevonden&#039;;
+</span></div><div class='src-line line-uncovered'><span class='ln'>  57</span><span class='cnt'>—</span><span class='src'>                return;
+</span></div><div class='src-line line-neutral'><span class='ln'>  58</span><span class='cnt'></span><span class='src'>            }
+</span></div><div class='src-line line-neutral'><span class='ln'>  59</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-covered'><span class='ln'>  60</span><span class='cnt'>×1</span><span class='src'>            $controller-&gt;$action(...array_values($params));
+</span></div><div class='src-line line-covered'><span class='ln'>  61</span><span class='cnt'>×1</span><span class='src'>            return;
+</span></div><div class='src-line line-neutral'><span class='ln'>  62</span><span class='cnt'></span><span class='src'>        }
+</span></div><div class='src-line line-neutral'><span class='ln'>  63</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-covered'><span class='ln'>  64</span><span class='cnt'>×1</span><span class='src'>        http_response_code(404);
+</span></div><div class='src-line line-covered'><span class='ln'>  65</span><span class='cnt'>×1</span><span class='src'>        echo &#039;404 - Pagina niet gevonden&#039;;
+</span></div><div class='src-line line-covered'><span class='ln'>  66</span><span class='cnt'>×1</span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'>  67</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-neutral'><span class='ln'>  68</span><span class='cnt'></span><span class='src'>    /**
+</span></div><div class='src-line line-neutral'><span class='ln'>  69</span><span class='cnt'></span><span class='src'>     * Vergelijkt een geregistreerde route segment voor segment met de werkelijke URL.
+</span></div><div class='src-line line-neutral'><span class='ln'>  70</span><span class='cnt'></span><span class='src'>     * Geeft de gevonden URL-parameters terug als array, of null bij geen match.
+</span></div><div class='src-line line-neutral'><span class='ln'>  71</span><span class='cnt'></span><span class='src'>     *
+</span></div><div class='src-line line-neutral'><span class='ln'>  72</span><span class='cnt'></span><span class='src'>     * Bugfix t.o.v. origineel: $paramName werd gebruikt vóórdat hij gedeclareerd was.
+</span></div><div class='src-line line-neutral'><span class='ln'>  73</span><span class='cnt'></span><span class='src'>     * Nu correct geëxtraheerd via trim($routeSegment, &#039;{}&#039;).
+</span></div><div class='src-line line-neutral'><span class='ln'>  74</span><span class='cnt'></span><span class='src'>     */
+</span></div><div class='src-line line-neutral'><span class='ln'>  75</span><span class='cnt'></span><span class='src'>    private function match(string $routePath, string $requestPath): ?array
+</span></div><div class='src-line line-neutral'><span class='ln'>  76</span><span class='cnt'></span><span class='src'>    {
+</span></div><div class='src-line line-covered'><span class='ln'>  77</span><span class='cnt'>×1</span><span class='src'>        $routeSegments   = explode(&#039;/&#039;, trim($routePath, &#039;/&#039;));
+</span></div><div class='src-line line-covered'><span class='ln'>  78</span><span class='cnt'>×1</span><span class='src'>        $requestSegments = explode(&#039;/&#039;, trim($requestPath, &#039;/&#039;));
+</span></div><div class='src-line line-neutral'><span class='ln'>  79</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-covered'><span class='ln'>  80</span><span class='cnt'>×1</span><span class='src'>        if (count($routeSegments) !== count($requestSegments)) {
+</span></div><div class='src-line line-covered'><span class='ln'>  81</span><span class='cnt'>×1</span><span class='src'>            return null;
+</span></div><div class='src-line line-neutral'><span class='ln'>  82</span><span class='cnt'></span><span class='src'>        }
+</span></div><div class='src-line line-neutral'><span class='ln'>  83</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-covered'><span class='ln'>  84</span><span class='cnt'>×1</span><span class='src'>        $params = [];
+</span></div><div class='src-line line-neutral'><span class='ln'>  85</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-covered'><span class='ln'>  86</span><span class='cnt'>×1</span><span class='src'>        foreach ($routeSegments as $index =&gt; $routeSegment) {
+</span></div><div class='src-line line-covered'><span class='ln'>  87</span><span class='cnt'>×1</span><span class='src'>            $requestSegment = $requestSegments[$index];
+</span></div><div class='src-line line-neutral'><span class='ln'>  88</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-covered'><span class='ln'>  89</span><span class='cnt'>×1</span><span class='src'>            if (str_starts_with($routeSegment, &#039;{&#039;)) {
+</span></div><div class='src-line line-neutral'><span class='ln'>  90</span><span class='cnt'></span><span class='src'>                // Haal de naam op uit de accolades: {id} → &#039;id&#039;
+</span></div><div class='src-line line-covered'><span class='ln'>  91</span><span class='cnt'>×1</span><span class='src'>                $paramName          = trim($routeSegment, &#039;{}&#039;);
+</span></div><div class='src-line line-covered'><span class='ln'>  92</span><span class='cnt'>×1</span><span class='src'>                $params[$paramName] = $requestSegment;
+</span></div><div class='src-line line-covered'><span class='ln'>  93</span><span class='cnt'>×1</span><span class='src'>            } elseif ($routeSegment !== $requestSegment) {
+</span></div><div class='src-line line-covered'><span class='ln'>  94</span><span class='cnt'>×1</span><span class='src'>                return null;
+</span></div><div class='src-line line-neutral'><span class='ln'>  95</span><span class='cnt'></span><span class='src'>            }
+</span></div><div class='src-line line-neutral'><span class='ln'>  96</span><span class='cnt'></span><span class='src'>        }
+</span></div><div class='src-line line-neutral'><span class='ln'>  97</span><span class='cnt'></span><span class='src'>
+</span></div><div class='src-line line-covered'><span class='ln'>  98</span><span class='cnt'>×1</span><span class='src'>        return $params;
+</span></div><div class='src-line line-neutral'><span class='ln'>  99</span><span class='cnt'></span><span class='src'>    }
+</span></div><div class='src-line line-neutral'><span class='ln'> 100</span><span class='cnt'></span><span class='src'>}
+</span></div></div>
+        </div>
+</body>
+</html>
