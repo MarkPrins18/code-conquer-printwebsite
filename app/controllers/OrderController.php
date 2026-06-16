@@ -3,20 +3,14 @@
 class OrderController {
     public function index(): void {
         AuthGuard::requireLogin();
-        global $orderOverviewTranslations, $tableTranslations;
+        global $orderOverviewTranslations;
 
-        $pdo   = Database::getConnection();
-        $model = new Order($pdo);
-
-        if (Session::isAdmin()) {
-            $orders = $model->getAllOrders();
-        } else {
-            $orders = $model->getOrdersByUserId(Session::get('user_id'));
-        }
+        $pdo    = Database::getConnection();
+        $model  = new Order($pdo);
+        $orders = $model->getOrdersByUserId(Session::get('user_id'));
 
         view('user/orders/index', [
             'isDetail'                  => false,
-            'isAdmin'                   => Session::isAdmin(),
             'orders'                    => $orders,
             'orderOverviewTranslations' => $orderOverviewTranslations,
         ]);
@@ -30,12 +24,10 @@ class OrderController {
         $model = new Order($pdo);
         $items = $model->getItemsByOrderId((int) $id);
 
-        if (!Session::isAdmin()) {
         if (empty($items) || (int) $items[0]['user_id'] !== (int) Session::get('user_id')) {
             http_response_code(403);
             echo '403 - Geen toegang';
             return;
-            }
         }
 
         $items = array_map(function($item) {
@@ -45,7 +37,6 @@ class OrderController {
 
         view('user/orders/index', [
             'isDetail'                  => true,
-            'isAdmin'                   => Session::isAdmin(),
             'items'                     => $items,
             'orderOverviewTranslations' => $orderOverviewTranslations,
         ]);
