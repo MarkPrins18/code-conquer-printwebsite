@@ -1,7 +1,8 @@
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+
+
+
 
 // Defines the root folder of the project as a constant, so we can always build correct file paths from anywhere in the code
 define('BASE_PATH', __DIR__);
@@ -26,6 +27,16 @@ spl_autoload_register(function (string $class): void {
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
+
+
+// Routing for product search
+$action = $_GET['action'] ?? '';
+
+if ($action === 'get-products-json') {
+    $controller = new ProductController();
+    $controller->getJson();
+    exit; 
 }
 
 

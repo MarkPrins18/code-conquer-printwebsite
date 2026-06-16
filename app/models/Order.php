@@ -66,4 +66,19 @@ class Order {
         $stmt->execute(['order_id' => $orderId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getStatuses(): array {
+        $stmt = $this->pdo->query("SELECT status_code, label FROM order_statuses ORDER BY label");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function updateStatus(int $orderId, string $statusCode): void {
+        $stmt = $this->pdo->prepare("UPDATE orders SET status_code = :status_code WHERE order_id = :order_id");
+        $stmt->execute(['status_code' => $statusCode, 'order_id' => $orderId]);
+    }
+
+    public function deleteOrder(int $orderId): void {
+        $stmt = $this->pdo->prepare("DELETE FROM orders WHERE order_id = :order_id");
+        $stmt->execute(['order_id' => $orderId]);
+    }
 }
