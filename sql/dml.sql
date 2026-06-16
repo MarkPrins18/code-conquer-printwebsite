@@ -928,6 +928,18 @@ INSERT INTO `order_line_items` (`order_id`, `product_id`, `quantity`, `unit_pric
 (2, 19, 1, 325.00),
 (1, 20, 2, 1400.00);
 
+-- DML for fr007
+UPDATE `catalog_products` SET `img_url` = 'concrete-formwork-connector.png' WHERE product_id = 1; 
+UPDATE `catalog_products` SET `img_url` = 'ventilation-grille.png' WHERE product_id = 2; 
+UPDATE `catalog_products` SET `img_url` = 'electrical-box-cover.png' WHERE product_id = 3; 
+UPDATE `catalog_products` SET `img_url` = 'pipe-support-bracket.png' WHERE product_id = 4; 
+UPDATE `catalog_products` SET `img_url` = 'metal-wall-anchor.png' WHERE product_id = 5; 
+UPDATE `catalog_products` SET `img_url` = 'drainage-channel-segment.png' WHERE product_id = 6; 
+UPDATE `catalog_products` SET `img_url` = 'aluminium-window-latch.png' WHERE product_id = 7; 
+UPDATE `catalog_products` SET `img_url` = 'titanium-structural-node.png' WHERE product_id = 8; 
+UPDATE `catalog_products` SET `img_url` = '3d-printed-concrete-tile.png' WHERE product_id = 9; 
+UPDATE `catalog_products` SET `img_url` = 'reinforced-nylon-dowel.png' WHERE product_id = 10; 
+
 INSERT INTO `custom_products` (`product_id`, `file_path`, `weight_grams`, `color`, `notes`) VALUES
 (11, 'C:/3D_Print_Orders/TechNova_Solutions/Custom_Facade_Panel.stl', 450.00, 'Grey', 'Engraved with company logo, 3mm thickness'),
 (12, 'C:/3D_Print_Orders/GreenLeaf_Cooperatie/Custom_Duct_Adapter.stl', 180.50, 'Black', 'Adapted for 150mm diameter piping'),

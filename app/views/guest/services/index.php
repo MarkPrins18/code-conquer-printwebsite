@@ -69,7 +69,7 @@
                 <p>Uw voordeel:</p>
                 <p>U verzekert zich van een succesvol printresultaat, bespaart tijd op herontwerp en profiteert direct van onze diepgaande materiaalkennis.</p>
             </section>
-            <img src="<?= BASE_URL ?>/assets/images/services-images/kumpan-electric-SYoS eazBrls-unsplash.jpg" alt="Plaatje van CAD-ontwerper.">
+            <img src="<?= BASE_URL ?>/assets/images/services-images/kumpan-electric-SYo5eazBrls-unsplash.jpg " alt="Plaatje van CAD-ontwerper.">                                                     
         </div>
     </main>
 
