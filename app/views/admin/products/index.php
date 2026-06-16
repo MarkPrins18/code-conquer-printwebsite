@@ -27,6 +27,7 @@
             <p class="success"><?= htmlspecialchars($successMsg) ?></p>
             <?php endif; ?>
             <a class="button button--large product-create-btn" href="<?= BASE_URL ?>/admin/products/create">Maak product aan</a>
+            <a class="button button--large" href="<?= BASE_URL ?>/admin/products/import">Importeer CSV</a>
 
             <?php if (empty($products)): ?>
             <p>Geen producten gevonden.</p>
