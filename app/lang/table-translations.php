@@ -14,6 +14,10 @@ $tableTranslations = [
         'overview'        => 'Overzicht',
         'status_change'   => 'Status wijzigen',
         'delete'          => 'Verwijderen',
+        'name'            => 'Naam',
+        'price'           => 'Prijs',
+        'description'     => 'Beschrijving',
+        'img_url'         => 'Afbeelding',
     ],
     'en' => [
         'order_id'        => 'Order ID',
@@ -28,5 +32,9 @@ $tableTranslations = [
         'overview'        => 'Overview',
         'status_change'   => 'Change Status',
         'delete'          => 'Delete',
+        'name'            => 'Name',
+        'price'           => 'Price',
+        'description'     => 'Description',
+        'img_url'         => 'Image',
     ],
 ];
