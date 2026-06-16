@@ -54,8 +54,10 @@ CREATE TABLE `password_reset_tokens`
     `token_id` INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     `user_id` INT UNSIGNED NOT NULL,
     `token_hash` VARCHAR(255) NOT NULL,
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `expires_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `created_at` TIMESTAMP DEFAULT NOW(),
+    `expires_at` TIMESTAMP NOT NULL,
+
+    UNIQUE KEY uq_token_hash (`token_hash`),
     
     CONSTRAINT `fk_password_reset_tokens_user`
         FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)

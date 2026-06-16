@@ -1,5 +1,11 @@
+<?php
+ /** @var array  $formHandlingTranslations */
+ /** @var string $lang                     */
+ /** @var array  $errors                   */
+ /** @var array  $old                      */
+?>
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="<?= htmlspecialchars($_SESSION['lang'] ?? 'nl') ?>">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,65 +13,152 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/global.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css" />
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/register.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/register.css" />
+    <script src="<?= BASE_URL ?>/assets/js/index.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
-    <title>Bouw3D - Registreren</title>
+    <title><?= translate('title_register', $formHandlingTranslations, $lang) ?> – Bouw3D</title>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
   </head>
   <body>
     <?php include __DIR__ . '/../layouts/header.php' ?>
 
     <main>
-        <div class="register-card">
-            <h1 class="accent-color">Account aanmaken</h1>
-            <p>Creëer uw gratis account en start vandaag nog met het lokaal 3D-printen voor uw bouwprojecten.</p>
+      <div class="register-card">
 
-            <form method="post" action="/register">
-                <div class="form-group">
-                    <input type="text" name="company_name" placeholder="Bedrijfsnaam"
-                           value="<?= htmlspecialchars($old['company_name'] ?? '') ?>" required>
-                    <?php if (!empty($errors['company_name'])): ?>
-                        <span class="error"><?= htmlspecialchars($errors['company_name']) ?></span>
-                    <?php endif ?>
-                </div>
+        <h1 class="accent-color">
+          <?= translate('title_register', $formHandlingTranslations, $lang) ?>
+        </h1>
+        <p><?= translate('sub_register_txt', $formHandlingTranslations, $lang) ?></p>
 
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Zakelijk E-mailadres"
-                           value="<?= htmlspecialchars($old['email'] ?? '') ?>" required>
-                    <?php if (!empty($errors['email'])): ?>
-                        <span class="error"><?= htmlspecialchars($errors['email']) ?></span>
-                    <?php endif ?>
-                </div>
+        <form action="<?= BASE_URL ?>/register" method="POST">
 
-                <div class="form-group password-wrapper">
-                    <input type="password" name="password" placeholder="Wachtwoord" required minlength="8">
-                    <?php if (!empty($errors['password'])): ?>
-                        <span class="error"><?= htmlspecialchars($errors['password']) ?></span>
-                    <?php endif ?>
-                </div>
+          <!-- Bedrijfsnaam -->
+          <div class="form-group">
+            <input
+              type="text"
+              name="company_name"
+              placeholder="<?= translate('form_company', $formHandlingTranslations, $lang) ?>"
+              value="<?= htmlspecialchars($old['company_name'] ?? '') ?>"
+              autocomplete="organization"
+              <?= (!empty($errors['company_name']) || !empty($errors['empty'])) ? 'class="invalid"' : '' ?>
+            >
+            <?php if (!empty($errors['company_name'])): ?>
+              <span class="error">
+                <?= translate($errors['company_name'], $formHandlingTranslations, $lang) ?>
+              </span>
+            <?php endif ?>
+          </div>
 
-                <div class="form-group password-wrapper">
-                    <input type="password" name="confirm" placeholder="Wachtwoord bevestigen" required>
-                </div>
+          <!-- E-mailadres -->
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="<?= translate('form_email', $formHandlingTranslations, $lang) ?>"
+              value="<?= htmlspecialchars($old['email'] ?? '') ?>"
+              autocomplete="email"
+              <?= (!empty($errors['email']) || !empty($errors['email_exists']) || !empty($errors['empty'])) ? 'class="invalid"' : '' ?>
+            >
+            <?php if (!empty($errors['email'])): ?>
+              <span class="error">
+                <?= translate($errors['email'], $formHandlingTranslations, $lang) ?>
+              </span>
+            <?php elseif (!empty($errors['email_exists'])): ?>
+              <span class="error">
+                <?= translate($errors['email_exists'], $formHandlingTranslations, $lang) ?>
+              </span>
+            <?php endif ?>
+          </div>
 
-                <?php if (!empty($errors['empty'])): ?>
-                    <span class="error"><?= htmlspecialchars($errors['empty']) ?></span>
-                <?php endif ?>
+          <!-- Wachtwoord -->
+          <div class="form-group password-wrapper">
+            <input
+              type="password"
+              name="password"
+              placeholder="<?= translate('form_password', $formHandlingTranslations, $lang) ?>"
+              autocomplete="new-password"
+              minlength="8"
+              <?= (!empty($errors['password']) || !empty($errors['empty'])) ? 'class="invalid"' : '' ?>
+            >
+            <?php if (!empty($errors['password'])): ?>
+              <span class="error">
+                <?= translate($errors['password'], $formHandlingTranslations, $lang) ?>
+              </span>
+            <?php endif ?>
+          </div>
 
-                <div class="terms-checkbox">
-                    <input type="checkbox" name="terms" id="terms" required>
-                    <label for="terms">Ik ga akkoord met de <a class="terms-link" href="#">Algemene Voorwaarden</a></label>
-                </div>
+          <!-- Wachtwoord bevestigen -->
+          <div class="form-group password-wrapper">
+            <input
+              type="password"
+              name="confirm"
+              placeholder="<?= translate('form_confirm', $formHandlingTranslations, $lang) ?>"
+              autocomplete="new-password"
+              minlength="8"
+              <?= (!empty($errors['confirm']) || !empty($errors['empty'])) ? 'class="invalid"' : '' ?>
+            >
+            <?php if (!empty($errors['confirm'])): ?>
+              <span class="error">
+                <?= translate($errors['confirm'], $formHandlingTranslations, $lang) ?>
+              </span>
+            <?php endif ?>
+          </div>
 
-                <div class="register-button-container">
-                    <button type="submit" class="button button--large">Account aanmaken</button>
-                </div>
-            </form>
+          <!-- Algemeen lege-velden foutmelding -->
+          <?php if (!empty($errors['empty'])): ?>
+            <span class="error">
+              <?= translate($errors['empty'], $formHandlingTranslations, $lang) ?>
+            </span>
+          <?php endif ?>
 
-            <div class="login-link-container">
-                <p>Heeft u al een account? <a class="login-link" href="/login">Log in</a></p>
-            </div>
+          <!-- Technische fout -->
+          <?php if (!empty($errors['technical'])): ?>
+            <span class="error">
+              <?= translate($errors['technical'], $formHandlingTranslations, $lang) ?>
+            </span>
+          <?php endif ?>
+
+          <!-- Algemene voorwaarden -->
+          <div class="terms-checkbox">
+            <input
+              type="checkbox"
+              name="terms"
+              id="terms"
+              <?= !empty($errors['terms']) ? 'class="invalid"' : '' ?>
+            >
+            <label for="terms">
+              <?= translate('form_agree', $formHandlingTranslations, $lang) ?>
+              <a class="terms-link" href="#">
+                <?= translate('form_terms', $formHandlingTranslations, $lang) ?>
+              </a>
+            </label>
+          </div>
+          <?php if (!empty($errors['terms'])): ?>
+            <span class="error">
+              <?= translate($errors['terms'], $formHandlingTranslations, $lang) ?>
+            </span>
+          <?php endif ?>
+
+          <!-- Registreer-knop -->
+          <div class="register-button-container">
+            <button type="submit" name="submit" class="button button--large">
+              <?= translate('btn_register', $formHandlingTranslations, $lang) ?>
+            </button>
+          </div>
+
+        </form>
+
+        <!-- Link naar inloggen -->
+        <div class="login-link-container">
+          <p>
+            <?= translate('link_login', $formHandlingTranslations, $lang) ?>
+            <a class="login-link" href="<?= BASE_URL ?>/login">
+              <?= translate('btn_login', $formHandlingTranslations, $lang) ?>
+            </a>
+          </p>
         </div>
+
+      </div>
     </main>
 
     <?php include __DIR__ . '/../layouts/footer.php' ?>
