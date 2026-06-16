@@ -13,4 +13,5 @@ class PageController {
     public function services(): void {
         view('guest/services/index');
     }
+ 
 }

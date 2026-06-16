@@ -32,5 +32,7 @@ $router->post('/admin/orders/delete',        [AdminOrderController::class, 'dele
 $router->get('/admin/products',        [AdminProductController::class, 'index']);
 $router->get('/admin/products/create', [AdminProductController::class, 'create']);
 $router->post('/admin/products',       [AdminProductController::class, 'store']);
+$router->get('/admin/searchlogs',      [AdminSearchLogController::class, 'index']);
+$router->post('/admin/searchlogs/delete',      [AdminSearchLogController::class, 'deleteLogs']);
 $router->get('/admin/products/import', [AdminProductController::class, 'showCsvUpload']);
 $router->post('/admin/products/import',[AdminProductController::class, 'handleCsvUpload']);
