@@ -20,14 +20,7 @@ class User
         $this->role_id = 2;
     }
 
-    // ── Registratie ───────────────────────────────────────────────────────────
-
-    /**
-     * Valideert de invoer en maakt de gebruiker aan als alles klopt.
-     * Geeft de errors array terug zodat de controller hem in de flash kan zetten.
-     *
-     * @return array  Leeg bij succes, anders [veld => vertaalsleutel]
-     */
+    
     public function signupUser(): array
     {
         $errors = $this->validateRegister();
@@ -40,35 +33,29 @@ class User
         return [];
     }
 
-    
-       /**
-     * Valideert alle registratievelden.
-     * Foutcodes verwijzen naar sleutels in $formHandlingTranslations.
-     *
-     * @return array  [veldnaam => vertaalsleutel]
-     */
+
     public function validateRegister(): array
     {
         $errors = [];
 
-        // 1. Verplichte velden leeg?
+        // 1. Required fields empty?
         if (empty($this->company_name) || empty($this->email) ||
             empty($this->password)     || empty($this->confirmPwd)) {
             $errors['empty'] = 'err_required';
         }
 
-        // 2. E-mailformaat
+        // 2. E-mail format
         if ($this->email !== '' && !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'err_email';
         }
 
-        // 3. Wachtwoordsterkte: min. 8 tekens, 1 hoofdletter, 1 cijfer
+        // 3. Password strength: min. 8 characters, 1 uppercase letter, 1 number
         if ($this->password !== '' &&
             !preg_match('/^(?=.*[A-Z])(?=.*\d).{8,}$/', $this->password)) {
             $errors['password'] = 'err_password';
         }
 
-        // 4. Wachtwoord bevestiging
+        // 4. Password confirmation
         if ($this->password !== '' && $this->confirmPwd !== '' &&
             $this->password !== $this->confirmPwd) {
             $errors['confirm'] = 'err_confirm';
@@ -84,7 +71,7 @@ class User
 
         $pdo = Database::getConnection();
 
-        // Zoek eerst het kvk-nummer op via de bedrijfsnaam
+        // First, look up the kvk number via the company name
         $stmt = $pdo->prepare('
             SELECT kvk FROM companies WHERE name = :name LIMIT 1
         ');
@@ -108,15 +95,8 @@ class User
          ]);
     }
 
-    // ── Login ─────────────────────────────────────────────────────────────────
 
-    /**
-     * Valideert het loginformulier op formaat (geen DB-aanroep).
-     *
-     * @param  string $email
-     * @param  string $password
-     * @return array  [veldnaam => vertaalsleutel]
-     */
+
     public function validateLogin(string $email, string $password): array
     {
         $errors = [];
@@ -133,15 +113,6 @@ class User
     }
 
 
-    /**
-     * Zoekt een gebruiker op e-mailadres en verifieert het wachtwoord.
-     * Geeft de gebruikersrij terug bij succes, of null bij mislukking.
-     *
-     * Bewust één vage foutmelding voor beide gevallen (e-mail/wachtwoord),
-     * zodat aanvallers niet kunnen raden of een adres bestaat.
-     *
-     * @return array|null  Gebruikersrij of null
-     */
     public function loginUser(string $email, string $password): ?array
     {
         $user = $this->findByEmail($email);
@@ -157,14 +128,7 @@ class User
         return $user;
     }
 
-    // ── Wachtwoord vergeten ───────────────────────────────────────────────────
-
-    /**
-     * Valideert het forgot-password formulier.
-     *
-     * @param  string $email
-     * @return array  [veldnaam => vertaalsleutel]
-     */
+    
     public function validateForgotPassword(string $email): array
     {
         $errors = [];
@@ -180,16 +144,6 @@ class User
         return $errors;
     }
 
-    /**
-     * Maakt een reset-token aan en slaat de SHA-256 hash op in
-     * de tabel password_reset_tokens. Geeft het plaintext token terug
-     * zodat de controller het per e-mail kan versturen.
-     *
-     * Geeft null terug als het e-mailadres niet bestaat — maar de controller
-     * toont altijd dezelfde succesboodschap (geen gebruikersenumeration).
-     *
-     * @return string|null  Plaintext token of null
-     */
     public function createResetToken(string $email): ?string
     {
         $user = $this->findByEmail($email);
@@ -218,17 +172,12 @@ class User
         return $token;
     }
 
-    // ── Wachtwoord resetten ───────────────────────────────────────────────────
-
+    
     /**
-     * Valideert het reset-password formulier.
-     * Controleert ook of het token geldig en niet verlopen is.
-     *
      * @param  string $email
-     * @param  string $token    Plaintext token uit de URL
+     * @param  string $token    
      * @param  string $password
      * @param  string $confirm
-     * @return array  [veldnaam => vertaalsleutel]
      */
     public function validateResetPassword(
         string $email,
@@ -238,7 +187,7 @@ class User
     ): array {
         $errors = [];
 
-        // Token eerst controleren — als het ongeldig is heeft de rest geen zin
+        // Check if the token is valid and not expired
         if (!$this->validateResetToken($email, $token)) {
             $errors['token'] = 'err_token_due';
             return $errors;
@@ -259,12 +208,7 @@ class User
         return $errors;
     }
 
-    /**
-     * Controleert of het token bestaat en nog niet verlopen is.
-     * Geeft de token-rij terug (inclusief user_id en token_id) of null.
-     *
-     * @return array|null
-     */
+    
     public function validateResetToken(string $email, string $token): ?array
     {
         $tokenHash = hash('sha256', $token);
@@ -292,7 +236,7 @@ class User
     }
 
     /**
-     * Slaat het nieuwe gehashte wachtwoord op voor de gegeven user_id.
+     * Saves the new hashed password for the given user_id.
      */
     public function resetPassword(int $userId, string $password): void
     {
@@ -313,7 +257,7 @@ class User
     }
 
     /**
-     * Verwijdert het gebruikte reset-token zodat het niet opnieuw gebruikt kan worden.
+     * Deletes the used reset token so it can't be used again.
      */
     public function deleteResetToken(int $tokenId): void
     {
@@ -327,14 +271,7 @@ class User
         $stmt->execute(['token_id' => $tokenId]);
     }
 
-    // ── Hulpfunctie ───────────────────────────────────────────────────────────
 
-    /**
-     * Zoekt een gebruiker op e-mailadres.
-     * Gebruikt door loginUser(), createResetToken() en validateResetToken().
-     *
-     * @return array|null  Volledige gebruikersrij of null
-     */
     public function findByEmail(string $email): ?array
     {
         $pdo = Database::getConnection();
