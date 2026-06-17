@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/order-overview.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
+    <script src="<?= BASE_URL ?>/assets/js/order-filter.js" defer></script>
     <title>Admin – Bestellingen</title>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
@@ -43,13 +44,29 @@
                 <?php if ($successMsg): ?>
                     <p class="success"><?= htmlspecialchars($successMsg) ?></p>
                 <?php endif; ?>
+
                 <?php if (empty($orders)): ?>
                     <p>Geen bestellingen gevonden.</p>
                 <?php else: ?>
+                    <div class="order-filters">
+                        <input
+                            type="text"
+                            id="order-search"
+                            placeholder="<?= htmlspecialchars($orderOverviewTranslations[$lang]['search_placeholder']) ?>"
+                            class="order-filter-search"
+                        />
+                        <select id="order-status-filter" class="order-filter-select">
+                            <option value=""><?= htmlspecialchars($orderOverviewTranslations[$lang]['filter_all_statuses']) ?></option>
+                        </select>
+                        <button id="order-filter-reset" class="button button--small">
+                            <?= htmlspecialchars($orderOverviewTranslations[$lang]['reset_filters']) ?>
+                        </button>
+                    </div>
+
                     <?php
                         $table = new Table();
                         $table->setData($orders);
-                        $table->addCustomColumn('status_wijzigen', function ($row) use ($statuses) {
+                        $table->addCustomColumn('status_change', function ($row) use ($statuses) {
                             ob_start(); ?>
                             <form method="POST" action="<?= BASE_URL ?>/admin/orders/update-status">
                                 <input type="hidden" name="order_id" value="<?= (int) $row['order_id'] ?>">
@@ -65,7 +82,7 @@
                             </form>
                             <?php return ob_get_clean();
                         });
-                        $table->addCustomColumn('verwijderen', function ($row) {
+                        $table->addCustomColumn('delete', function ($row) {
                             ob_start(); ?>
                             <form method="POST" action="<?= BASE_URL ?>/admin/orders/delete">
                                 <input type="hidden" name="order_id" value="<?= (int) $row['order_id'] ?>">
@@ -73,12 +90,23 @@
                             </form>
                             <?php return ob_get_clean();
                         });
-                        $table->addCustomColumn('details', function ($row) {
+                        $table->addCustomColumn('overview', function ($row) {
                             return '<a class="btn btn-view" href="' . BASE_URL . '/admin/orders/' . (int) $row['order_id'] . '">Bekijk</a>';
                         });
                         $table->autoColumnLabels();
                         echo $table->renderTable();
                     ?>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            initOrderFilter({
+                                statusSelectId:  'order-status-filter',
+                                searchInputId:   'order-search',
+                                resetBtnId:      'order-filter-reset',
+                                searchColumnKey: 'bedrijfsnaam',
+                            });
+                        });
+                    </script>
                 <?php endif; ?>
             <?php endif; ?>
         </section>

@@ -23,11 +23,11 @@ class Table
 
         foreach (array_keys($this->data[0]) as $key) {
         $label = $this->columnLabels[$key] ?? $key;
-        $html .= '<th>' . htmlspecialchars($label) . '</th>';
+        $html .= '<th data-key="' . htmlspecialchars($key) . '">' . htmlspecialchars($label) . '</th>';
         }
 
         foreach ($this->customColumns as $column) {
-        $html .= '<th>' . htmlspecialchars($column['label']) . '</th>';
+        $html .= '<th data-key="' . htmlspecialchars($column['key']) . '">' . htmlspecialchars($column['label']) . '</th>';
         }
 
         $html .= '</tr></thead>';
@@ -66,8 +66,9 @@ class Table
     public function addCustomColumn(string $label, callable $callback): void
     {
         $this->customColumns[] = [
-            'label' => $label,
-            'callback' => $callback
+            'key'      => $label,
+            'label'    => $label,
+            'callback' => $callback,
         ];
     }
 
@@ -86,7 +87,7 @@ class Table
         }
 
         foreach ($this->customColumns as &$column) {
-        $column['label'] = translate($column['label'], $tableTranslations, $lang);
+        $column['label'] = translate($column['key'], $tableTranslations, $lang);
         }
 
         $this->columnLabels = $labels;

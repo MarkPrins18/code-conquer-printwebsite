@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/order-overview.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
+    <script src="<?= BASE_URL ?>/assets/js/order-filter.js" defer></script>
     <title>Bouw3D</title>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
@@ -41,6 +42,27 @@
                 ?>
             <?php else: ?>
                 <h1><?= htmlspecialchars($orderOverviewTranslations[$lang]['introduction']) ?></h1>
+
+                <?php if (!empty($orders)): ?>
+                    <div class="order-filters">
+                        <select id="order-status-filter" class="order-filter-select">
+                            <option value=""><?= htmlspecialchars($orderOverviewTranslations[$lang]['filter_all_statuses']) ?></option>
+                        </select>
+                        <button id="order-filter-reset" class="button button--small">
+                            <?= htmlspecialchars($orderOverviewTranslations[$lang]['reset_filters']) ?>
+                        </button>
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            initOrderFilter({
+                                statusSelectId: 'order-status-filter',
+                                resetBtnId:     'order-filter-reset',
+                            });
+                        });
+                    </script>
+                <?php endif; ?>
+
                 <?php
                     $table = new Table();
                     $table->setData($orders);
