@@ -1,17 +1,22 @@
 <?php
 
 class PageController {
-    public function home(): void {
-        require_once BASE_PATH . '/app/lang/index-translation.php';
+    public function home(): void 
+    {
+        global $translations;
         view('guest/home/index', ['translations' => $translations]);
     }
 
-    public function about(): void {
-        view('guest/about/index');
+    public function about(): void 
+    {
+        global $aboutUsTranslations;
+        view('guest/about/index', ['translations' => $aboutUsTranslations]);
     }
 
-    public function services(): void {
-        view('guest/services/index');
+    public function services(): void 
+    {
+        global $servicesTranslations;
+        view('guest/services/index', ['translations' => $servicesTranslations]);
     }
  
 }

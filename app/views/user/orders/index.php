@@ -1,12 +1,10 @@
 <?php
-
 /** @var bool $isDetail */
 /** @var array $orders */
 /** @var array $items */
 /** @var array $orderOverviewTranslations */
 /** @var string $lang  */
 ?>
-
 <!DOCTYPE html>
 <html lang="<?= htmlspecialchars($lang) ?>">
 <head>
