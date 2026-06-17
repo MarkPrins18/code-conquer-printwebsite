@@ -1,3 +1,7 @@
+<?PHP
+/** @var string $lang */
+/** @var array $translations */
+?>
 <!DOCTYPE html>
 <html lang="<?= htmlspecialchars($lang) ?>">
 
@@ -9,7 +13,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/admin/create.css" />
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
-    <title>Admin – CSV importeren</title>
+    <title><?= htmlspecialchars($translations[$lang]['titleImport']) ?></title>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
 
@@ -17,8 +21,8 @@
     <?php include __DIR__ . '/../../layouts/header.php' ?>
     <main>
         <section class="introduction">
-            <h1>Producten importeren via CSV</h1>
-            <a href="<?= BASE_URL ?>/admin/products">← Terug naar overzicht</a>
+            <h1><?= htmlspecialchars($translations[$lang]['importProducts']) ?></h1>
+            <a href="<?= BASE_URL ?>/admin/products"><?= htmlspecialchars($translations[$lang]['backOverview']) ?></a>
 
             <?php if (!empty($error)): ?>
                 <p class="error"><?= htmlspecialchars($error) ?></p>
@@ -26,10 +30,10 @@
 
             <?php if (isset($saved)): ?>
                 <?php if ($saved > 0): ?>
-                    <p class="success"><?= $saved ?> product(en) succesvol opgeslagen.</p>
+                    <p class="success"><?= $saved ?> <?= htmlspecialchars($translations[$lang]['successImport']) ?></p>
                 <?php endif; ?>
                 <?php if (!empty($rowErrors)): ?>
-                    <p class="error">De volgende rijen konden niet worden verwerkt:</p>
+                    <p class="error"><?= htmlspecialchars($translations[$lang]['errorImport']) ?></p>
                     <ul>
                         <?php foreach ($rowErrors as $err): ?>
                             <li><?= htmlspecialchars($err) ?></li>
@@ -37,17 +41,25 @@
                     </ul>
                 <?php endif; ?>
                 <?php if ($saved === 0 && empty($rowErrors)): ?>
-                    <p>Het CSV bestand bevatte geen rijen.</p>
+                    <p><?= htmlspecialchars($translations[$lang]['noRowsImport']) ?></p>
                 <?php endif; ?>
             <?php endif; ?>
 
             <form class="create-form" method="POST" action="<?= BASE_URL ?>/admin/products/import" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="csv_file">CSV bestand</label>
+                    <label for="csv_file"><?= htmlspecialchars($translations[$lang]['csvFile']) ?></label>
                     <input type="file" id="csv_file" name="csv_file" accept=".csv" />
-                    <small>Alleen .csv bestanden, maximaal 10 MB. Kolommen: <code>name, price, description, img_url, sku, stock_quantity</code></small>
+                    <br>
+                    <small>
+                        <?= htmlspecialchars($translations[$lang]['csvFileHint']) ?>
+                        <br>
+                        <?= htmlspecialchars($translations[$lang]['csvColumnsLabel']) ?>
+                        <code>name, price, description, img_url, sku, stock_quantity</code>
+                    </small>
                 </div>
-                <button type="submit" class="button button--large">Opslaan</button>
+                <button type="submit" class="button button--large">
+                    <?= htmlspecialchars($translations[$lang]['saveForm']) ?>
+                </button>
             </form>
         </section>
     </main>

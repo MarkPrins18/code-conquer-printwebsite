@@ -1,9 +1,5 @@
 <?php
 
-
-
-
-
 // Defines the root folder of the project as a constant, so we can always build correct file paths from anywhere in the code
 define('BASE_PATH', __DIR__);
 
@@ -48,10 +44,10 @@ if (isset($_GET['lang']) && in_array($_GET['lang'], $allowedLanguages)) {
 $lang = $_SESSION['lang'] ?? 'nl';
 
 
-// if (!isset($_SESSION['user_id'])) {
-//     $_SESSION['user_id'] = 7;   //Test session data
-//     //$_SESSION['role_name'] = 'Admin';
-// }
+ if (!isset($_SESSION['user_id'])) {
+    $_SESSION['user_id'] = 5;   //Test session data
+ //  $_SESSION['role_name'] = 'Admin';
+}
 
 // session_destroy();
 // die();
@@ -59,9 +55,15 @@ $lang = $_SESSION['lang'] ?? 'nl';
 // Load all translation arrays so every controller and view can use them without loading them again
 require_once BASE_PATH . '/app/lang/translations.php';
 require_once BASE_PATH . '/app/lang/header-footer-translations.php';
+require_once BASE_PATH . '/app/lang/index-translation.php';
 require_once BASE_PATH . '/app/lang/order-overview-translations.php';
 require_once BASE_PATH . '/app/lang/table-translations.php';
 require_once BASE_PATH . '/app/lang/form-handling-translations.php';
+require_once BASE_PATH . '/app/lang/admin-product-translations.php';
+require_once BASE_PATH . '/app/lang/searchlog-translation.php';
+require_once BASE_PATH . '/app/lang/about-us-translations.php';
+require_once BASE_PATH . '/app/lang/product-translations.php';
+require_once BASE_PATH . '/app/lang/services-translations.php';
 
 
 

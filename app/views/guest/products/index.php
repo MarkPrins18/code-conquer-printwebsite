@@ -1,9 +1,13 @@
+<?php
+/** @var string $lang */
+/** @var array $translations */
+?>
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="<?= htmlspecialchars($lang) ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Producten - BOUW3D</title>
+    <title><?= htmlspecialchars($translations[$lang]['title']) ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/global.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css" />
@@ -18,10 +22,10 @@
 
     <main>
         <section class="header-row">
-            <h1>Producten</h1>
+            <h1><?= htmlspecialchars($translations[$lang]['products']) ?></h1>
             <form id="search-container" role="search">
-                <label for="search-input">Zoek producten:</label>
-                <input type="text" id="search-input" placeholder="Typ hier je zoekterm..." />
+                <label for="search-input"><?= htmlspecialchars($translations[$lang]['searchProducts']) ?></label>
+                <input type="text" id="search-input" placeholder="<?= htmlspecialchars($translations[$lang]['searchPlaceholder']) ?>" />
                 <button type="button" id="reset-search" aria-label="Reset zoekveld">&#10005;</button>
             </form>
         </section>
@@ -31,9 +35,9 @@
         </section>
 
         <section class="selfprint-cta-container">
-            <h2>Wil je je eigen 3D-print laten maken?</h2>
-            <p>Upload je ontwerp en wij zorgen dat het professioneel geprint wordt. Snel, makkelijk en betrouwbaar!</p>
-            <button class="button button--large">Upload je ontwerp</button>
+            <h2><?= htmlspecialchars($translations[$lang]['selfprintCTA']) ?></h2>
+            <p><?= htmlspecialchars($translations[$lang]['selfprintDescription']) ?></p>
+            <button class="button button--large"><?= htmlspecialchars($translations[$lang]['selfprintButton']) ?></button>
         </section>
     </main>
 
