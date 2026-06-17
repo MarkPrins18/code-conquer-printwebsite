@@ -44,23 +44,7 @@
                 <h1><?= htmlspecialchars($orderOverviewTranslations[$lang]['introduction']) ?></h1>
 
                 <?php if (!empty($orders)): ?>
-                    <div class="order-filters">
-                        <select id="order-status-filter" class="order-filter-select">
-                            <option value=""><?= htmlspecialchars($orderOverviewTranslations[$lang]['filter_all_statuses']) ?></option>
-                        </select>
-                        <button id="order-filter-reset" class="button button--small">
-                            <?= htmlspecialchars($orderOverviewTranslations[$lang]['reset_filters']) ?>
-                        </button>
-                    </div>
-
-                    <script>
-                        document.addEventListener('DOMContentLoaded', () => {
-                            initOrderFilter({
-                                statusSelectId: 'order-status-filter',
-                                resetBtnId:     'order-filter-reset',
-                            });
-                        });
-                    </script>
+                    <?php $showSearch = false; include __DIR__ . '/../../components/order-filter.php'; ?>
                 <?php endif; ?>
 
                 <?php

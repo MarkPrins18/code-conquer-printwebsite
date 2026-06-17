@@ -48,20 +48,7 @@
                 <?php if (empty($orders)): ?>
                     <p>Geen bestellingen gevonden.</p>
                 <?php else: ?>
-                    <div class="order-filters">
-                        <input
-                            type="text"
-                            id="order-search"
-                            placeholder="<?= htmlspecialchars($orderOverviewTranslations[$lang]['search_placeholder']) ?>"
-                            class="order-filter-search"
-                        />
-                        <select id="order-status-filter" class="order-filter-select">
-                            <option value=""><?= htmlspecialchars($orderOverviewTranslations[$lang]['filter_all_statuses']) ?></option>
-                        </select>
-                        <button id="order-filter-reset" class="button button--small">
-                            <?= htmlspecialchars($orderOverviewTranslations[$lang]['reset_filters']) ?>
-                        </button>
-                    </div>
+                    <?php $showSearch = true; include __DIR__ . '/../../components/order-filter.php'; ?>
 
                     <?php
                         $table = new Table();
@@ -96,17 +83,6 @@
                         $table->autoColumnLabels();
                         echo $table->renderTable();
                     ?>
-
-                    <script>
-                        document.addEventListener('DOMContentLoaded', () => {
-                            initOrderFilter({
-                                statusSelectId:  'order-status-filter',
-                                searchInputId:   'order-search',
-                                resetBtnId:      'order-filter-reset',
-                                searchColumnKey: 'bedrijfsnaam',
-                            });
-                        });
-                    </script>
                 <?php endif; ?>
             <?php endif; ?>
         </section>
