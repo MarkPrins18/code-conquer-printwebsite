@@ -19,7 +19,7 @@
     <script src="<?= BASE_URL ?>/assets/js/password-toggle.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/index.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
-    <title><?= translate('title_reset', $formHandlingTranslations, $lang) ?> – Bouw3D</title>
+    <title><?= htmlspecialchars(translate('title_reset', $formHandlingTranslations, $lang)) ?> – Bouw3D</title>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
   </head>
   <body>
@@ -29,7 +29,7 @@
       <div class="reset-password-card">
 
         <h1 class="accent-color">
-          <?= translate('title_reset', $formHandlingTranslations, $lang) ?>
+          <?= htmlspecialchars(translate('title_reset', $formHandlingTranslations, $lang)) ?>
         </h1>
 
         <?php if (!empty($errors['token'])): ?>
@@ -37,12 +37,12 @@
           <!-- Ongeldig of verlopen token — toon alleen foutmelding + link -->
           <p class="contact-alert contact-alert--error">
             <i class="fa-solid fa-circle-exclamation"></i>
-            <?= translate($errors['token'], $formHandlingTranslations, $lang) ?>
+            <?= htmlspecialchars(translate($errors['token'], $formHandlingTranslations, $lang)) ?>
           </p>
           <div class="register-link-container">
             <p>
               <a class="login-link" href="<?= BASE_URL ?>/forgot-password">
-                <?= translate('err_token_request', $formHandlingTranslations, $lang) ?>
+                <?= htmlspecialchars(translate('err_token_request', $formHandlingTranslations, $lang)) ?>
               </a>
             </p>
           </div>
@@ -53,7 +53,7 @@
           <?php if (!empty($errors['technical'])): ?>
             <p class="contact-alert contact-alert--error">
               <i class="fa-solid fa-circle-exclamation"></i>
-              <?= translate($errors['technical'], $formHandlingTranslations, $lang) ?>
+              <?= htmlspecialchars(translate($errors['technical'], $formHandlingTranslations, $lang)) ?>
             </p>
           <?php endif ?>
 
@@ -68,14 +68,14 @@
               <input
                 type="password"
                 name="password"
-                placeholder="<?= translate('form_password', $formHandlingTranslations, $lang) ?>"
+                placeholder="<?= htmlspecialchars(translate('form_password', $formHandlingTranslations, $lang)) ?>"
                 autocomplete="new-password"
                 minlength="8"
                 <?= (!empty($errors['password']) || !empty($errors['empty'])) ? 'class="invalid"' : '' ?>
               >
               <?php if (!empty($errors['password'])): ?>
                 <span class="error">
-                  <?= translate($errors['password'], $formHandlingTranslations, $lang) ?>
+                  <?= htmlspecialchars(translate($errors['password'], $formHandlingTranslations, $lang)) ?>
                 </span>
               <?php endif ?>
             </div>
@@ -85,14 +85,14 @@
               <input
                 type="password"
                 name="confirm_password"
-                placeholder="<?= translate('form_confirm', $formHandlingTranslations, $lang) ?>"
+                placeholder="<?= htmlspecialchars(translate('form_confirm', $formHandlingTranslations, $lang)) ?>"
                 autocomplete="new-password"
                 minlength="8"
                 <?= (!empty($errors['confirm']) || !empty($errors['empty'])) ? 'class="invalid"' : '' ?>
               >
               <?php if (!empty($errors['confirm'])): ?>
                 <span class="error">
-                  <?= translate($errors['confirm'], $formHandlingTranslations, $lang) ?>
+                  <?= htmlspecialchars(translate($errors['confirm'], $formHandlingTranslations, $lang)) ?>
                 </span>
               <?php endif ?>
             </div>
@@ -100,14 +100,14 @@
             <!-- Lege velden fout -->
             <?php if (!empty($errors['empty'])): ?>
               <span class="error">
-                <?= translate($errors['empty'], $formHandlingTranslations, $lang) ?>
+                <?= htmlspecialchars(translate($errors['empty'], $formHandlingTranslations, $lang)) ?>
               </span>
             <?php endif ?>
 
             <!-- Opslaan-knop -->
             <div class="login-button-container">
               <button type="submit" name="submit" class="button button--large">
-                <?= translate('btn_send', $formHandlingTranslations, $lang) ?>
+                <?= htmlspecialchars(translate('btn_send', $formHandlingTranslations, $lang)) ?>
               </button>
             </div>
 
@@ -119,7 +119,7 @@
         <div class="register-link-container">
           <p>
             <a class="login-link" href="<?= BASE_URL ?>/login">
-              <?= translate('link_back', $formHandlingTranslations, $lang) ?>
+              <?= htmlspecialchars(translate('link_back', $formHandlingTranslations, $lang)) ?>
             </a>
           </p>
         </div>

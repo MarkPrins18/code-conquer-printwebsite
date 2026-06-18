@@ -18,7 +18,7 @@
     <script src="<?= BASE_URL ?>/assets/js/password-toggle.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/index.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
-    <title><?= translate('title_register', $formHandlingTranslations, $lang) ?> – Bouw3D</title>
+    <title><?= htmlspecialchars(translate('title_register', $formHandlingTranslations, $lang)) ?> – Bouw3D</title>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
   </head>
   <body>
@@ -28,9 +28,9 @@
       <div class="register-card">
 
         <h1 class="accent-color">
-          <?= translate('title_register', $formHandlingTranslations, $lang) ?>
+          <?= htmlspecialchars(translate('title_register', $formHandlingTranslations, $lang)) ?>
         </h1>
-        <p><?= translate('sub_register_txt', $formHandlingTranslations, $lang) ?></p>
+        <p><?= htmlspecialchars(translate('sub_register_txt', $formHandlingTranslations, $lang)) ?></p>
 
         <form action="<?= BASE_URL ?>/register" method="POST">
 
@@ -39,14 +39,14 @@
             <input
               type="text"
               name="company_name"
-              placeholder="<?= translate('form_company', $formHandlingTranslations, $lang) ?>"
+              placeholder="<?= htmlspecialchars(translate('form_company', $formHandlingTranslations, $lang)) ?>"
               value="<?= htmlspecialchars($old['company_name'] ?? '') ?>"
               autocomplete="organization"
               <?= (!empty($errors['company_name']) || !empty($errors['empty'])) ? 'class="invalid"' : '' ?>
             >
             <?php if (!empty($errors['company_name'])): ?>
               <span class="error">
-                <?= translate($errors['company_name'], $formHandlingTranslations, $lang) ?>
+                <?= htmlspecialchars(translate($errors['company_name'], $formHandlingTranslations, $lang)) ?>
               </span>
             <?php endif ?>
           </div>
@@ -56,18 +56,18 @@
             <input
               type="email"
               name="email"
-              placeholder="<?= translate('form_email', $formHandlingTranslations, $lang) ?>"
+              placeholder="<?= htmlspecialchars(translate('form_email', $formHandlingTranslations, $lang)) ?>"
               value="<?= htmlspecialchars($old['email'] ?? '') ?>"
               autocomplete="email"
               <?= (!empty($errors['email']) || !empty($errors['email_exists']) || !empty($errors['empty'])) ? 'class="invalid"' : '' ?>
             >
             <?php if (!empty($errors['email'])): ?>
               <span class="error">
-                <?= translate($errors['email'], $formHandlingTranslations, $lang) ?>
+                <?= htmlspecialchars(translate($errors['email'], $formHandlingTranslations, $lang)) ?>
               </span>
             <?php elseif (!empty($errors['email_exists'])): ?>
               <span class="error">
-                <?= translate($errors['email_exists'], $formHandlingTranslations, $lang) ?>
+                <?= htmlspecialchars(translate($errors['email_exists'], $formHandlingTranslations, $lang)) ?>
               </span>
             <?php endif ?>
           </div>
@@ -77,14 +77,14 @@
             <input
               type="password"
               name="password"
-              placeholder="<?= translate('form_password', $formHandlingTranslations, $lang) ?>"
+              placeholder="<?= htmlspecialchars(translate('form_password', $formHandlingTranslations, $lang)) ?>"
               autocomplete="new-password"
               minlength="8"
               <?= (!empty($errors['password']) || !empty($errors['empty'])) ? 'class="invalid"' : '' ?>
             >
             <?php if (!empty($errors['password'])): ?>
               <span class="error">
-                <?= translate($errors['password'], $formHandlingTranslations, $lang) ?>
+                <?= htmlspecialchars(translate($errors['password'], $formHandlingTranslations, $lang)) ?>
               </span>
             <?php endif ?>
           </div>
@@ -94,14 +94,14 @@
             <input
               type="password"
               name="confirm"
-              placeholder="<?= translate('form_confirm', $formHandlingTranslations, $lang) ?>"
+              placeholder="<?= htmlspecialchars(translate('form_confirm', $formHandlingTranslations, $lang)) ?>"
               autocomplete="new-password"
               minlength="8"
               <?= (!empty($errors['confirm']) || !empty($errors['empty'])) ? 'class="invalid"' : '' ?>
             >
             <?php if (!empty($errors['confirm'])): ?>
               <span class="error">
-                <?= translate($errors['confirm'], $formHandlingTranslations, $lang) ?>
+                <?= htmlspecialchars(translate($errors['confirm'], $formHandlingTranslations, $lang)) ?>
               </span>
             <?php endif ?>
           </div>
@@ -109,14 +109,14 @@
           <!-- Algemeen lege-velden foutmelding -->
           <?php if (!empty($errors['empty'])): ?>
             <span class="error">
-              <?= translate($errors['empty'], $formHandlingTranslations, $lang) ?>
+              <?= htmlspecialchars(translate($errors['empty'], $formHandlingTranslations, $lang)) ?>
             </span>
           <?php endif ?>
 
           <!-- Technische fout -->
           <?php if (!empty($errors['technical'])): ?>
             <span class="error">
-              <?= translate($errors['technical'], $formHandlingTranslations, $lang) ?>
+              <?= htmlspecialchars(translate($errors['technical'], $formHandlingTranslations, $lang)) ?>
             </span>
           <?php endif ?>
 
@@ -129,22 +129,22 @@
               <?= !empty($errors['terms']) ? 'class="invalid"' : '' ?>
             >
             <label for="terms">
-              <?= translate('form_agree', $formHandlingTranslations, $lang) ?>
+              <?= htmlspecialchars(translate('form_agree', $formHandlingTranslations, $lang)) ?>
               <a class="terms-link" href="#">
-                <?= translate('form_terms', $formHandlingTranslations, $lang) ?>
+                <?= htmlspecialchars(translate('form_terms', $formHandlingTranslations, $lang)) ?>
               </a>
             </label>
           </div>
           <?php if (!empty($errors['terms'])): ?>
             <span class="error">
-              <?= translate($errors['terms'], $formHandlingTranslations, $lang) ?>
+              <?= htmlspecialchars(translate($errors['terms'], $formHandlingTranslations, $lang)) ?>
             </span>
           <?php endif ?>
 
           <!-- Registreer-knop -->
           <div class="register-button-container">
             <button type="submit" name="submit" class="button button--large">
-              <?= translate('btn_register', $formHandlingTranslations, $lang) ?>
+              <?= htmlspecialchars(translate('btn_register', $formHandlingTranslations, $lang)) ?>
             </button>
           </div>
 
@@ -153,9 +153,9 @@
         <!-- Link naar inloggen -->
         <div class="login-link-container">
           <p>
-            <?= translate('link_login', $formHandlingTranslations, $lang) ?>
+            <?= htmlspecialchars(translate('link_login', $formHandlingTranslations, $lang)) ?>
             <a class="login-link" href="<?= BASE_URL ?>/login">
-              <?= translate('btn_login', $formHandlingTranslations, $lang) ?>
+              <?= htmlspecialchars(translate('btn_login', $formHandlingTranslations, $lang)) ?>
             </a>
           </p>
         </div>
