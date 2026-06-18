@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/order-filter.js" defer></script>
-    <title>Admin – Bestellingen</title>
+    <title><?= htmlspecialchars($orderOverviewTranslations[$lang]['title']) ?></title>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
 
