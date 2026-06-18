@@ -31,6 +31,7 @@ class Order {
     public function getAllOrders() {
         $stmt = $this->pdo->prepare("
             SELECT
+                companies.name AS bedrijfsnaam,
                 users.email,
                 orders.order_id,
                 orders.created_at AS bestel_datum,
@@ -42,7 +43,8 @@ class Order {
             INNER JOIN order_statuses ON order_statuses.status_code = orders.status_code
             INNER JOIN order_line_items ON order_line_items.order_id = orders.order_id
             INNER JOIN users ON users.user_id = orders.user_id
-            GROUP BY orders.order_id, users.email, orders.created_at, order_statuses.label, orders.delivery_method, orders.delivery_address
+            INNER JOIN companies ON companies.kvk = users.kvk
+            GROUP BY orders.order_id, companies.name, users.email, orders.created_at, order_statuses.label, orders.delivery_method, orders.delivery_address
             ORDER BY orders.created_at DESC
         ");
         $stmt->execute();

@@ -21,6 +21,8 @@ $tableTranslations = [
         'price'           => 'Prijs',
         'description'     => 'Beschrijving',
         'img_url'         => 'Afbeelding',
+        'email'           => 'E-mail',
+        'bedrijfsnaam'    => 'Bedrijfsnaam',
     ],
     'en' => [
         'order_id'        => 'Order ID',
@@ -42,5 +44,7 @@ $tableTranslations = [
         'price'           => 'Price',
         'description'     => 'Description',
         'img_url'         => 'Image',
+        'email'           => 'E-mail',
+        'bedrijfsnaam'    => 'Company name',
     ],
 ];

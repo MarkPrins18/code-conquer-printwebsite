@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/order-overview.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
+    <script src="<?= BASE_URL ?>/assets/js/order-filter.js" defer></script>
     <title>Bouw3D</title>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
@@ -37,6 +38,11 @@
                 ?>
             <?php else: ?>
                 <h1><?= htmlspecialchars($orderOverviewTranslations[$lang]['introduction']) ?></h1>
+
+                <?php if (!empty($orders)): ?>
+                    <?php $showSearch = false; include __DIR__ . '/../../components/order-filter.php'; ?>
+                <?php endif; ?>
+
                 <?php
                     $table = new Table();
                     $table->setData($orders);

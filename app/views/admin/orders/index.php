@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/order-overview.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
-    <title><?= htmlspecialchars($orderOverviewTranslations[$lang]['title']) ?></title>
+    <script src="<?= BASE_URL ?>/assets/js/order-filter.js" defer></script>
+    <title>Admin – Bestellingen</title>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
 
@@ -43,9 +44,12 @@
                 <?php if ($successMsg): ?>
                     <p class="success"><?= htmlspecialchars($successMsg) ?></p>
                 <?php endif; ?>
+
                 <?php if (empty($orders)): ?>
                     <p><?= htmlspecialchars($orderOverviewTranslations[$lang]['noOrders']) ?></p>
                 <?php else: ?>
+                    <?php $showSearch = true; include __DIR__ . '/../../components/order-filter.php'; ?>
+
                     <?php
                         $table = new Table();
                         $table->setData($orders);
