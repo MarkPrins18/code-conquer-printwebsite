@@ -1,9 +1,13 @@
+<?php
+/** @var string $lang */
+/** @var array $translations */
+?>
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="<?= htmlspecialchars($lang) ?>">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>contact - BOUW3D</title>
+    <title><?= htmlspecialchars($translations[$lang]['title']) ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/global.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css" />

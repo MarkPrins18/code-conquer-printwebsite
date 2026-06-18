@@ -3,17 +3,19 @@
 class AdminProductController {
     public function index(): void {
         AuthGuard::requireAdmin();
+        global $productTranslations;
 
         $pdo      = Database::getConnection();
         $model    = new Product($pdo);
         $products = $model->getAll();
 
-        view('admin/products/index', ['products' => $products]);
+        view('admin/products/index', ['products' => $products, 'translations' => $productTranslations]);
     }
 
     public function create(): void {
         AuthGuard::requireAdmin();
-        view('admin/products/create', ['errors' => [], 'old' => []]);
+        global $productTranslations;
+        view('admin/products/create', ['errors' => [], 'old' => [], 'translations' => $productTranslations]);
     }
 
     public function store(): void {
@@ -63,28 +65,54 @@ class AdminProductController {
 
     public function showCsvUpload(): void {
         AuthGuard::requireAdmin();
-        view('admin/products/import', ['error' => null, 'saved' => null, 'rowErrors' => []]);
+        global $productTranslations;
+        view('admin/products/import', ['error' => null, 'saved' => null, 'rowErrors' => [], 'translations' => $productTranslations]);
     }
 
     public function handleCsvUpload(): void {
         AuthGuard::requireAdmin();
+        global $productTranslations, $lang;
 
         $file = $_FILES['csv_file'] ?? null;
 
         if (!$file || $file['error'] === UPLOAD_ERR_NO_FILE) {
-            view('admin/products/import', ['error' => 'Selecteer een CSV bestand.', 'saved' => null, 'rowErrors' => []]);
-            return;
+        view('admin/products/import', [
+            'error'               => $productTranslations[$lang]['selectCsvFile'],
+            'saved'               => null,
+            'rowErrors'           => [],
+            'productTranslations' => $productTranslations,
+            'lang'                => $lang,
+        ]);
+        return;
         }
         if ($file['error'] !== UPLOAD_ERR_OK) {
-            view('admin/products/import', ['error' => 'Uploadfout, probeer opnieuw.', 'saved' => null, 'rowErrors' => []]);
+            view('admin/products/import', [
+                'error'               => $productTranslations[$lang]['uploadError'],
+                'saved'               => null,
+                'rowErrors'           => [],
+                'productTranslations' => $productTranslations,
+                'lang'                => $lang,
+            ]);
             return;
         }
         if (strtolower(pathinfo($file['name'], PATHINFO_EXTENSION)) !== 'csv') {
-            view('admin/products/import', ['error' => 'Alleen .csv bestanden zijn toegestaan.', 'saved' => null, 'rowErrors' => []]);
+            view('admin/products/import', [
+                'error'               => $productTranslations[$lang]['onlyCsvAllowed'],
+                'saved'               => null,
+                'rowErrors'           => [],
+                'productTranslations' => $productTranslations,
+                'lang'                => $lang,
+            ]);
             return;
         }
         if ($file['size'] > 10 * 1024 * 1024) {
-            view('admin/products/import', ['error' => 'Bestand mag maximaal 10 MB zijn.', 'saved' => null, 'rowErrors' => []]);
+            view('admin/products/import', [
+                'error'               => $productTranslations[$lang]['fileTooLarge'],
+                'saved'               => null,
+                'rowErrors'           => [],
+                'productTranslations' => $productTranslations,
+                'lang'                => $lang,
+            ]);
             return;
         }
 

@@ -4,7 +4,8 @@ class ProductController
 {
     public function index(): void
     {
-        view('guest/products/index');
+        global $productTranslations;
+        view('guest/products/index', ['translations' => $productTranslations]);
     }
 
     public function getJson(): void

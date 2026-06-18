@@ -1,15 +1,15 @@
 <?php
-
 /** @var array $searchlogs */
+/** @var array $translations */
+/** @var string $lang */
 ?>
-
 <!DOCTYPE html>
 <html lang="nl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoekslagen</title>
+    <title><?= $translations[$lang]['title'] ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/global.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css" />
@@ -24,11 +24,11 @@
     <?php include __DIR__ . '/../../layouts/header.php' ?>
 
     <main>
-        <h1>Zoekslagen</h1>
+        <h1><?= $translations[$lang]['title'] ?></h1>
         <?php
 
         if (empty($searchlogs)) { ?>
-            <p>Geen zoekslagen gevonden</p>
+            <p><?= $translations[$lang]['noSearchLogsFound'] ?></p>
         <?php
         } else {
             $table = new Table();
