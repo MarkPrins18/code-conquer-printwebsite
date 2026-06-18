@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/reset-password.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/password-toggle.css" />
+    <script src="<?= BASE_URL ?>/assets/js/password-toggle.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/index.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
     <title><?= translate('title_reset', $formHandlingTranslations, $lang) ?> – Bouw3D</title>

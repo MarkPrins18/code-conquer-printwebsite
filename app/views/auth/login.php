@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
  /** @var array  $formHandlingTranslations */
  /** @var string $lang                     */
@@ -18,6 +16,8 @@ error_reporting(E_ALL);
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/components.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/login.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/password-toggle.css" />
+    <script src="<?= BASE_URL ?>/assets/js/password-toggle.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/index.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
     <title><?= translate('title_login', $formHandlingTranslations, $lang) ?> – Bouw3D</title>
