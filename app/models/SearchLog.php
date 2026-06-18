@@ -4,6 +4,23 @@ class SearchLog
 {
     public function __construct(private PDO $pdo) {}
 
+    public function getAll(string $searchTerm = ''): array
+    {
+        $sql = "SELECT failed_search_logs.log_id, failed_search_logs.search_string, failed_search_logs.updated_at
+                FROM failed_search_logs";
+
+        $params = [];
+        if ($searchTerm !== '') {
+            $sql .= " WHERE failed_search_logs.search_string LIKE :term";
+            $params = ['term' => '%' . $searchTerm . '%'];
+        }
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll();
+    }
+
+
     public function logIfInvalid(string $searchTerm, array $results): void
     {
         $searchTerm = trim($searchTerm);
@@ -23,6 +40,7 @@ class SearchLog
         }
     }
 
+
     public function save(string $searchTerm): void
     {
         try {
@@ -38,4 +56,19 @@ class SearchLog
             error_log("DATABASE ERROR: " . $e->getMessage());
         }
     }
+
+
+    public function delete(array $ids): bool
+    {
+        if (empty($ids)) return false;
+
+        $placeholders = implode(',', array_fill(0, count($ids), '?'));
+        $sql = "DELETE FROM failed_search_logs WHERE log_id IN ($placeholders)";
+        
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute($ids);
+    }
 }
+
+
+

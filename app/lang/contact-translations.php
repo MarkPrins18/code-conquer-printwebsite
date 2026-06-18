@@ -2,6 +2,7 @@
 
 $contactTranslations = [
     'nl' => [
+        'title' => 'BOUW³D — Contact',
         'contact' => 'Contact',
         'adress' => 'Adres',
         'email' => 'E-mail',
@@ -16,6 +17,7 @@ $contactTranslations = [
         'placeholder_message' => 'Schrijf hier je bericht...',
          ],
     'en' => [
+        'title' => 'BOUW³D — Contact',
         'contact' => 'Contact',  
         'adress' => 'Address',   
         'email' => 'E-mail',

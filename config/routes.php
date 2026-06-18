@@ -10,6 +10,13 @@ $router->get('/products',     [ProductController::class, 'index']);
 // $router->get('/get-products-json', [ProductController::class, 'getJson']);
 $router->get('/register',   [AuthController::class, 'showRegister']);
 $router->post('/register',  [AuthController::class, 'handleRegister']);
+$router->get('/login',      [AuthController::class, 'showLogin']);
+$router->post('/login',     [AuthController::class, 'handleLogin']);
+$router->get('/logout',    [AuthController::class, 'logout']);
+$router->get('/forgot-password', [AuthController::class, 'showForgotPassword']);
+$router->post('/forgot-password', [AuthController::class, 'handleForgotPassword']); 
+$router->get('/reset-password', [AuthController::class, 'showResetPassword']);
+$router->post('/reset-password', [AuthController::class, 'handleResetPassword']);   
 
 
 // urls for logged in users, can be guarded by a islogged in check
@@ -25,5 +32,7 @@ $router->post('/admin/orders/delete',        [AdminOrderController::class, 'dele
 $router->get('/admin/products',        [AdminProductController::class, 'index']);
 $router->get('/admin/products/create', [AdminProductController::class, 'create']);
 $router->post('/admin/products',       [AdminProductController::class, 'store']);
+$router->get('/admin/searchlogs',      [AdminSearchLogController::class, 'index']);
+$router->post('/admin/searchlogs/delete',      [AdminSearchLogController::class, 'deleteLogs']);
 $router->get('/admin/products/import', [AdminProductController::class, 'showCsvUpload']);
 $router->post('/admin/products/import',[AdminProductController::class, 'handleCsvUpload']);

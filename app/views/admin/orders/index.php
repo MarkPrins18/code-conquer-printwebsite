@@ -28,7 +28,7 @@
     <main>
         <section class="introduction">
             <?php if ($isDetail): ?>
-                <h1><?= htmlspecialchars($orderOverviewTranslations[$lang]['order_details']) ?></h1>
+                <h1><?= htmlspecialchars($orderOverviewTranslations[$lang]['orderDetails']) ?></h1>
                 <a id="backlink" href="<?= BASE_URL ?>/admin/orders">
                     <?= htmlspecialchars($orderOverviewTranslations[$lang]['back']) ?>
                 </a>
@@ -39,21 +39,21 @@
                     echo $table->renderTable();
                 ?>
             <?php else: ?>
-                <h1>Bestellingen beheer</h1>
+                <h1><?= htmlspecialchars($orderOverviewTranslations[$lang]['orders']) ?></h1>
                 <?php $successMsg = Session::getFlash('success'); ?>
                 <?php if ($successMsg): ?>
                     <p class="success"><?= htmlspecialchars($successMsg) ?></p>
                 <?php endif; ?>
 
                 <?php if (empty($orders)): ?>
-                    <p>Geen bestellingen gevonden.</p>
+                    <p><?= htmlspecialchars($orderOverviewTranslations[$lang]['noOrders']) ?></p>
                 <?php else: ?>
                     <?php $showSearch = true; include __DIR__ . '/../../components/order-filter.php'; ?>
 
                     <?php
                         $table = new Table();
                         $table->setData($orders);
-                        $table->addCustomColumn('status_change', function ($row) use ($statuses) {
+                        $table->addCustomColumn('status_wijzigen', function ($row) use ($statuses, $orderOverviewTranslations, $lang) {
                             ob_start(); ?>
                             <form method="POST" action="<?= BASE_URL ?>/admin/orders/update-status">
                                 <input type="hidden" name="order_id" value="<?= (int) $row['order_id'] ?>">
@@ -65,20 +65,24 @@
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
-                                <button type="submit" class="btn btn-save">Opslaan</button>
+                                <button type="submit" class="btn btn-save">
+                                    <?= htmlspecialchars($orderOverviewTranslations[$lang]['save']) ?>
+                                </button>
                             </form>
                             <?php return ob_get_clean();
                         });
-                        $table->addCustomColumn('delete', function ($row) {
+                        $table->addCustomColumn('verwijderen', function ($row) use ($orderOverviewTranslations, $lang) {
                             ob_start(); ?>
                             <form method="POST" action="<?= BASE_URL ?>/admin/orders/delete">
                                 <input type="hidden" name="order_id" value="<?= (int) $row['order_id'] ?>">
-                                <button type="submit" class="btn btn-delete">Verwijderen</button>
+                                <button type="submit" class="btn btn-delete">
+                                    <?= htmlspecialchars($orderOverviewTranslations[$lang]['delete']) ?>
+                                </button>
                             </form>
                             <?php return ob_get_clean();
                         });
-                        $table->addCustomColumn('overview', function ($row) {
-                            return '<a class="btn btn-view" href="' . BASE_URL . '/admin/orders/' . (int) $row['order_id'] . '">Bekijk</a>';
+                        $table->addCustomColumn('details', function ($row) use ($orderOverviewTranslations, $lang) {
+                            return '<a class="btn btn-view" href="' . BASE_URL . '/admin/orders/' . (int) $row['order_id'] . '">' . htmlspecialchars($orderOverviewTranslations[$lang]['view']) . '</a>';
                         });
                         $table->autoColumnLabels();
                         echo $table->renderTable();

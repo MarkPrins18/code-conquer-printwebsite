@@ -1,6 +1,7 @@
 <?php
 /** @var array $products */
 /** @var string $lang */
+/** @var array $translations */
 ?>
 <!DOCTYPE html>
 <html lang="<?= htmlspecialchars($lang) ?>">
@@ -13,7 +14,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/header-footer.css" />
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/admin/products.css" />
     <script src="<?= BASE_URL ?>/assets/js/header.js" defer></script>
-    <title>Admin – Producten</title>
+    <title><?= htmlspecialchars($translations[$lang]['titleIndex']) ?></title>
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/images/favicon.ico" />
 </head>
 
@@ -21,16 +22,16 @@
     <?php include __DIR__ . '/../../layouts/header.php' ?>
     <main>
         <section class="introduction">
-            <h1>Producten beheer</h1>
+            <h1><?= htmlspecialchars($translations[$lang]['productmanagement']) ?></h1>
             <?php $successMsg = Session::getFlash('success'); ?>
             <?php if ($successMsg): ?>
             <p class="success"><?= htmlspecialchars($successMsg) ?></p>
             <?php endif; ?>
-            <a class="button button--large product-create-btn" href="<?= BASE_URL ?>/admin/products/create">Maak product aan</a>
-            <a class="button button--large" href="<?= BASE_URL ?>/admin/products/import">Importeer CSV</a>
+            <a class="button button--large product-create-btn" href="<?= BASE_URL ?>/admin/products/create"><?= htmlspecialchars($translations[$lang]['createProduct']) ?></a>
+            <a class="button button--large" href="<?= BASE_URL ?>/admin/products/import"><?= htmlspecialchars($translations[$lang]['importCSV']) ?></a>
 
             <?php if (empty($products)): ?>
-            <p>Geen producten gevonden.</p>
+            <p><?= htmlspecialchars($translations[$lang]['noProducts']) ?></p>
             <?php else: ?>
             <?php
                 $table = new Table();
