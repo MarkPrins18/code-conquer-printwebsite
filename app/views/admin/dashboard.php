@@ -1,6 +1,3 @@
-<?php
-/** @var string $lang */
-?>
 <!DOCTYPE html>
 <html lang="<?= htmlspecialchars($lang) ?>">
 
