@@ -3,6 +3,7 @@
 $aboutUsTranslations = [
     'nl' => [
         'title' => 'BOUW³D — Over ons',
+        'heading' => 'Over ons',
         'intro1' => 'BOUW³D brengt innovatieve 3D-printtechnologie naar de bouw in Breda en regio.',
         'intro2' => 'Met maatwerk oplossingen helpen wij bouwprojecten te versnellen, kosten te reduceren en materiaalverspilling te minimaliseren.',
         'intro3' => 'Waar traditionele productie grenzen kent, bieden wij vrijheid: complexe vormen, unieke ontwerpen en last-minute aanpassingen realiseren wij zonder probleem.',
@@ -31,6 +32,7 @@ $aboutUsTranslations = [
     ],
     'en' => [
         'title' => 'BOUW³D — About us',
+        'heading' => 'About us',
         'intro1' => 'BOUW³D brings innovative 3D printing technology to construction in Breda and the surrounding region.',
         'intro2' => 'With tailor-made solutions we help speed up construction projects, reduce costs, and minimize material waste.',
         'intro3' => 'Where traditional production has its limits, we offer freedom: we realize complex shapes, unique designs, and last-minute changes without any problem.',

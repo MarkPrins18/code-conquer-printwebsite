@@ -67,10 +67,6 @@
             <h2><?= htmlspecialchars($translations[$lang]['teamHeading']) ?></h2>
             <div class="team-grid">
               <div class="team-card">
-                <div class="avatar"><img src="<?= BASE_URL ?>/assets/images/team-leonel.jpg" alt="<?= htmlspecialchars($translations[$lang]['teamPhotoAlt']) ?>"></div>
-                <div class="team-meta"><strong>Leonel</strong><small><?= htmlspecialchars($translations[$lang]['roleProjectLead']) ?></small></div>
-              </div>
-              <div class="team-card">
                 <div class="avatar"><img src="<?= BASE_URL ?>/assets/images/team-sherwin.jpg" alt="<?= htmlspecialchars($translations[$lang]['teamPhotoAlt']) ?>"></div>
                 <div class="team-meta"><strong>Sherwin</strong><small><?= htmlspecialchars($translations[$lang]['roleOperations']) ?></small></div>
               </div>
