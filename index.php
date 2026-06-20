@@ -62,6 +62,7 @@ require_once BASE_PATH . '/app/lang/form-handling-translations.php';
 require_once BASE_PATH . '/app/lang/admin-product-translations.php';
 require_once BASE_PATH . '/app/lang/searchlog-translation.php';
 require_once BASE_PATH . '/app/lang/about-us-translations.php';
+require_once BASE_PATH . '/app/lang/contact-translations.php';
 require_once BASE_PATH . '/app/lang/product-translations.php';
 require_once BASE_PATH . '/app/lang/services-translations.php';
 
