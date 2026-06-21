@@ -132,12 +132,9 @@ class AuthController {
         $this->startUserSession($found);
 
         
-        if ($_SESSION['role_name'] === 'Admin') {
-            header('Location: ' . BASE_URL . '/admin');
-        } else {
-            header('Location: ' . BASE_URL . '/');
-        }
-            exit;
+        $redirect = Session::isAdmin() ? '/admin' : '/';
+        header('Location: ' . BASE_URL . $redirect);
+        exit;
     }
 
 
