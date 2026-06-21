@@ -130,8 +130,14 @@ class AuthController {
         }
 
         $this->startUserSession($found);
-        header('Location: ' . BASE_URL . '/');
-        exit;
+
+        
+        if ($_SESSION['role_name'] === 'Admin') {
+            header('Location: ' . BASE_URL . '/admin');
+        } else {
+            header('Location: ' . BASE_URL . '/');
+        }
+            exit;
     }
 
 
@@ -286,7 +292,7 @@ class AuthController {
         session_regenerate_id(true);
          // Set session data AFTER regeneration
         $_SESSION['user_id']   = $user['user_id'];
-        $_SESSION['role_name'] = ($user['role_code'] ?? '') === 'Admin' ? 'Admin' : 'User';
+        $_SESSION['role_name'] = ($user['role_code'] ?? '') === 'ADMIN' ? 'Admin' : 'User';
     }
 }
 
