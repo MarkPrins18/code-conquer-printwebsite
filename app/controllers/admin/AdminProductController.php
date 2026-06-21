@@ -3,19 +3,19 @@
 class AdminProductController {
     public function index(): void {
         AuthGuard::requireAdmin();
-        global $productTranslations;
+        global $adminProductTranslations;
 
         $pdo      = Database::getConnection();
         $model    = new Product($pdo);
         $products = $model->getAll();
 
-        view('admin/products/index', ['products' => $products, 'translations' => $productTranslations]);
+        view('admin/products/index', ['products' => $products, 'translations' => $adminProductTranslations]);
     }
 
     public function create(): void {
         AuthGuard::requireAdmin();
-        global $productTranslations;
-        view('admin/products/create', ['errors' => [], 'old' => [], 'translations' => $productTranslations]);
+        global $adminProductTranslations;
+        view('admin/products/create', ['errors' => [], 'old' => [], 'translations' => $adminProductTranslations]);
     }
 
     public function store(): void {
@@ -65,52 +65,52 @@ class AdminProductController {
 
     public function showCsvUpload(): void {
         AuthGuard::requireAdmin();
-        global $productTranslations;
-        view('admin/products/import', ['error' => null, 'saved' => null, 'rowErrors' => [], 'translations' => $productTranslations]);
+        global $adminProductTranslations;
+        view('admin/products/import', ['error' => null, 'saved' => null, 'rowErrors' => [], 'translations' => $adminProductTranslations]);
     }
 
     public function handleCsvUpload(): void {
         AuthGuard::requireAdmin();
-        global $productTranslations, $lang;
+        global $adminProductTranslations, $lang;
 
         $file = $_FILES['csv_file'] ?? null;
 
         if (!$file || $file['error'] === UPLOAD_ERR_NO_FILE) {
         view('admin/products/import', [
-            'error'               => $productTranslations[$lang]['selectCsvFile'],
+            'error'               => $adminProductTranslations[$lang]['selectCsvFile'],
             'saved'               => null,
             'rowErrors'           => [],
-            'productTranslations' => $productTranslations,
+            'translations'        => $adminProductTranslations,
             'lang'                => $lang,
         ]);
         return;
         }
         if ($file['error'] !== UPLOAD_ERR_OK) {
             view('admin/products/import', [
-                'error'               => $productTranslations[$lang]['uploadError'],
+                'error'               => $adminProductTranslations[$lang]['uploadError'],
                 'saved'               => null,
                 'rowErrors'           => [],
-                'productTranslations' => $productTranslations,
+                'translations'        => $adminProductTranslations,
                 'lang'                => $lang,
             ]);
             return;
         }
         if (strtolower(pathinfo($file['name'], PATHINFO_EXTENSION)) !== 'csv') {
             view('admin/products/import', [
-                'error'               => $productTranslations[$lang]['onlyCsvAllowed'],
+                'error'               => $adminProductTranslations[$lang]['onlyCsvAllowed'],
                 'saved'               => null,
                 'rowErrors'           => [],
-                'productTranslations' => $productTranslations,
+                'translations'        => $adminProductTranslations,
                 'lang'                => $lang,
             ]);
             return;
         }
         if ($file['size'] > 10 * 1024 * 1024) {
             view('admin/products/import', [
-                'error'               => $productTranslations[$lang]['fileTooLarge'],
+                'error'               => $adminProductTranslations[$lang]['fileTooLarge'],
                 'saved'               => null,
                 'rowErrors'           => [],
-                'productTranslations' => $productTranslations,
+                'translations'        => $adminProductTranslations,
                 'lang'                => $lang,
             ]);
             return;

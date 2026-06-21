@@ -1,6 +1,6 @@
 <?php
 
-$productTranslations = [
+$adminProductTranslations = [
     'nl' => [
         'titleCreate' => 'Admin – Nieuw product',
         'titleImport' => 'Admin – Producten importeren',
