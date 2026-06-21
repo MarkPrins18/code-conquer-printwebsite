@@ -952,5 +952,15 @@ INSERT INTO `custom_products` (`product_id`, `file_path`, `weight_grams`, `color
 (19, 'C:/3D_Print_Orders/SecureNet/Custom_Geopolymer_Ornament.stl', 95.50, 'Beige', 'Decorative facade element'),
 (20, 'C:/3D_Print_Orders/CloudFlex/Custom_Wood_Filled_Decor.stl', 110.00, 'Brown', 'For interior design, sanded finish');
 
+-- TEST ACCOUNTS FOR ASSESSMENT
+-- User = test-user@codeconquer.nl
+-- WW = W4chtwoord123
+INSERT INTO `users` (`kvk`, `role_code`, `email`, `password_hash`, `phone`) VALUES
+('87654321', 'USER', 'test-user@codeconquer.nl', '$2y$10$7v/9tefaaOXj6VrLgRxSvuuMP3MICCOHdEmiR3GIa739eBey1Av3m', '+31612345678');
+
+-- User = test-admin@codeconquer.nl
+-- WW = W4chtwoord123
+INSERT INTO `users` (`kvk`, `role_code`, `email`, `password_hash`, `phone`) VALUES
+('87654321', 'ADMIN', 'test-admin@codeconquer.nl', '$2y$10$7v/9tefaaOXj6VrLgRxSvuuMP3MICCOHdEmiR3GIa739eBey1Av3m', '+31612345678');
 
 COMMIT;
